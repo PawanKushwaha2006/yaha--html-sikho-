@@ -265,5 +265,51 @@ function comingSoon() {
 </script>
 </body>
 </html>
+<!-- Suggestion Box HTML -->
+<div style="text-align:center; margin: 20px; padding: 20px; border: 2px solid #00f5ff; border-radius: 10px;">
+  <h3 style="color:#00f5ff;">Apna Suggestion Bhejo 💡</h3>
+  <textarea id="suggestionText" placeholder="Yahan apna suggestion likho..." 
+    style="width:80%; height:80px; padding:10px; border-radius:5px; margin:10px;"></textarea>
+  <br>
+  <button id="suggestionBtn" 
+    style="background:#00f5ff; color:black; padding:10px 20px; border:none; border-radius:5px; font-weight:bold; cursor:pointer;">
+    Suggestion Bhejo 🚀
+  </button>
+  <p id="msg" style="color:lime; margin-top:10px;"></p>
+</div>
+
+<!-- Firebase Suggestion Wala Code -->
+<script type="module">
+  // Purana Firebase config to hai hi tere paas
+  
+  // Naya Code: Firestore ke liye
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  const db = getFirestore(app);
+
+  // Button dabane pe suggestion save hoga
+  document.getElementById("suggestionBtn").onclick = async function() {
+    let suggestion = document.getElementById("suggestionText").value;
+    let msgBox = document.getElementById("msg");
+    
+    if(suggestion.trim() === ""){
+      msgBox.style.color = "red";
+      msgBox.innerText = "Bhai kuch likh to sahi 😂";
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "suggestions"), {
+        message: suggestion,
+        time: serverTimestamp()
+      });
+      msgBox.style.color = "lime";
+      msgBox.innerText = "Suggestion bhej diya bhai! Dhanyawaad ❤️";
+      document.getElementById("suggestionText").value = ""; // Box khali kar do
+    } catch (error) {
+      msgBox.style.color = "red";
+      msgBox.innerText = "Error aa gaya: " + error;
+    }
+  }
+</script>
 </body>  
 </html>
