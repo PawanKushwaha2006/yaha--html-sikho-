@@ -1,163 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suggestion Page</title>
-
-<style>
-* {
-  box-sizing: border-box; /* Ye important tha bhai */
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #3a3a5a, #3a3a5a);
-  color: white;
-  text-align: center;
-  margin: 0;
-  padding: 20px;
-}
-
-/* Container */
-.box {
-  width: 90%;
-  max-width: 700px;
-  margin: 0px auto;
-  padding: 25px;
-  background: #2f3542;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-}
-
-/* Inputs */
-input, textarea, select {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  background: #1e293b;
-  color: white;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #94a3b8;
-}
-
-/* Button */
-button {
-  width: 100%;
-  padding: 14px;
-  background: #0072ff;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: 0.3s;
-  margin-top: 10px;
-}
-
-button:hover {
-  background: #0056cc;
-  transform: scale(1.02);
-}
-
-button:disabled {
-  background: #555;
-  cursor: not-allowed;
-  transform: scale(1);
-}
-
-/* Message */
-#msg {
-  margin-top: 15px;
-  font-size: 15px;
-  min-height: 20px;
-}
-
-.success {
-  color: #00ffcc;
-}
-
-.error {
-  color: #ff4757;
-}
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Suggestions </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: #38bdf8;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 2px solid #334155;
+      border-radius: 8px;
+      background: #1e293b;
+      color: white;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #0ea5e9;
+    }
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-
-<h2>💡 Give Your Suggestion</h2>
-
-<div class="box">
-
-  <input type="text" id="name" placeholder="Your Name">
-
-  <select id="type">
-    <option value="">Select Type</option>
-    <option value="Website Design">Website Design</option>
-    <option value="New Feature">New Feature</option>
-    <option value="Bug Fix">Bug Fix</option>
-    <option value="Other">Other</option>
-  </select>
-
-  <textarea id="suggestion" rows="5" placeholder="Write your suggestion..."></textarea>
-
-  <button id="submitBtn" onclick="submitSuggestion()">Submit</button>
-
-  <p id="msg"></p>
-
-</div>
-
-<script>
-function submitSuggestion() {
-  let name = document.getElementById("name").value.trim();
-  let type = document.getElementById("type").value;
-  let suggestion = document.getElementById("suggestion").value.trim();
-  let msgBox = document.getElementById("msg");
-  let submitBtn = document.getElementById("submitBtn");
-
-  // Reset message
-  msgBox.className = "";
+  <h1>💡 Send Your Suggestion</h1>
   
-  // Validation
-  if(name === "" || suggestion === "" || type === "") {
-    msgBox.innerText = "⚠ Please fill all fields";
-    msgBox.className = "error";
-    return;
-  }
-
-  // Disable button
-  submitBtn.disabled = true;
-  submitBtn.innerText = "Submitting...";
-
-  // Fake submit - 1 sec delay
-  setTimeout(() => {
-    msgBox.innerText = "✅ Thank you, " + name + "! Your suggestion is received.";
-    msgBox.className = "success";
+  <form action="https://formspree.io/f/xpqkkvoo" method="POST">
+    <input type="text" name="name" placeholder="Tera Naam" required>
     
-    // Clear fields
-    document.getElementById("name").value = "";
-    document.getElementById("type").value = "";
-    document.getElementById("suggestion").value = "";
+    <input type="email" name="email" placeholder="Tera Email (optional)">
     
-    // Enable button
-    submitBtn.disabled = false;
-    submitBtn.innerText = "Submit";
+    <textarea name="message" rows="6" placeholder="Apna suggestion yaha likh bhai..." required></textarea>
     
-    // Message hide after 3 sec
-    setTimeout(() => {
-      msgBox.innerText = "";
-    }, 3000);
+    <!-- Spam se bachne ke liye -->
+    <input type="text" name="_gotcha" style="display:none">
     
-  }, 1000);
-}
-</script>
-
+    <!-- Success page redirect -->
+    <input type="hidden" name="_next" value="https://google.com">
+    
+    <button type="submit">Send Suggestion 🚀</button>
+  </form>
+  
+  <a href="index.html" class="back">← Back to Home</a>
+  
 </body>
 </html>
