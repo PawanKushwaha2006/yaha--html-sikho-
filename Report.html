@@ -1,0 +1,28 @@
+<!-- Report Issue Section -->
+<div style="text-align:center; margin: 300px 20px; padding: 25px; border: 2px solid #ff4757; border-radius: 15px; background:rgba(255,71,87,0.05);">
+  <h3 style="color:#ff4757; margin-bottom:15px;">Found an Issue? Report Here 🚨</h3>
+  <textarea id="reportText" placeholder="Describe the bug or issue you found..." 
+    style="width:80%; height:80px; padding:12px; border-radius:8px; margin:10px; border:1px solid #ff4757; background:#1e293b; color:white; font-size:15px;"></textarea>
+  <br>
+  <button id="reportBtn" onclick="submitReport()" 
+    style="background:#ff4757; color:white; padding:12px 25px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px; margin-top:10px; transition:0.3s;">
+    Submit
+  </button>
+
+</div>
+
+<script>
+function submitReport() {
+    let text = document.getElementById("reportText").value;
+
+    if (text.trim() === "") {
+        alert("Please write something before submitting!");
+    } else {
+        alert("Report submitted successfully ✅");
+        
+        // yaha tum future me data send kar sakte ho (server/email)
+        
+        document.getElementById("reportText").value = "";
+    }
+}
+</script>
