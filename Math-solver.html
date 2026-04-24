@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra Math Solver</title>
+
+<!-- Math.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+
+<style>
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    padding: 15px;
+}
+.container {
+    max-width: 500px;
+    margin: auto;
+}
+h2 {
+    text-align: center;
+    color: #22c55e;
+    margin-bottom: 20px;
+}
+#question {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #22c55e;
+    background: #1e293b;
+    color: white;
+    box-sizing: border-box;
+}
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background: #22c55e;
+    color: white;
+    cursor: pointer;
+}
+button:hover {
+    background: #16a34a;
+}
+.answer-box {
+    margin-top: 15px;
+    padding: 15px;
+    background: #1e293b;
+    border-radius: 10px;
+    font-size: 22px;
+    word-wrap: break-word;
+    min-height: 30px;
+    border: 2px solid #334155;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>⚡Math Solver</h2>
+
+    <!-- 1. INPUT SABSE UPAR -->
+    <input id="question" placeholder="Example: sin(30) + 2^5"
+    onkeydown="if(event.key==='Enter') solve()">
+
+    <!-- 2. OUTPUT BEECH ME -->
+    <div class="answer-box" id="answer">Answer yaha dikhega</div>
+
+    <!-- 3. SOLVE BUTTON SABSE NICHE -->
+    <button onclick="solve()">Solve</button>
+</div>
+
+<script>
+// degree support
+math.import({
+    sin: (x) => Math.sin(x * Math.PI / 180),
+    cos: (x) => Math.cos(x * Math.PI / 180),
+    tan: (x) => Math.tan(x * Math.PI / 180),
+    asin: (x) => Math.asin(x) * 180 / Math.PI,
+    acos: (x) => Math.acos(x) * 180 / Math.PI,
+    atan: (x) => Math.atan(x) * 180 / Math.PI
+}, { override: true });
+
+// factorial shortcut
+math.import({
+    fact: function(n) {
+        return math.factorial(n);
+    }
+});
+
+function solve() {
+    let q = document.getElementById("question").value.trim();
+    let ans = document.getElementById("answer");
+
+    if(!q){
+        ans.innerHTML = "❗ Pehle question likho";
+        return;
+    }
+
+    try {
+        let result = math.evaluate(q);
+
+        // pretty format
+        if (typeof result === "number") {
+            result = parseFloat(result.toFixed(10));
+        }
+
+        ans.innerHTML = "✅ " + result;
+
+    } catch (err) {
+        ans.innerHTML = "❌ Invalid expression";
+    }
+}
+</script>
+
+</body>
+</html>
