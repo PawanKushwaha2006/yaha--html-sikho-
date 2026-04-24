@@ -1,161 +1,214 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Snake Game</title>
-
-<style>
-body {
-    text-align: center;
-    background: black;
-    color: white;
-    font-family: Arial;
-    margin: 0;
-}
-
-canvas {
-    background: #eee;
-    border: 2px solid black;
-    margin-top: 10px;
-    width: 95vw;
-    max-width: 400px;
-    height: 95vw;
-    max-height: 400px;
-    touch-action: none;
-}
-</style>
-</head>
-
-<body>
-
-<h2>🐍 Snake Game</h2>
-<p>Score: <span id="score">0</span></p>
-
-<canvas id="game" width="400" height="400"></canvas>
-
-<script>
-let canvas = document.getElementById("game");
-let ctx = canvas.getContext("2d");
-
-let snake, direction, food, score;
-let grid = 10;
-
-function init() {
-    snake = [
-        {x:200, y:200},
-        {x:180, y:200},
-        {x:160, y:200},
-        {x:140, y:200}
-    ];
-    direction = "RIGHT";
-    score = 0;
-    document.getElementById("score").innerText = score;
-    food = randomFood();
-}
-
-function randomFood() {
-    return {
-        x: Math.floor(Math.random()*(400/grid))*grid,
-        y: Math.floor(Math.random()*(400/grid))*grid
-    };
-}
-
-function draw() {
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(0, 0, 400, 400);
-
-    // Snake (head red)
-    snake.forEach((p, i) => {
-        if (i === 0) {
-            ctx.fillStyle = "";
-        } else {
-            ctx.fillStyle = "green";
-        }
-        ctx.fillRect(p.x, p.y, grid, grid);
-    });
-
-    // Food
-    ctx.fillStyle = "red";
-    ctx.fillRect(food.x, food.y, grid, grid);
-
-    let head = {...snake[0]};
-
-    if (direction === "RIGHT") head.x += grid;
-    if (direction === "LEFT") head.x -= grid;
-    if (direction === "UP") head.y -= grid;
-    if (direction === "DOWN") head.y += grid;
-
-    // Wall wrap
-    if (head.x < 0) head.x = 400 - grid;
-    if (head.y < 0) head.y = 400 - grid;
-    if (head.x >= 400) head.x = 0;
-    if (head.y >= 400) head.y = 0;
-
-    // Self collision
-    if (snake.some(p => p.x === head.x && p.y === head.y)) {
-        alert("Game Over! Score: " + score);
-        init();
-        return;
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    
+    <style>
+    body {
+        text-align: center;
+        background: #0a0a0a;
+        color: white;
+        font-family: Arial;
+        margin: 0;
+        padding: 10px;
     }
-
-    snake.unshift(head);
-
-    // Eat
-    if (head.x === food.x && head.y === food.y) {
-        score++;
+    
+    canvas {
+        background: #1a1a1a;
+        border: 2px solid #333;
+        margin-top: 10px;
+        width: 95vw;
+        max-width: 400px;
+        height: 95vw;
+        max-height: 400px;
+        touch-action: none;
+        border-radius: 8px;
+    }
+    </style>
+    </head>
+    
+    <body>
+    
+    <h2>🐍 Snake Game</h2>
+    <p>Score: <span id="score">0</span></p>
+    
+    <canvas id="game" width="400" height="400"></canvas>
+    
+    <script>
+    let canvas = document.getElementById("game");
+    let ctx = canvas.getContext("2d");
+    
+    let snake, direction, nextDirection, food, score;
+    let grid = 20;
+    let size = 400 / grid; // 20x20 grid
+    
+    // Smooth movement ke liye
+    let moveTimer = 0;
+    let moveSpeed = 0.15; // jitna kam, utna tez. 0.15 = smooth
+    
+    function init() {
+        snake = [
+            {x: 10, y: 10},
+            {x: 9, y: 10},
+            {x: 8, y: 10}
+        ];
+        direction = "RIGHT";
+        nextDirection = "RIGHT";
+        score = 0;
         document.getElementById("score").innerText = score;
         food = randomFood();
-    } else {
-        snake.pop();
+        moveTimer = 0;
     }
-}
-
-/* Smooth loop */
-let last = 0;
-let speed = 110;
-
-function loop(t) {
-    if (t - last > speed) {
+    
+    function randomFood() {
+        let newFood;
+        do {
+            newFood = {
+                x: Math.floor(Math.random() * size),
+                y: Math.floor(Math.random() * size)
+            };
+        } while (snake.some(p => p.x === newFood.x && p.y === newFood.y));
+        return newFood;
+    }
+    
+    function update(deltaTime) {
+        moveTimer += deltaTime;
+    
+        // Direction change tabhi jab move hone wala ho
+        if (moveTimer >= moveSpeed) {
+            direction = nextDirection;
+            moveTimer = 0;
+    
+            let head = {...snake[0]};
+    
+            if (direction === "RIGHT") head.x++;
+            if (direction === "LEFT") head.x--;
+            if (direction === "UP") head.y--;
+            if (direction === "DOWN") head.y++;
+    
+            // Wall wrap
+            if (head.x < 0) head.x = size - 1;
+            if (head.y < 0) head.y = size - 1;
+            if (head.x >= size) head.x = 0;
+            if (head.y >= size) head.y = 0;
+    
+            // Self collision
+            if (snake.some(p => p.x === head.x && p.y === head.y)) {
+                alert("Game Over! Score: " + score);
+                init();
+                return;
+            }
+    
+            snake.unshift(head);
+    
+            // Eat food
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                document.getElementById("score").innerText = score;
+                food = randomFood();
+                // Speed badha de thoda
+                if (moveSpeed > 0.08) moveSpeed -= 0.002;
+            } else {
+                snake.pop();
+            }
+        }
+    }
+    
+    function draw() {
+        ctx.fillStyle = "#1a1a1a";
+        ctx.fillRect(0, 0, 400, 400);
+    
+        // Grid lines halki si
+        ctx.strokeStyle = "#222";
+        ctx.lineWidth = 1;
+        for(let i = 0; i < size; i++) {
+            ctx.beginPath();
+            ctx.moveTo(i * grid, 0);
+            ctx.lineTo(i * grid, 400);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(0, i * grid);
+            ctx.lineTo(400, i * grid);
+            ctx.stroke();
+        }
+    
+        // Food - gol aur chamakta
+        ctx.fillStyle = "#ff3838";
+        ctx.beginPath();
+        ctx.arc(food.x * grid + grid/2, food.y * grid + grid/2, grid/2 - 2, 0, Math.PI * 2);
+        ctx.fill();
+    
+        // Snake
+        snake.forEach((p, i) => {
+            if (i === 0) {
+                // Head - red aur gol
+                ctx.fillStyle = "#ff3838";
+                ctx.beginPath();
+                ctx.arc(p.x * grid + grid/2, p.y * grid + grid/2, grid/2 - 1, 0, Math.PI * 2);
+                ctx.fill();
+    
+                // Eyes
+                ctx.fillStyle = "white";
+                let eyeOffsetX = direction === "LEFT"? -3 : direction === "RIGHT"? 3 : 0;
+                let eyeOffsetY = direction === "UP"? -3 : direction === "DOWN"? 3 : 0;
+                ctx.beginPath();
+                ctx.arc(p.x * grid + grid/2 + eyeOffsetX - 2, p.y * grid + grid/2 + eyeOffsetY - 2, 2, 0, Math.PI * 2);
+                ctx.arc(p.x * grid + grid/2 + eyeOffsetX + 2, p.y * grid + grid/2 + eyeOffsetY - 2, 2, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                // Body - green gradient
+                let alpha = 1 - (i / snake.length) * 0.5;
+                ctx.fillStyle = `rgba(46, 213, 115, ${alpha})`;
+                ctx.beginPath();
+                ctx.roundRect(p.x * grid + 1, p.y * grid + 1, grid - 2, grid - 2, 4);
+                ctx.fill();
+            }
+        });
+    }
+    
+    let lastTime = 0;
+    function gameLoop(currentTime) {
+        let deltaTime = (currentTime - lastTime) / 1000; // seconds me
+        lastTime = currentTime;
+    
+        update(deltaTime);
         draw();
-        last = t;
+    
+        requestAnimationFrame(gameLoop);
     }
-    requestAnimationFrame(loop);
-}
-
-/* Touch control */
-let sx=0, sy=0;
-
-document.addEventListener("touchstart", e => {
-    sx = e.touches[0].clientX;
-    sy = e.touches[0].clientY;
-});
-
-document.addEventListener("touchend", e => {
-    let dx = e.changedTouches[0].clientX - sx;
-    let dy = e.changedTouches[0].clientY - sy;
-
-    if (Math.abs(dx) > Math.abs(dy)) {
-        direction = dx > 0 ? "RIGHT" : "LEFT";
-    } else {
-        direction = dy > 0 ? "DOWN" : "UP";
-    }
-});
-
-/* Keyboard */
-document.addEventListener("keydown", e => {
-    if (e.key === "ArrowUp") direction = "UP";
-    if (e.key === "ArrowDown") direction = "DOWN";
-    if (e.key === "ArrowLeft") direction = "LEFT";
-    if (e.key === "ArrowRight") direction = "RIGHT";
-});
-
-init();
-requestAnimationFrame(loop);
-</script>
-
-</body>
-</html>
-
-
-
-
+    
+    /* Touch control - reverse jane se roka */
+    let sx=0, sy=0;
+    document.addEventListener("touchstart", e => {
+        sx = e.touches[0].clientX;
+        sy = e.touches[0].clientY;
+    });
+    
+    document.addEventListener("touchend", e => {
+        let dx = e.changedTouches[0].clientX - sx;
+        let dy = e.changedTouches[0].clientY - sy;
+    
+        if (Math.abs(dx) > Math.abs(dy)) {
+            if (dx > 0 && direction!== "LEFT") nextDirection = "RIGHT";
+            else if (dx < 0 && direction!== "RIGHT") nextDirection = "LEFT";
+        } else {
+            if (dy > 0 && direction!== "UP") nextDirection = "DOWN";
+            else if (dy < 0 && direction!== "DOWN") nextDirection = "UP";
+        }
+    });
+    
+    /* Keyboard - reverse jane se roka */
+    document.addEventListener("keydown", e => {
+        if (e.key === "ArrowUp" && direction!== "DOWN") nextDirection = "UP";
+        if (e.key === "ArrowDown" && direction!== "UP") nextDirection = "DOWN";
+        if (e.key === "ArrowLeft" && direction!== "RIGHT") nextDirection = "LEFT";
+        if (e.key === "ArrowRight" && direction!== "LEFT") nextDirection = "RIGHT";
+    });
+    
+    init();
+    requestAnimationFrame(gameLoop);
+    </script>
+    
+    </body>
+    </html>
