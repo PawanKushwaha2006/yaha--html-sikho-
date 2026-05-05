@@ -1,1 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 26: HTML Classes & IDs - HTML Course</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      line-height: 1.7;
+      padding: 20px;
+    }
+.container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #38bdf8;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #0ea5e9;
+      padding-bottom: 15px;
+    }
+    h3 {
+      color: #0ea5e9;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    p {
+      margin-bottom: 15px;
+      color: #cbd5e1;
+    }
+    code {
+      background: #0f172a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #38bdf8;
+      font-family: 'Courier New', monospace;
+      border: 1px solid #334155;
+      font-size: 13px;
+      display: inline-block;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+.code-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+.code-box pre {
+      color: #e2e8f0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+    }
+.output-box {
+      background: #0f172a;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+.note-box {
+      background: rgba(168, 85, 247, 0.1);
+      border-left: 4px solid #a855f7;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+.note-box code {
+      background: #0f172a;
+      border: 1px solid #a855f7;
+    }
+    ul {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    th, td {
+      border: 1px solid #475569;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #0ea5e9;
+      color: #0f172a;
+      font-weight: 600;
+    }
+    td {
+      background: #1e293b;
+    }
+.back-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #0ea5e9, #a855f7);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 30px;
+      font-weight: 600;
+    }
+.back-btn:hover {
+      opacity: 0.9;
+    }
+.center {
+      text-align: center;
+    }
+    /* Demo Classes */
+.card {
+      background: rgba(14, 165, 233, 0.1);
+      border: 2px solid #0ea5e9;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+.highlight {
+      background: #f59e0b;
+      color: #0f172a;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+.error {
+      color: #ef4444;
+      font-weight: 600;
+    }
+.success {
+      color: #10b981;
+      font-weight: 600;
+    }
+#main-title {
+      color: #a855f7;
+      font-size: 2rem;
+      text-align: center;
+    }
+#demo-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+#demo-btn:hover {
+      opacity: 0.9;
+    }
+    @media (max-width: 768px) {
+.container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+      }
+      code {
+        font-size: 11px;
+        padding: 2px 6px;
+      }
+.code-box {
+        padding: 15px;
+      }
+.code-box pre {
+        font-size: 12px;
+      }
+      table {
+        font-size: 14px;
+      }
+      th, td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chapter 26: HTML Classes & IDs</h1>
 
+    <h3>What are Classes and IDs?</h3>
+    <p>Classes and IDs are "hooks" or "labels" you add to HTML elements. CSS uses them to style elements, and JavaScript uses them to select and manipulate elements.</p>
+
+    <div class="output-box">
+      <table>
+        <tr>
+          <th>Feature</th>
+          <th>class</th>
+          <th>id</th>
+        </tr>
+        <tr>
+          <td><b>Purpose</b></td>
+          <td>Group multiple elements</td>
+          <td>Uniquely identify one element</td>
+        </tr>
+        <tr>
+          <td><b>Syntax</b></td>
+          <td><code>class="name"</code></td>
+          <td><code>id="name"</code></td>
+        </tr>
+        <tr>
+          <td><b>CSS Selector</b></td>
+          <td><code>.name</code></td>
+          <td><code>#name</code></td>
+        </tr>
+        <tr>
+          <td><b>JS Selector</b></td>
+          <td><code>document.querySelectorAll('.name')</code></td>
+          <td><code>document.getElementById('name')</code></td>
+        </tr>
+        <tr>
+          <td><b>Reusability</b></td>
+          <td>Can use on many elements</td>
+          <td>Must be unique per page</td>
+        </tr>
+        <tr>
+          <td><b>Multiple Values</b></td>
+          <td>Yes: <code>class="btn primary"</code></td>
+          <td>No: Only one id allowed</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>1. The <code>class</code> Attribute</h3>
+    <p>Use classes when multiple elements need the same styling or behavior.</p>
+
+    <div class="code-box">
+<pre>&lt;!-- HTML --&gt;
+&lt;div class="card"&gt;Card 1&lt;/div&gt;
+&lt;div class="card"&gt;Card 2&lt;/div&gt;
+&lt;div class="card"&gt;Card 3&lt;/div&gt;
+
+&lt;p&gt;This is &lt;span class="highlight"&gt;important&lt;/span&gt; text.&lt;/p&gt;
+&lt;p&gt;This is &lt;span class="error"&gt;error&lt;/span&gt; message.&lt;/p&gt;</pre>
+    </div>
+
+    <div class="code-box">
+<pre>/* CSS - targets all elements with class="card" */
+.card {
+  background: rgba(14, 165, 233, 0.1);
+  border: 2px solid #0ea5e9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.highlight {
+  background: #f59e0b;
+  color: #0f172a;
+  padding: 3px 8px;
+}</pre>
+    </div>
+
+    <h3>Output:</h3>
+    <div class="output-box">
+      <div class="card">Card 1 - All cards share same style</div>
+      <div class="card">Card 2 - Same class = same CSS</div>
+      <p>This is <span class="highlight">important</span> text.</p>
+      <p>This is <span class="error">error</span> message.</p>
+    </div>
+
+    <h3>2. Multiple Classes</h3>
+    <p>An element can have multiple classes separated by spaces.</p>
+    <div class="code-box">
+<pre>&lt;button class="btn btn-primary btn-large"&gt;Submit&lt;/button&gt;
+&lt;p class="text-center error"&gt;Centered error text&lt;/p&gt;</pre>
+    </div>
+
+    <div class="code-box">
+<pre>/* Each class adds styles */
+.btn { padding: 10px 20px; border: none; }
+.btn-primary { background: #0ea5e9; color: white; }
+.btn-large { font-size: 18px; }
+.text-center { text-align: center; }
+.error { color: #ef4444; }</pre>
+    </div>
+
+    <h3>3. The <code>id</code> Attribute</h3>
+    <p>Use IDs when you need to uniquely identify ONE specific element. IDs must be unique per page.</p>
+
+    <div class="code-box">
+<pre>&lt;!-- HTML --&gt;
+&lt;h1 id="main-title"&gt;Welcome to My Site&lt;/h1&gt;
+&lt;button id="demo-btn"&gt;Click Me&lt;/button&gt;
+&lt;div id="header"&gt;Header Section&lt;/div&gt;</pre>
+    </div>
+
+    <div class="code-box">
+<pre>/* CSS - # targets the id */
+#main-title {
+  color: #a855f7;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#demo-btn {
+  background: #10b981;
+  color: white;
+}</pre>
+    </div>
+
+    <h3>Output:</h3>
+    <div class="output-box">
+      <h2 id="main-title">Welcome to My Site</h2>
+      <button id="demo-btn" onclick="alert('Button with ID clicked!')">Click Me</button>
+    </div>
+
+    <h3>4. JavaScript with Classes & IDs</h3>
+    <div class="code-box">
+<pre>&lt;!-- HTML --&gt;
+&lt;p id="message"&gt;Original text&lt;/p&gt;
+&lt;button id="change-btn"&gt;Change Text&lt;/button&gt;
+
+&lt;div class="box"&gt;Box 1&lt;/div&gt;
+&lt;div class="box"&gt;Box 2&lt;/div&gt;
+&lt;div class="box"&gt;Box 3&lt;/div&gt;</pre>
+    </div>
+
+    <div class="code-box">
+<pre>// JavaScript - Select by ID
+document.getElementById('change-btn').onclick = function() {
+  document.getElementById('message').textContent = 'Text Changed!';
+};
+
+// JavaScript - Select by Class
+let boxes = document.querySelectorAll('.box');
+boxes.forEach(box => {
+  box.style.background = '#0ea5e9';
+});</pre>
+    </div>
+
+    <div class="output-box">
+      <p id="message-demo">Original text</p>
+      <button id="change-btn-demo" onclick="document.getElementById('message-demo').textContent='Text Changed!'" style="background:#0ea5e9;color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">Change Text</button>
+    </div>
+
+    <h3>5. Naming Rules</h3>
+    <ul>
+      <li><b>Start with letter:</b> <code>class="btn"</code> ✅, <code>class="1btn"</code> ❌</li>
+      <li><b>Use hyphens:</b> <code>class="main-header"</code> ✅, <code>class="main header"</code> ❌</li>
+      <li><b>Case sensitive:</b> <code>class="Header"</code> ≠ <code>class="header"</code></li>
+      <li><b>No spaces:</b> <code>class="btn-primary"</code> ✅, <code>class="btn primary"</code> = 2 classes</li>
+      <li><b>Be descriptive:</b> <code>class="nav-link"</code> ✅, <code>class="x"</code> ❌</li>
+    </ul>
+
+    <h3>6. When to Use Class vs ID</h3>
+    <div class="note-box">
+      <b>Use <code>class</code> when:</b><br>
+      1. Styling multiple similar elements - cards, buttons, links<br>
+      2. Grouping elements for JavaScript - all <code>.tab</code> elements<br>
+      3. Reusable styles - <code>.text-center</code>, <code>.btn-primary</code><br><br>
+
+      <b>Use <code>id</code> when:</b><br>
+      1. Unique element - <code>#header</code>, <code>#main-nav</code>, <code>#footer</code><br>
+      2. JavaScript needs one specific element - <code>#submit-btn</code><br>
+      3. Anchor links - <code>&lt;a href="#section1"&gt;</code><br>
+      4. Form labels - <code>&lt;label for="email"&gt;</code> matches <code>id="email"</code>
+    </div>
+
+    <h3>7. Real-World Example</h3>
+    <div class="code-box">
+<pre>&lt;!-- HTML Structure --&gt;
+&lt;header id="main-header"&gt;
+  &lt;nav class="navbar"&gt;
+    &lt;a href="#" class="nav-link active"&gt;Home&lt;/a&gt;
+    &lt;a href="#" class="nav-link"&gt;About&lt;/a&gt;
+    &lt;a href="#" class="nav-link"&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main id="content"&gt;
+  &lt;article class="blog-post"&gt;
+    &lt;h2 class="post-title"&gt;Article Title&lt;/h2&gt;
+    &lt;p class="post-meta"&gt;By &lt;span class="author"&gt;John&lt;/span&gt;&lt;/p&gt;
+    &lt;p class="post-content"&gt;Content here...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer id="main-footer"&gt;
+  &lt;p class="copyright"&gt;&amp;copy; 2026&lt;/p&gt;
+&lt;/footer&gt;</pre>
+    </div>
+
+    <h3>8. Common Mistakes ❌</h3>
+    <div class="code-box">
+<pre>&lt;!-- Wrong: Duplicate IDs --&gt;
+&lt;div id="header"&gt;Header 1&lt;/div&gt;
+&lt;div id="header"&gt;Header 2&lt;/div&gt; &lt;!-- IDs must be unique --&gt;
+
+&lt;!-- Correct: Use class instead --&gt;
+&lt;div class="header"&gt;Header 1&lt;/div&gt;
+&lt;div class="header"&gt;Header 2&lt;/div&gt;
+
+&lt;!-- Wrong: Space in class name --&gt;
+&lt;div class="main header"&gt;...&lt;/div&gt; &lt;!-- This is 2 classes --&gt;
+
+&lt;!-- Correct: Use hyphen --&gt;
+&lt;div class="main-header"&gt;...&lt;/div&gt;
+
+&lt;!-- Wrong: Starting with number --&gt;
+&lt;div class="1st-item"&gt;...&lt;/div&gt;
+
+&lt;!-- Correct: Start with letter --&gt;
+&lt;div class="first-item"&gt;...&lt;/div&gt;</pre>
+    </div>
+
+    <h3>9. CSS Specificity</h3>
+    <p>IDs have higher specificity than classes. <code>#id</code> beats <code>.class</code></p>
+    <div class="code-box">
+<pre>/* This wins */
+#title { color: red; }
+
+/* This loses */
+.title { color: blue; }
+
+&lt;h1 id="title" class="title"&gt;Text&lt;/h1&gt; &lt;!-- Will be red --&gt;</pre>
+    </div>
+
+    <div class="note-box">
+      <b>✅ Quick Summary:</b><br>
+      <b>Class =.name</b> - Reusable, for groups, multiple per element<br>
+      <b>ID = #name</b> - Unique, for one element only, higher priority<br>
+      <b>Rule of thumb:</b> Use classes for styling, IDs for JavaScript hooks and unique sections
+    </div>
+
+    <div class="center">
+      <a href="index.html" class="back-btn">← Back to Chapters</a>
+    </div>
+
+  </div>
+</body>
+  </html>
