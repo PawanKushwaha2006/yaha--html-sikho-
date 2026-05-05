@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to HTML: How Web Works & HTML's Role - Complete Deep Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.8}
+.nav{position:sticky;top:0;background:#1e293b;border-bottom:2px solid #0ea5e9;padding:12px 0;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;gap:15px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav a{color:#94a3b8;text-decoration:none;font-size:13px;white-space:nowrap;padding:6px 12px;border-radius:6px;transition:0.3s}
+.nav a:hover,.nav a.active{background:#0ea5e9;color:#000}
+.container{max-width:900px;margin:0 auto;padding:30px 20px}
+.page{display:none;animation:fadeIn 0.4s}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+h1{font-size:32px;color:#38bdf8;margin-bottom:10px;line-height:1.3}
+h2{font-size:26px;color:#0ea5e9;margin:35px 0 15px;border-bottom:2px solid #334155;padding-bottom:8px}
+h3{font-size:20px;color:#7dd3fc;margin:25px 0 12px}
+h4{font-size:17px;color:#bae6fd;margin:20px 0 10px}
+p{margin-bottom:15px;color:#cbd5e1;font-size:15px}
+ul,ol{margin:15px 0 15px 25px;color:#cbd5e1}
+li{margin-bottom:10px;font-size:15px}
+code{background:#1e293b;padding:2px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#f472b6;font-size:14px;border:1px solid #334155}
+pre{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:15px;overflow-x:auto;margin:20px 0}
+pre code{background:none;border:none;padding:0;color:#94a3b8;line-height:1.6}
+.note{background:#1e3a5f;border-left:4px solid #0ea5e9;padding:15px;margin:20px 0;border-radius:6px;color:#bae6fd}
+.warning{background:#5f1e1e;border-left:4px solid #f87171;padding:15px;margin:20px 0;border-radius:6px;color:#fecaca}
+.example{background:#0f172a;border:1px solid #334155;border-radius:8px;padding:18px;margin:20px 0}
+.example-title{color:#34d399;font-weight:bold;margin-bottom:10px;font-size:14px}
+.diagram{background:#1e293b;border:2px solid #0ea5e9;border-radius:10px;padding:20px;margin:25px 0;text-align:center}
+.diagram pre{margin:0;background:none;border:none;text-align:left;color:#7dd3fc}
+table{width:100%;border-collapse:collapse;margin:20px 0;background:#1e293b;border-radius:8px;overflow:hidden;font-size:14px}
+th{background:#334155;color:#f1f5f9;padding:12px;text-align:left;font-weight:600}
+td{padding:12px;border-bottom:1px solid #334155;color:#cbd5e1}
+tr:last-child td{border-bottom:none}
+.page-nav{display:flex;justify-content:space-between;margin:40px 0;padding-top:25px;border-top:1px solid #334155}
+.page-nav button{background:#0ea5e9;color:#000;border:none;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:0.3s}
+.page-nav button:hover{background:#38bdf8;transform:translateY(-2px)}
+.page-nav button:disabled{background:#334155;color:#64748b;cursor:not-allowed;transform:none}
+.page-counter{text-align:center;color:#64748b;font-size:13px;margin:15px 0}
+.toc{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:20px;margin:25px 0}
+.toc h3{color:#38bdf8;margin-top:0}
+.toc ul{list-style:none;margin:0}
+.toc li{margin:8px 0}
+.toc a{color:#7dd3fc;text-decoration:none}
+.toc a:hover{color:#0ea5e9;text-decoration:underline}
+@media(max-width:600px){h1{font-size:26px}h2{font-size:22px}.container{padding:20px 15px}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" onclick="showPage(1)" class="active">1. Intro</a>
+    <a href="#" onclick="showPage(2)">2. Web Basics</a>
+    <a href="#" onclick="showPage(3)">3. Client-Server</a>
+    <a href="#" onclick="showPage(4)">4. HTTP/HTTPS</a>
+    <a href="#" onclick="showPage(5)">5. What is HTML</a>
+    <a href="#" onclick="showPage(6)">6. HTML History</a>
+    <a href="#" onclick="showPage(7)">7. HTML Structure</a>
+    <a href="#" onclick="showPage(8)">8. Tags Deep Dive</a>
+    <a href="#" onclick="showPage(9)">9. Attributes</a>
+    <a href="#" onclick="showPage(10)">10. HTML + CSS + JS</a>
+    <a href="#" onclick="showPage(11)">11. DOM</a>
+    <a href="#" onclick="showPage(12)">12. Rendering</a>
+    <a href="#" onclick="showPage(13)">13. SEO Role</a>
+    <a href="#" onclick="showPage(14)">14. Best Practices</a>
+    <a href="#" onclick="showPage(15)">15. Future</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+<h1>Introduction to HTML: How the Web Works & HTML's Role</h1>
+<p class="page-counter">Page 1 of 15</p>
+
+<div class="toc">
+<h3>📚 Table of Contents</h3>
+<ul>
+<li>1. Introduction & Overview</li>
+<li>2. Understanding Web Basics</li>
+<li>3. Client-Server Architecture</li>
+<li>4. HTTP/HTTPS Protocol Deep Dive</li>
+<li>5. What is HTML Exactly?</li>
+<li>6. History & Evolution of HTML</li>
+<li>7. HTML Document Structure</li>
+<li>8. HTML Tags Explained Deeply</li>
+<li>9. Attributes & Their Power</li>
+<li>10. HTML with CSS & JavaScript</li>
+<li>11. Document Object Model (DOM)</li>
+<li>12. How Browsers Render HTML</li>
+<li>13. HTML's Role in SEO</li>
+<li>14. Modern Best Practices</li>
+<li>15. Future of HTML & Web</li>
+</ul>
+</div>
+
+<h2>What You Will Learn</h2>
+<p>This comprehensive guide takes you from zero to deep understanding of how the World Wide Web functions and the critical role HTML plays in it. We will explore not just the "what" but the "why" and "how" behind every concept.</p>
+
+<h3>Why HTML Matters in 2026</h3>
+<p>Despite the rise of complex frameworks like React, Vue, and Angular, HTML remains the foundational skeleton of every single website on the internet. Without HTML, there is no web page. Browsers cannot render content, search engines cannot index pages, and screen readers cannot make content accessible. HTML is the universal language that all browsers speak natively.</p>
+
+<div class="note">
+<b>Key Insight:</b> HTML is not a programming language. It is a markup language. It describes structure and meaning, not logic or behavior. This distinction is crucial for understanding its role.
+</div>
+
+<h3>The Three Pillars of Web Development</h3>
+<table>
+<tr><th>Technology</th><th>Role</th><th>Analogy</th></tr>
+<tr><td><code>HTML</code></td><td>Structure & Content</td><td>Skeleton of a building</td></tr>
+<tr><td><code>CSS</code></td><td>Presentation & Styling</td><td>Paint, furniture, decoration</td></tr>
+<tr><td><code>JavaScript</code></td><td>Behavior & Interactivity</td><td>Electricity, plumbing, smart systems</td></tr>
+</table>
+
+<p>HTML provides the semantic structure. It tells the browser "this is a heading", "this is a paragraph", "this is a navigation menu", "this is an image with alt text". Without this structure, CSS has nothing to style and JavaScript has nothing to manipulate.</p>
+
+<div class="page-nav">
+<button disabled>← Previous</button>
+<button onclick="showPage(2)">Next: Web Basics →</button>
+</div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+<h1>Understanding Web Basics</h1>
+<p class="page-counter">Page 2 of 15</p>
+
+<h2>What is the World Wide Web?</h2>
+<p>The World Wide Web (WWW or Web) is an information system where documents and resources are identified by URLs, interlinked by hypertext links, and accessible via the Internet. It was invented by Tim Berners-Lee in 1989 at CERN.</p>
+
+<h3>Internet vs World Wide Web</h3>
+<p>These terms are often confused but are different:</p>
+<ul>
+<li><b>Internet:</b> The physical network of computers, cables, routers, and servers connected globally. It's the infrastructure. Think of it as roads and highways.</li>
+<li><b>World Wide Web:</b> The system of web pages, websites, and applications that runs on top of the Internet. It's the content. Think of it as the cars, buildings, and businesses on those roads.</li>
+</ul>
+
+<div class="example">
+<div class="example-title">Analogy:</div>
+<p>Internet = Postal Service infrastructure (trucks, planes, sorting facilities)<br>
+Web = Letters and packages you send using that infrastructure</p>
+</div>
+
+<h3>Core Components of the Web</h3>
+<ol>
+<li><b>Web Resources:</b> HTML pages, images, videos, PDFs, etc. Each has a unique URL.</li>
+<li><b>URLs (Uniform Resource Locators):</b> The address of a resource. Example: <code>https://www.example.com/page.html</code></li>
+<li><b>HTTP/HTTPS:</b> The protocol/rules for transferring resources between client and server.</li>
+<li><b>Web Browsers:</b> Software like Chrome, Firefox, Safari that request and display web pages.</li>
+<li><b>Web Servers:</b> Computers that store websites and send them when requested.</li>
+<li><b>Hyperlinks:</b> Clickable connections between resources that make the web a "web".</li>
+</ol>
+
+<div class="diagram">
+<pre>
+USER TYPES URL
+     ↓
+BROWSER SENDS REQUEST
+     ↓
+DNS FINDS SERVER IP
+     ↓
+SERVER SENDS HTML FILE
+     ↓
+BROWSER RENDERS PAGE
+     ↓
+USER SEES WEBSITE
+</pre>
+</div>
+
+<div class="page-nav">
+<button onclick="showPage(1)">← Previous: Intro</button>
+<button onclick="showPage(3)">Next: Client-Server →</button>
+</div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+<h1>Client-Server Architecture</h1>
+<p class="page-counter">Page 3 of 15</p>
+
+<h2>The Request-Response Model</h2>
+<p>The web operates on a client-server model. This is fundamental to understanding HTML's role.</p>
+
+<h3>What is a Client?</h3>
+<p>The <b>client</b> is typically your web browser (Chrome, Firefox, Safari) running on your device. It requests resources from servers and renders them for you to view and interact with. The client is responsible for:</p>
+<ul>
+<li>Sending HTTP requests when you type a URL or click a link</li>
+<li>Receiving HTML, CSS, JavaScript, images from the server</li>
+<li>Parsing HTML to build the DOM (Document Object Model)</li>
+<li>Applying CSS to style the page</li>
+<li>Executing JavaScript to add interactivity</li>
+<li>Rendering the final visual page on your screen</li>
+</ul>
+
+<h3>What is a Server?</h3>
+<p>The <b>server</b> is a powerful computer that stores websites and their files. It's always on, connected to the internet, waiting for requests. When a request arrives, it:</p>
+<ul>
+<li>Listens for incoming requests on port 80 (HTTP) or 443 (HTTPS)</li>
+<li>Processes the request - finds the requested file or runs server-side code</li>
+<li>Sends back the response - usually an HTML file first, then CSS, JS, images</li>
+<li>Can run databases, authentication, and business logic</li>
+</ul>
+
+<div class="diagram">
+<pre>
+CLIENT (Your Browser)          SERVER (example.com)
+       |                              |
+       |  1. GET /index.html          |
+       |---------------------------->|
+       |                              |
+       |  2. 200 OK + HTML content   |
+       |<----------------------------|
+       |                              |
+       |  3. GET /style.css           |
+       |---------------------------->|
+       |                              |
+       |  4. 200 OK + CSS content     |
+       |<----------------------------|
+       |                              |
+    Renders Page                     |
+</pre>
+</div>
+
+<h3>Static vs Dynamic Websites</h3>
+<table>
+<tr><th>Static</th><th>Dynamic</th></tr>
+<tr>
+<td>HTML files pre-written and stored on server. Server just sends the file as-is.</td>
+<td>HTML generated on-the-fly by server code (PHP, Node.js, Python) based on database, user, etc.</td>
+</tr>
+<tr>
+<td>Faster, simpler, cheaper hosting</td>
+<td>Personalized content, user accounts, e-commerce</td>
+</tr>
+<tr>
+<td>Example: Portfolio site, blog</td>
+<td>Example: Facebook, Amazon, Gmail</td>
+</tr>
+</table>
+
+<div class="note">
+<b>HTML's Role:</b> Whether static or dynamic, the server ultimately sends HTML to the client. In dynamic sites, server code generates HTML. In static sites, HTML files are pre-made. But browsers only understand HTML for structure.
+</div>
+
+<div class="page-nav">
+<button onclick="showPage(2)">← Previous: Web Basics</button>
+<button onclick="showPage(4)">Next: HTTP/HTTPS →</button>
+</div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+<h1>HTTP & HTTPS Protocol Deep Dive</h1>
+<p class="page-counter">Page 4 of 15</p>
+
+<h2>HTTP: The Language of the Web</h2>
+<p><b>HTTP</b> stands for HyperText Transfer Protocol. It's the set of rules that defines how messages are formatted and transmitted between clients and servers. It's how your browser asks for a web page and how the server responds.</p>
+
+<h3>Anatomy of an HTTP Request</h3>
+<pre><code>GET /about.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0)
+Accept: text/html
+Accept-Language: en-US
+</code></pre>
+<ul>
+<li><b>GET:</b> HTTP method - asking to retrieve data</li>
+<li><b>/about.html:</b> The resource path on the server</li>
+<li><b>HTTP/1.1:</b> Protocol version</li>
+<li><b>Host:</b> Which website (multiple sites can be on one server)</li>
+<li><b>User-Agent:</b> Browser and OS information</li>
+</ul>
+
+<h3>Anatomy of an HTTP Response</h3>
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 1234
+Date: Sun, 26 Apr 2026 10:00:00 GMT
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;...&lt;/head&gt;
+&lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li><b>200 OK:</b> Status code - success! Other codes: 404 Not Found, 500 Server Error</li>
+<li><b>Content-Type:</b> Tells browser this is HTML, so parse it as HTML</li>
+<li><b>Response Body:</b> The actual HTML code that browser will render</li>
+</ul>
+
+<h3>HTTPS: Secure HTTP</h3>
+<p>HTTPS = HTTP + SSL/TLS Encryption. It encrypts all data between client and server so hackers cannot read passwords, credit cards, or personal data. Modern web requires HTTPS. Browsers mark HTTP sites as "Not Secure".</p>
+
+<div class="warning">
+<b>Security:</b> Never enter passwords or payment info on HTTP sites. Always check for the padlock icon and https:// in the address bar.
+</div>
+
+<h3>Why This Matters for HTML</h3>
+<p>The very first thing a server sends in response to a page request is HTML. The <code>Content-Type: text/html</code> header tells the browser "interpret the following data as HTML". The browser then starts parsing HTML immediately, even before CSS and JavaScript arrive. This is why HTML is the foundation - it's the first thing loaded and rendered.</p>
+
+<div class="page-nav">
+<button onclick="showPage(3)">← Previous: Client-Server</button>
+<button onclick="showPage(5)">Next: What is HTML →</button>
+</div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+<h1>What is HTML Exactly?</h1>
+<p class="page-counter">Page 5 of 15</p>
+
+<h2>HTML: HyperText Markup Language</h2>
+<p>Let's break down the name:</p>
+
+<h3>1. HyperText</h3>
+<p>"HyperText" means text that contains links to other text. This was revolutionary in 1989. Instead of reading documents linearly like a book, you could jump between related documents by clicking links. This created the "web" of interconnected documents.</p>
+
+<div class="example">
+<div class="example-title">Example:</div>
+<p>Reading about "HTML" on Wikipedia, you see a link to "Tim Berners-Lee". You click it and instantly jump to his biography. That's hypertext in action.</p>
+</div>
+
+<h3>2. Markup</h3>
+<p>"Markup" means you add special codes (tags) to plain text to give it meaning and structure. You "mark up" the text to tell the browser what each part is.</p>
+
+<pre><code>Plain text: Hello World
+Marked up: &lt;h1&gt;Hello World&lt;/h1&gt;</code></pre>
+
+<p>The <code>&lt;h1&gt;</code> tags mark up "Hello World" as a level-1 heading. The browser knows to display it large and bold, search engines know it's important, and screen readers announce it as a main heading.</p>
+
+<h3>3. Language</h3>
+<p>HTML has vocabulary (tags like &lt;p&gt;, &lt;img&gt;, &lt;a&gt;) and grammar (rules like tags must be closed, nested properly). It's a language browsers understand natively.</p>
+
+<h2>What HTML Is NOT</h2>
+<table>
+<tr><th>HTML is NOT</th><th>Explanation</th></tr>
+<tr><td>A programming language</td><td>No variables, loops, if statements, or logic. It only describes structure.</td></tr>
+<tr><td>A styling language</td><td>HTML defines what something IS, not how it LOOKS. That's CSS's job.</td></tr>
+<tr><td>A database</td><td>HTML cannot store or process data. That's for servers and databases.</td></tr>
+</table>
+
+<div class="note">
+<b>Critical Concept:</b> HTML provides semantic meaning. <code>&lt;nav&gt;</code> means "this is navigation", not just "make a div with links". This semantic meaning is crucial for accessibility, SEO, and maintainability.
+</div>
+
+<h3>HTML Elements vs Tags vs Content</h3>
+<pre><code>&lt;p class="intro"&gt;This is content&lt;/p&gt;
+│ │    │            │         │
+│ │    │            │         └─ End tag
+│ │    │            └─ Content
+│ │    └─ Attribute
+│ └─ Start tag
+└─ Entire thing = HTML Element
+</code></pre>
+
+<div class="page-nav">
+<button onclick="showPage(4)">← Previous: HTTP/HTTPS</button>
+<button onclick="showPage(6)">Next: HTML History →</button>
+</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+<h1>History & Evolution of HTML</h1>
+<p class="page-counter">Page 6 of 15</p>
+
+<h2>Timeline of HTML</h2>
+
+<h3>1989-1991: Invention at CERN</h3>
+<p>Tim Berners-Lee, a physicist at CERN, invents HTML to share research documents between scientists. First version had only 18 tags including &lt;p&gt;, &lt;h1&gt;-&lt;h6&gt;, &lt;a&gt;, &lt;img&gt;. The first website went live August 6, 1991.</p>
+
+<h3>1995: HTML 2.0</h3>
+<p>First official standard. Added forms (&lt;form&gt;, &lt;input&gt;), tables, and image maps. The web starts becoming interactive.</p>
+
+<h3>1997: HTML 3.2 & 4.0</h3>
+<p>Browser wars between Netscape and Internet Explorer. HTML 4.0 introduces CSS support, separating structure from presentation. Added &lt;div&gt; and &lt;span&gt; for layout.</p>
+
+<h3>1999: HTML 4.01</h3>
+<p>Refinement of 4.0. Becomes the standard for over a decade. Focus on accessibility with &lt;label&gt;, &lt;fieldset&gt;.</p>
+
+<h3>2000: XHTML 1.0</h3>
+<p>Attempt to make HTML more strict like XML. Required closing all tags, lowercase, quoted attributes. Failed to gain adoption due to strictness.</p>
+
+<h3>2008-2014: HTML5</h3>
+<p>Revolutionary update. Added semantic tags (&lt;header&gt;, &lt;nav&gt;, &lt;article&gt;, &lt;section&gt;, &lt;footer&gt;), multimedia (&lt;video&gt;, &lt;audio&gt;, &lt;canvas&gt;), form improvements, and APIs for offline storage, geolocation. Designed for modern web apps.</p>
+
+<h3>2014-Present: HTML Living Standard</h3>
+<p>WHATWG maintains HTML as a "living standard" - continuously updated rather than versioned. New features added regularly: &lt;dialog&gt;, &lt;details&gt;, native lazy loading, etc.</p>
+
+<div class="example">
+<div class="example-title">Evolution Example - Video:</div>
+<pre><code>&lt;!-- HTML 4.01 (2000) - Needed Flash plugin --&gt;
+&lt;object data="movie.swf"&gt;&lt;/object&gt;
+
+&lt;!-- HTML5 (2014) - Native video --&gt;
+&lt;video controls&gt;
+  &lt;source src="movie.mp4"&gt;
+&lt;/video&gt;</code></pre>
+</div>
+
+<h3>Why HTML5 Was Revolutionary</h3>
+<ul>
+<li><b>Semantic Tags:</b> &lt;article&gt; instead of &lt;div class="article"&gt; - better SEO and accessibility</li>
+<li><b>Native Multimedia:</b> No more Flash needed for video/audio</li>
+<li><b>Offline Support:</b> Web apps work without internet via Service Workers</li>
+<li><b>Mobile-First:</b> Designed for smartphones from the start</li>
+<li><b>Form Validation:</b> Built-in email, URL, number validation without JavaScript</li>
+<li><b>Canvas & SVG:</b> Draw graphics and animations directly in browser</li>
+</ul>
+
+<div class="page-nav">
+<button onclick="showPage(5)">← Previous: What is HTML</button>
+<button onclick="showPage(7)">Next: HTML Structure →</button>
+</div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page" id="pag<!-- PAGE 9 CONTINUED -->
+<tr><td><code>hidden</code></td><td>Hide element</td><td><code>&lt;div hidden&gt;Secret&lt;/div&gt;</code></td></tr>
+<tr><td><code>lang</code></td><td>Language</td><td><code>&lt;html lang="en"&gt;</code></td></tr>
+<tr><td><code>tabindex</code></td><td>Tab order</td><td><code>&lt;input tabindex="1"&gt;</code></td></tr>
+</table>
+
+<h3>Element-Specific Attributes</h3>
+<h4>Link: &lt;a&gt;</h4>
+<ul>
+<li><code>href</code> - Destination URL. Required. <code>&lt;a href="page.html"&gt;</code></li>
+<li><code>target="_blank"</code> - Open in new tab</li>
+<li><code>rel="noopener noreferrer"</code> - Security for new tabs</li>
+<li><code>download</code> - Download instead of navigate</li>
+</ul>
+
+<h4>Image: &lt;img&gt;</h4>
+<ul>
+<li><code>src</code> - Image path. Required. <code>&lt;img src="pic.jpg"&gt;</code></li>
+<li><code>alt</code> - Alternative text for accessibility. Required for SEO.</li>
+<li><code>width/height</code> - Dimensions in pixels. Prevents layout shift.</li>
+<li><code>loading="lazy"</code> - Lazy load images for performance</li>
+</ul>
+
+<h4>Form: &lt;input&gt;</h4>
+<ul>
+<li><code>type</code> - text, email, password, checkbox, radio, submit, etc.</li>
+<li><code>name</code> - Form field name for server</li>
+<li><code>value</code> - Default value</li>
+<li><code>placeholder</code> - Hint text</li>
+<li><code>required</code> - Must be filled</li>
+<li><code>disabled</code> - Cannot interact</li>
+<li><code>readonly</code> - Cannot edit but can select</li>
+</ul>
+
+<div class="example">
+<div class="example-title">Complete Form Example:</div>
+<pre><code>&lt;form action="/login" method="POST"&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" 
+         placeholder="you@example.com" required&gt;
+  
+  &lt;label for="pass"&gt;Password:&lt;/label&gt;
+  &lt;input type="password" id="pass" name="password" 
+         minlength="8" required&gt;
+  
+  &lt;button type="submit"&gt;Login&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</div>
+
+<div class="warning">
+<b>Accessibility:</b> Always use <code>alt</code> on images, <code>label</code> for inputs, <code>lang</code> on html. These help screen readers for blind users.
+</div>
+
+<div class="page-nav">
+<button onclick="showPage(8)">← Previous: Tags Deep Dive</button>
+<button onclick="showPage(10)">Next: HTML + CSS + JS →</button>
+</div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page" id="page10">
+<h1>HTML + CSS + JavaScript</h1>
+<p class="page-counter">Page 10 of 15</p>
+
+<h2>The Web Trinity</h2>
+<p>HTML alone creates plain, unstyled pages. CSS and JavaScript bring them to life. Understanding how they work together is crucial.</p>
+
+<h3>1. HTML - Structure & Content</h3>
+<p>Defines WHAT is on the page. Semantic meaning. The skeleton.</p>
+<pre><code>&lt;h1&gt;Welcome&lt;/h1&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;button&gt;Click Me&lt;/button&gt;</code></pre>
+
+<h3>2. CSS - Presentation & Style</h3>
+<p>Defines HOW it looks. Colors, fonts, layout, animations. The skin and clothes.</p>
+<pre><code>h1 {
+  color: blue;
+  font-size: 32px;
+  text-align: center;
+}
+button {
+  background: #0ea5e9;
+  padding: 10px 20px;
+  border-radius: 8px;
+}</code></pre>
+
+<h3>3. JavaScript - Behavior & Interactivity</h3>
+<p>Defines WHAT IT DOES. Clicks, forms, animations, API calls. The brain and muscles.</p>
+<pre><code>document.querySelector('button').onclick = () => {
+  alert('Button clicked!');
+};</code></pre>
+
+<h3>How to Connect Them</h3>
+<h4>External CSS (Best Practice)</h4>
+<pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+
+<h4>External JavaScript (Best Practice)</h4>
+<pre><code>&lt;body&gt;
+  ...content...
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+<div class="note">
+<b>Why at end of body?</b> Scripts block page rendering. Putting them at the end lets HTML/CSS load first, showing content faster. Users see page before JS runs.
+</div>
+
+<h3>Inline vs Internal vs External</h3>
+<table>
+<tr><th>Method</th><th>Pros</th><th>Cons</th><th>Use When</th></tr>
+<tr>
+<td>Inline<br><code>&lt;p style="color:red"&gt;</code></td>
+<td>Quick, specific</td>
+<td>Hard to maintain, no reuse</td>
+<td>Testing, email HTML</td>
+</tr>
+<tr>
+<td>Internal<br><code>&lt;style&gt;...&lt;/style&gt;</code></td>
+<td>Single file, no extra request</td>
+<td>No caching, bloated HTML</td>
+<td>Small pages, critical CSS</td>
+</tr>
+<tr>
+<td>External<br><code>&lt;link href="..."&gt;</code></td>
+<td>Cached, reusable, clean</td>
+<td>Extra HTTP request</td>
+<td>Production websites</td>
+</tr>
+</table>
+
+<div class="page-nav">
+<button onclick="showPage(9)">← Previous: Attributes</button>
+<button onclick="showPage(11)">Next: DOM →</button>
+</div>
+</div>
+
+<!-- PAGE 11 -->
+<div class="page" id="page11">
+<h1>Document Object Model (DOM)</h1>
+<p class="page-counter">Page 11 of 15</p>
+
+<h2>What is the DOM?</h2>
+<p>When browser loads HTML, it creates a tree-like structure in memory called the <b>Document Object Model (DOM)</b>. It's a live representation of the page that JavaScript can read and modify.</p>
+
+<div class="diagram">
+<pre>
+HTML:                    DOM Tree:
+
+&lt;html&gt;                   Document
+  &lt;body&gt;                    └── html
+    &lt;h1&gt;Title&lt;/h1&gt;             ├── head
+    &lt;p&gt;Text&lt;/p&gt;                │   └── title
+  &lt;/body&gt;                      └── body
+&lt;/html&gt;                            ├── h1
+                                   │   └── "Title"
+                                   └── p
+                                       └── "Text"
+</pre>
+</div>
+
+<h3>Why DOM Matters</h3>
+<ul>
+<li><b>JavaScript Access:</b> JS can find elements: <code>document.querySelector('h1')</code></li>
+<li><b>Dynamic Changes:</b> JS can change text, styles, add/remove elements without reloading page</li>
+<li><b>Event Handling:</b> JS listens for clicks, keypresses on DOM elements</li>
+<li><b>CSS Styling:</b> CSS selectors target DOM elements to style them</li>
+</ul>
+
+<h3>DOM Manipulation Example</h3>
+<pre><code>&lt;!-- HTML --&gt;
+&lt;h1 id="title"&gt;Hello&lt;/h1&gt;
+&lt;button onclick="changeText()"&gt;Change&lt;/button&gt;
+
+&lt;script&gt;
+function changeText() {
+  // 1. Find element in DOM
+  const heading = document.getElementById('title');
+  
+  // 2. Change its content
+  heading.textContent = 'Hello World!';
+  
+  // 3. Change its style
+  heading.style.color = 'blue';
+}
+&lt;/script&gt;</code></pre>
+
+<h3>Virtual DOM (React/Vue)</h3>
+<p>Modern frameworks use a Virtual DOM - a lightweight copy of the real DOM in memory. They calculate changes virtually, then update only what changed in real DOM. This is faster for complex apps.</p>
+
+<div class="note">
+<b>Key Point:</b> HTML creates the initial DOM. JavaScript manipulates the DOM. The DOM is what you see on screen. When you inspect element in browser DevTools, you're looking at the DOM, not raw HTML.
+</div>
+
+<div class="page-nav">
+<button onclick="showPage(10)">← Previous: HTML+CSS+JS</button>
+<button onclick="showPage(12)">Next: Rendering →</button>
+</div>
+</div>
+
+<!-- PAGE 12 -->
+<div class="page" id="page12">
+<h1>How Browsers Render HTML</h1>
+<p class="page-counter">Page 12 of 15</p>
+
+<h2>The Critical Rendering Path</h2>
+<p>From HTML text to pixels on screen, browsers follow 6 steps. Understanding this helps you optimize performance.</p>
+
+<div class="diagram">
+<pre>
+1. HTML → DOM Tree
+2. CSS → CSSOM Tree
+3. DOM + CSSOM → Render Tree
+4. Layout (Reflow) - Calculate positions
+5. Paint - Draw pixels
+6. Composite - Layer together
+</pre>
+</div>
+
+<h3>Step 1: Parse HTML → DOM</h3>
+<p>Browser reads HTML top to bottom, creates DOM tree. If it hits <code>&lt;script&gt;</code>, it pauses parsing to execute JS (unless <code>defer</code> or <code>async</code> used).</p>
+
+<h3>Step 2: Parse CSS → CSSOM</h3>
+<p>Browser reads all CSS files, creates CSSOM tree - styles for each element. <code>&lt;link rel="stylesheet"&gt;</code> blocks rendering until CSS loads.</p>
+
+<h3>Step 3: Render Tree</h3>
+<p>Combines DOM + CSSOM. Only visible elements included. <code>display:none</code> elements excluded. <code>visibility:hidden</code> included but invisible.</p>
+
+<h3>Step 4: Layout (Reflow)</h3>
+<p>Calculates exact position and size of each element. Where does this &lt;div&gt; go? How wide is this &lt;p&gt;? Expensive operation.</p>
+
+<h3>Step 5: Paint</h3>
+<p>Fills in pixels - colors, borders, shadows, text. Draws to layers.</p>
+
+<h3>Step 6: Composite</h3>
+<p>Layers combined in correct order. GPU handles this. Final image shown to user.</p>
+
+<h3>Performance Tips</h3>
+<table>
+<tr><th>Problem</th><th>Solution</th></tr>
+<tr><td>Render-blocking CSS</td><td>Inline critical CSS, load rest async</td></tr>
+<tr><td>Render-blocking JS</td><td>Use <code>&lt;script defer&gt;</code> or place at end of body</td></tr>
+<tr><td>Layout thrashing</td><td>Batch DOM reads/writes, avoid forced reflows</td></tr>
+<tr><td>Large images</td><td>Use <code>width/height</code> attributes, <code>loading="lazy"</code></td></tr>
+<tr><td>Too many DOM nodes</td><td>Virtualize long lists, paginate</td></tr>
+</table>
+
+<div class="warning">
+<b>Render-Blocking:</b> CSS and synchronous JS block rendering. Page appears blank until they load. Always optimize. Use Chrome DevTools "Coverage" tab to find unused CSS/JS.
+</div>
+
+<div class="page-nav">
+<button onclick="showPage(11)">← Previous: DOM</button>
+<button onclick="showPage(13)">Next: SEO Role →</button>
+</div>
+</div>
+
+<!-- PAGE 13 -->
+<div class="page" id="page13">
+<h1>HTML's Role in SEO</h1>
+<p class="page-counter">Page 13 of 15</p>
+
+<h2>Search Engine Optimization</h2>
+<p>SEO is making your site rank higher in Google. HTML structure is 70% of on-page SEO. Search engines read HTML, not visual design.</p>
+
+<h3>Critical SEO HTML Tags</h3>
+<h4>1. Title Tag - #1 Ranking Factor</h4>
+<pre><code>&lt;head&gt;
+  &lt;title&gt;Best Pizza in New York | Joe's Pizza&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+<ul>
+<li>50-60 characters max</li>
+<li>Include main keyword near start</li>
+<li>Unique per page</li>
+<li>Shows in Google results and browser tab</li>
+</ul>
+
+<h4>2. Meta Description</h4>
+<pre><code>&lt;meta name="description" content="Joe's Pizza serves authentic NY pizza since 1985. Order online for delivery. Open 11am-11pm."&gt;</code></pre>
+<ul>
+<li>150-160 characters</li>
+<li>Shows in search results snippet</li>
+<li>Write compelling copy to increase clicks</li>
+</ul>
+
+<h4>3. Heading Hierarchy</h4>
+<pre><code>&lt;h1&gt;Main Topic (only one per page)&lt;/h1&gt;
+&lt;h2&gt;Subtopic&lt;/h2&gt;
+&lt;h3&gt;Sub-subtopic&lt;/h3&gt;</code></pre>
+<p>Google uses headings to understand page structure. Never skip levels (h1 → h3). Don't use headings for styling - use CSS.</p>
+
+<h4>4. Alt Text on Images</h4>
+<pre><code>&lt;img src="pizza.jpg" alt="Pepperoni pizza with melted cheese"&gt;</code></pre>
+<p>Helps Google understand images. Critical for accessibility. Describe the image, include keyword naturally.</p>
+
+<h4>5. Semantic HTML5 Tags</h4>
+<p>Google prefers semantic tags over divs:</p>
+<pre><code>&lt;!-- Bad for SEO --&gt;
+&lt;div class="header"&gt;&lt;/div&gt;
+
+&lt;!-- Good for SEO --&gt;
+&lt;header&gt;&lt;/header&gt;</code></pre>
+<p>Use <code>&lt;article&gt;</code> for blog posts, <code>&lt;nav&gt;</code> for menus, <code>&lt;main&gt;</code> for main content. Google understands context better.</p>
+
+<h3>Structured Data (Schema.org)</h3>
+<p>Add JSON-LD to help Google show rich snippets:</p>
+<pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Joe's Pizza",
+  "address": "123 Main St, NY",
+  "telephone": "+1-555-1234"
+}
+&lt;/script&gt;</code></pre>
+
+<div class="note">
+<b>Core Web Vitals:</b> Google ranks sites based on loading speed, interactivity, visual stability. Clean HTML, optimized images, and minimal JS improve rankings. HTML affects all three.
+</div>
+
+<div class="page-nav">
+<button onclick="showPage(12)">← Previous: Rendering</button>
+<button onclick="showPage(14)">Next: Best Practices →</button>
+</div>
+</div>
+
+<!-- PAGE 14 -->
+<div class="page" id="page14">
+<h1>Modern Best Practices</h1>
+<p class="page-counter">Page 14 of 15</p>
+
+<h2>Writing Professional HTML in 2026</h2>
+
+<h3>1. Always Use Semantic HTML</h3>
+<table>
+<tr><th>❌ Don't</th><th>✅ Do</th></tr>
+<tr><td><code>&lt;div class="header"&gt;</code></td><td><code>&lt;header&gt;</code></td></tr>
+<tr><td><code>&lt;div onclick="..."&gt;</code></td><td><code>&lt;button&gt;</code></td></tr>
+<tr><td><code>&lt;b&gt;Bold&lt;/b&gt;</code></td><td><code>&lt;strong&gt;Important&lt;/strong&gt;</code></td></tr>
+<tr><td><code>&lt;div id="nav"&gt;</code></td><td><code>&lt;nav&gt;</code></td></tr>
+</table>
+
+<h3>2. Accessibility First (a11y)</h3>
+<ul>
+<li><b>Alt text:</b> Every <code>&lt;img&gt;</code> needs descriptive alt</li>
+<li><b>Labels:</b> Every <code>&lt;input&gt;</code> needs <code>&lt;label for="id"&gt;</code></li>
+<li><b>Lang:</b> <code>&lt;html lang="en"&gt;</code> for screen readers</li>
+<li><b>ARIA:</b> Use <code>aria-label</code> when text isn't visible</li>
+<li><b>Keyboard:</b> All interactive elements must be keyboard accessible</li>
+<li><b>Contrast:</b> Text must have 4.5:1 contrast ratio minimum</li>
+</ul>
+
+<h3>3. Performance Optimization</h3>
+<ul>
+<li><b>Lazy Load:</b> <code>&lt;img loading="lazy"&gt;</code> for below-fold images</li>
+<li><b>Dimensions:</b> Always set <code>width</code> and <code>height</code> on images to prevent layout shift</li>
+<li><b>Preload:</b> <code>&lt;link rel="preload" href="font.woff2" as="font"&gt;</code> for critical resources</li>
+<li><b>Defer JS:</b> <code>&lt;script defer src="app.js"&gt;&lt;/script&gt;</code> to not block rendering</li>
+<li><b>Minimize DOM:</b> Keep DOM under 1500 nodes for fast reflows</li>
+</ul>
+
+<h3>4. Mobile-First Responsive</h3>
+<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+&lt;!-- Use relative units --&gt;
+&lt;div style="width: 100%; max-width: 600px;"&gt;
+
+&lt;!-- Responsive images --&gt;
+&lt;img src="small.jpg" 
+     srcset="small.jpg 400w, medium.jpg 800w, large.jpg 1200w"
+     sizes="(max-width: 600px) 100vw, 600px"&gt;</code></pre>
+
+<h3>5. Validate Your HTML</h3>
+<p>Use <a href="https://validator.w3.org" target="_blank" style="color:#0ea5e9">validator.w3.org</a> to check for errors. Valid HTML renders faster and works consistently across browsers.</p>
+
+<h3>6. Security</h3>
+<ul>
+<li><b>HTTPS:</b> Always use HTTPS, never HTTP</li>
+<li><b>rel="noopener":</b> On <code>target="_blank"</code> links to prevent tabnabbing</li>
+<li><b>Content Security Policy:</b> <code>&lt;meta http-equiv="Content-Security-Policy"&gt;</code></li>
+<li><b>Sanitize:</b> Never insert user input directly into HTML (XSS risk)</li>
+</ul>
+
+<div class="warning">
+<b>Common Mistake:</b> Using <code>&lt;div&gt;</code> for everything. If it clicks, use <code>&lt;button&gt;</code>. If it navigates, use <code>&lt;a&gt;</code>. If it's a heading, use <code>&lt;h1&gt;-&lt;h6&gt;</code>. Semantic HTML is not optional.
+</div>
+
+<div class="page-nav">
+<button onclick="showPage(13)">← Previous: SEO Role</button>
+<button onclick="showPage(15)">Next: Future →</button>
+</div>
+</div>
+
+<!-- PAGE 15 -->
+<div class="page" id="page15">
+<h1>Future of HTML & Web</h1>
+<p class="page-counter">Page 15 of 15</p>
+
+<h2>What's Next for HTML?</h2>
+<p>HTML is a living standard, continuously evolving. Here are trends shaping its future:</p>
+
+<h3>1. Web Components</h3>
+<p>Native custom elements without frameworks. Build reusable widgets with encapsulated HTML, CSS, and JS.</p>
+<pre><code>&lt;!-- Define once --&gt;
+&lt;script&gt;
+class MyButton extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = '&lt;button&gt;Click&lt;/button&gt;';
+  }
+}
+customElements.define('my-button', MyButton);
+&lt;/script&gt;
+
+&lt;!-- Use anywhere --&gt;
+&lt;my-button&gt;&lt;/my-button&gt;</code></pre>
+
+<h3>2. Native Lazy Loading</h3>
+<p><code>&lt;img loading="lazy"&gt;</code> and <code>&lt;iframe loading="lazy"&gt;</code> now native. No JS libraries needed.</p>
+
+<h3>3. Declarative Shadow DOM</h3>
+<p>Server-side rendering with encapsulated styles, no JavaScript required for initial render.</p>
+
+<h3>4. New Form Controls</h3>
+<p><code>&lt;input type="color"&gt;</code>, <code>&lt;datalist&gt;</code>, <code>&lt;output&gt;</code>, <code>&lt;meter&gt;</code>, <code>&lt;progress&gt;</code> reduce need for custom JS widgets.</p>
+
+<h3>5. Accessibility Improvements</h3>
+<p><code>&lt;dialog&gt;</code> for modals, <code>&lt;details&gt;</code> for accordions, <code>inert</code> attribute - all accessible by default.</p>
+
+<h3>6. CSS in HTML</h3>
+<p>Style queries, container queries, and cascade layers reduce JS needs. More logic moves to CSS.</p>
+
+<h3>7. WebAssembly (WASM)</h3>
+<p>Run C++, Rust, Go code in browser at near-native speed. HTML remains the UI layer, WASM handles heavy computation.</p>
+
+<h3>Will HTML Die?</h3>
+<p><b>No.</b> Despite predictions, HTML usage grows. Every framework (React, Vue, Angular) ultimately outputs HTML. Every browser renders HTML. Every search engine indexes HTML. Until browsers stop speaking HTML, it remains essential.</p>
+
+<div class="example">
+<div class="example-title">React Example - Still HTML:</div>
+<pre><code>// React JSX
+function App() {
+  return &lt;h1&gt;Hello&lt;/h1&gt;;
+}
+
+// Compiles to HTML:
+&lt;h1&gt;Hello&lt;/h1&gt;</code></pre>
+</div>
+
+<h3>How to Stay Current</h3>
+<ol>
+<li>Follow <a href="https://web.dev" target="_blank" style="color:#0ea5e9">web.dev</a> and <a href="https://developer.mozilla.org" target="_blank" style="color:#0ea5e9">MDN</a></li>
+<li>Read WHATWG HTML Living Standard updates</li>
+<li>Test new features in Chrome Canary</li>
+<li>Focus on fundamentals - HTML/CSS/JS matter more than frameworks</li>
+<li>Build projects, don't just watch tutorials</li>
+</ol>
+
+<div class="note">
+<b>Final Thought:</b> HTML is 35+ years old and still evolving. It survived Flash, Silverlight, Java Applets, and countless frameworks. Master HTML deeply - it's the only web technology guaranteed to exist in 10 years. Frameworks come and go. HTML remains.
+</div>
+
+<h3>Your Next Steps</h3>
+<ol>
+<li>Build 5 projects using only HTML, CSS, vanilla JS</li>
+<li>Learn accessibility - build for screen reader users</li>
+<li>Optimize for Core Web Vitals - make sites fast</li>
+<li>Contribute to open source - read real HTML code</li>
+<li>Teach others - best way to solidify knowledge</li>
+</ol>
+
+<div class="page-nav">
+<button onclick="showPage(14)">← Previous: Best Practices</button>
+<button disabled>Complete! 🎉</button>
+</div>
+</div>
+
+</div>
+
+<script>
+let currentPage = 1;
+const totalPages = 15;
+
+function showPage(num) {
+  if(num < 1 || num > totalPages) return;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + num).classList.add('active');
+  document.querySelectorAll('.nav a').forEach((a, i) => {
+    a.classList.toggle('active', i === num - 1);
+  });
+  currentPage = num;
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight' && currentPage < totalPages) showPage(currentPage + 1);
+  if(e.key === 'ArrowLeft' && currentPage > 1) showPage(currentPage - 1);
+});
+</script>
+</body>
+</html>
