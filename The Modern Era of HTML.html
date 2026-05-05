@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watchman - Complete Guide | COLOLIST</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { 
+    font-family: 'Poppins', sans-serif; 
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    min-height: 100vh; padding: 20px; color: #e2e8f0;
+  }
+  
+.container {
+    max-width: 900px; margin: 0 auto;
+  }
+  
+.header {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 24px; padding: 30px; margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+.logo {
+    color: #38bdf8; font-weight: 700; font-size: 32px;
+    margin-bottom: 8px; text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+  }
+.subtitle { 
+    color: #94a3b8; font-size: 14px; letter-spacing: 1px;
+    margin-bottom: 15px;
+  }
+.intro {
+    color: #cbd5e1; font-size: 15px; line-height: 1.6;
+    max-width: 700px; margin: 0 auto;
+  }
+  
+.stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px; margin-bottom: 25px;
+  }
+.stat-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px; padding: 20px; text-align: center;
+  }
+.stat-number {
+    color: #fbbf24; font-size: 28px; font-weight: 700;
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  }
+.stat-label {
+    color: #94a3b8; font-size: 12px; margin-top: 5px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  
+.content-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px; padding: 25px; margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+.section-title {
+    color: #38bdf8; font-size: 22px; font-weight: 700;
+    margin-bottom: 15px; text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    display: flex; align-items: center; gap: 10px;
+  }
+.section-text {
+    color: #cbd5e1; font-size: 14px; line-height: 1.8;
+    margin-bottom: 15px;
+  }
+  
+.feature-list {
+    display: grid; gap: 12px;
+  }
+.feature-item {
+    background: rgba(15, 23, 42, 0.6);
+    border-left: 3px solid #0ea5e9;
+    border-radius: 8px; padding: 14px 16px;
+    display: flex; gap: 12px; align-items: start;
+  }
+.feature-icon {
+    color: #38bdf8; font-size: 20px; flex-shrink: 0;
+  }
+.feature-content {
+    flex: 1;
+  }
+.feature-name {
+    color: #e2e8f0; font-size: 15px; font-weight: 600;
+    margin-bottom: 4px;
+  }
+.feature-desc {
+    color: #94a3b8; font-size: 13px; line-height: 1.6;
+  }
+  
+.duties-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px; margin-top: 15px;
+  }
+.duty-box {
+    background: rgba(15, 23, 42, 0.6);
+    border-left: 3px solid #0ea5e9;
+    border-radius: 8px; padding: 14px 16px;
+  }
+.duty-title {
+    color: #e2e8f0; font-size: 15px; font-weight: 600;
+    margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
+  }
+.duty-desc {
+    color: #94a3b8; font-size: 13px; line-height: 1.6;
+  }
+  
+.salary-table-wrapper {
+    overflow-x: auto; margin-top: 15px;
+    border-radius: 12px;
+  }
+.salary-table {
+    width: 100%; border-collapse: collapse;
+    background: rgba(15, 23, 42, 0.6);
+    min-width: 500px;
+  }
+.salary-table th {
+    background: rgba(14, 165, 233, 0.2);
+    color: #38bdf8; padding: 12px; text-align: left;
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+  }
+.salary-table td {
+    color: #cbd5e1; padding: 12px; font-size: 14px;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+  }
+.salary-table tr:hover td {
+    background: rgba(56, 189, 248, 0.05);
+  }
+  
+.requirement-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; margin-top: 15px;
+  }
+.requirement-box {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px; padding: 16px;
+  }
+.requirement-title {
+    color: #fbbf24; font-size: 15px; font-weight: 600;
+    margin-bottom: 8px;
+  }
+.requirement-text {
+    color: #94a3b8; font-size: 13px; line-height: 1.7;
+  }
+  
+.footer {
+    text-align: center; margin-top: 40px; padding: 20px;
+    color: #64748b; font-size: 13px;
+  }
+  
+@media (max-width: 600px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .duties-grid { grid-template-columns: 1fr; }
+    .header { padding: 20px; }
+    .content-card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="logo">⚡ COLOLIST</div>
+    <div class="subtitle">WATCHMAN / SECURITY GUARD GUIDE</div>
+    <p class="intro">
+      A Watchman or Security Guard is responsible for protecting property, assets, and people. 
+      They monitor premises, control access, and ensure safety. One of the most essential jobs in India.
+    </p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">8-12</div>
+      <div class="stat-label">Hours Shift</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">₹8K-25K</div>
+      <div class="stat-label">Monthly Salary</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">Duty Type</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">10th Pass</div>
+      <div class="stat-label">Min Education</div>
+    </div>
+  </div>
+
+  <!-- What is Watchman -->
+  <div class="content-card">
+    <div class="section-title">🔍 What is a Watchman?</div>
+    <div class="section-text">
+      A Watchman (also called Security Guard, Chowkidar, or Darban) is a person employed to guard and patrol buildings, 
+      residential complexes, offices, banks, ATMs, and other properties. Their main job is to prevent theft, vandalism, 
+      and unauthorized entry. In India, watchmen are found in almost every apartment, society, shop, and company.
+    </div>
+    <div class="section-text">
+      The role dates back to ancient times when kings had palace guards. Today it's a professional security job with 
+      training, uniforms, and sometimes weapons licenses for armed guards.
+    </div>
+  </div>
+
+  <!-- Main Duties -->
+  <div class="content-card">
+    <div class="section-title">📋 Main Duties & Responsibilities</div>
+    <div class="duties-grid">
+      <div class="duty-box">
+        <div class="duty-title">🚪 Gate Control & Access Management</div>
+        <div class="duty-desc">Check ID of visitors, maintain entry/exit register, stop unauthorized persons, open/close gates</div>
+      </div>
+      <div class="duty-box">
+        <div class="duty-title">👁️ Patrolling & Surveillance</div>
+        <div class="duty-desc">Regular rounds of premises, check CCTV cameras, look for suspicious activity, ensure all doors/windows locked</div>
+      </div>
+      <div class="duty-box">
+        <div class="duty-title">🚨 Emergency Response</div>
+        <div class="duty-desc">Call police/fire brigade during emergencies, first aid, handle theft/fire incidents, sound alarms</div>
+      </div>
+      <div class="duty-box">
+        <div class="duty-title">📝 Record Keeping</div>
+        <div class="duty-desc">Maintain logbook, visitor register, incident reports, shift handover notes</div>
+      </div>
+      <div class="duty-box">
+        <div class="duty-title">📦 Parcel & Delivery Management</div>
+        <div class="duty-desc">Receive courier/parcels, inform residents, maintain delivery register</div>
+      </div>
+      <div class="duty-box">
+        <div class="duty-title">🚗 Parking Management</div>
+        <div class="duty-desc">Guide vehicles, prevent wrong parking, manage parking slots, note vehicle numbers</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Types of Watchman -->
+  <div class="content-card">
+    <div class="section-title">👥 Types of Watchman Jobs</div>
+    <div class="salary-table-wrapper">
+      <table class="salary-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Work Place</th>
+            <th>Salary Range</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Residential Guard</td>
+            <td>Apartments, Societies, Bungalows</td>
+            <td>₹8,000 - ₹15,000</td>
+          </tr>
+          <tr>
+            <td>Commercial Guard</td>
+            <td>Offices, Malls, Shops</td>
+            <td>₹10,000 - ₹18,000</td>
+          </tr>
+          <tr>
+            <td>Bank/ATM Guard</td>
+            <td>Banks, ATM Booths</td>
+            <td>₹12,000 - ₹20,000</td>
+          </tr>
+          <tr>
+            <td>Armed Guard</td>
+            <td>Banks, Cash Vans, VIP Security</td>
+            <td>₹18,000 - ₹35,000</td>
+          </tr>
+          <tr>
+            <td>Industrial Guard</td>
+            <td>Factories, Warehouses</td>
+            <td>₹12,000 - ₹22,000</td>
+          </tr>
+          <tr>
+            <td>Personal Bodyguard</td>
+            <td>VIP, Celebrities</td>
+            <td>₹25,000 - ₹1,00,000+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Requirements -->
+  <div class="content-card">
+    <div class="section-title">✅ Requirements to Become a Watchman</div>
+    <div class="requirement-grid">
+      <div class="requirement-box">
+        <div class="requirement-title">Education</div>
+        <div class="requirement-text">
+          Minimum 8th or 10th pass. For armed guard or corporate jobs, 12th pass preferred. No degree needed.
+        </div>
+      <div class="requirement-box">
+        <div class="requirement-title">Age Limit</div>
+        <div class="requirement-text">
+          18 to 55 years usually. For armed guard: 21 to 45 years. Physical fitness is more important than age.
+        </div>
+      </div>
+      <div class="requirement-box">
+        <div class="requirement-title">Physical Fitness</div>
+        <div class="requirement-text">
+          Good health, no major disease. Height 5'5"+ preferred. Should be able to stand/walk for 8-12 hours.
+        </div>
+      </div>
+      <div class="requirement-box">
+        <div class="requirement-title">Training</div>
+        <div class="requirement-text">
+          PSARA license required for security agencies. 20-day training: drill, weapon handling, first aid, fire safety.
+        </div>
+      </div>
+      <div class="requirement-box">
+        <div class="requirement-title">Documents</div>
+        <div class="requirement-text">
+          Aadhaar, PAN, Police Verification, Medical Certificate, Address Proof, Bank Account.
+        </div>
+      </div>
+      <div class="requirement-box">
+        <div class="requirement-title">Skills</div>
+        <div class="requirement-text">
+          Alert mind, honest, basic Hindi/English, writing ability for registers, mobile phone operation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shift & Working -->
+  <div class="content-card">
+    <div class="section-title">⏰ Shift Timings & Work Pattern</div>
+    <div class="section-text">
+      <strong>Common Shifts:</strong><br>
+            - Day Shift: 6 AM to 6 PM (12 hours)<br>
+            - Night Shift: 6 PM to 6 AM (12 hours)<br>
+            - 8-Hour Shift: 3 shifts in 24 hours (6-2, 2-10, 10-6)<br>
+            - Weekly Off: 1 day per week (usually rotational)
+    </div>
+    <div class="section-text">
+      <strong>Work Environment:</strong> Mostly outdoor at gate/cabin. Night duty common. Have to work in rain, summer, winter. 
+      Festivals and holidays also on duty. Reliever comes for breaks.
+    </div>
+  </div>
+
+  <!-- Career Growth -->
+  <div class="content-card">
+    <div class="section-title">📈 Career Growth Path</div>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">1️⃣</div>
+        <div class="feature-content">
+          <div class="feature-name">Watchman / Security Guard</div>
+          <div class="feature-desc">Entry level - ₹8K to ₹15K</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">2️⃣</div>
+        <div class="feature-content">
+          <div class="feature-name">Senior Guard / Head Guard</div>
+          <div class="feature-desc">2-3 years exp - ₹15K to ₹22K - Supervise other guards</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">3️⃣</div>
+        <div class="feature-content">
+          <div class="feature-name">Security Supervisor</div>
+          <div class="feature-desc">5+ years exp - ₹20K to ₹35K - Manage team, schedules, reports</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">4️⃣</div>
+        <div class="feature-content">
+          <div class="feature-name">Security Officer / Manager</div>
+          <div class="feature-desc">8+ years + training - ₹35K to ₹60K - Full security operations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pros & Cons -->
+  <div class="content-card">
+    <div class="section-title">⚖️ Pros & Cons of Watchman Job</div>
+    <div class="section-text">
+      <strong style="color: #10b981;">Pros:</strong><br>
+            - No high education needed - 8th/10th pass is enough<br>
+            - Steady monthly income with overtime<br>
+            - Free accommodation in many places<br>
+            - Fixed duty hours, clear responsibilities<br>
+            - Respect in society for protecting people<br>
+            - Government jobs available (Railway, Bank guards)<br><br>
+      
+      <strong style="color: #ef4444;">Cons:</strong><br>
+            - Long standing hours - 8 to 12 hours<br>
+            - Night shifts affect health<br>
+            - Work in all weather - rain, heat, cold<br>
+            - Low starting salary<br>
+            - No holidays on festivals<br>
+            - Risk during theft/fire incidents
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>⚡ COLOLIST | Security Guard jobs available on: Naukri, Indeed, Apna, Quikr</p>
+    <p style="margin-top: 8px;">Last Updated: April 2026 | For PSARA License info visit: psara.gov.in</p>
+  </div>
+</div>
+
+</body>
+</html>
