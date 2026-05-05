@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 9: Unordered Lists - HTML</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.8;padding:20px}
+   .container{max-width:900px;margin:0 auto}
+    h1{font-size:32px;color:#38bdf8;margin-bottom:15px}
+    h2{font-size:26px;color:#0ea5e9;margin:35px 0 15px;border-bottom:2px solid #334155;padding-bottom:8px}
+    h3{font-size:20px;color:#7dd3fc;margin:25px 0 12px}
+    p{margin-bottom:15px;color:#cbd5e1;font-size:15px}
+    code{background:#1e293b;padding:3px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#f472b6;font-size:14px;border:1px solid #334155}
+    pre{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:15px;overflow-x:auto;margin:20px 0;line-height:1.6}
+    pre code{background:none;border:none;padding:0;color:#94a3b8}
+    
+    .note{background:#1e3a5f;border-left:4px solid #0ea5e9;padding:15px;margin:20px 0;border-radius:6px;color:#bae6fd}
+    .warning{background:#5f1e1e;border-left:4px solid #f87171;padding:15px;margin:20px 0;border-radius:6px;color:#fecaca}
+    .success{background:#1e3a2e;border-left:4px solid #34d399;padding:15px;margin:20px 0;border-radius:6px;color:#6ee7b7}
+    .example{background:#0f172a;border:1px solid #334155;border-radius:8px;padding:18px;margin:20px 0}
+    .example-title{color:#34d399;font-weight:bold;margin-bottom:10px;font-size:14px}
+    
+    /* Table Scrollable */
+   .table-scroll{
+      width:100%;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      border:1px solid #334155;
+      border-radius:8px;
+      margin:20px 0;
+      background:#1e293b;
+    }
+    table{
+      width:100%;
+      min-width:600px;
+      border-collapse:collapse;
+      font-size:14px;
+      margin:0;
+    }
+    th{background:#334155;color:#f1f5f9;padding:12px;text-align:left;font-weight:600;white-space:nowrap}
+    td{padding:12px;border-bottom:1px solid #334155;color:#cbd5e1}
+    tr:last-child td{border-bottom:none}
+    tr:hover{background:#2d3748}
+    
+    /* Demo Lists */
+    .demo-box{background:#1e293b;padding:15px;border-radius:8px;margin:15px 0;border:1px solid #334155}
+    .demo-box ul, .demo-box ol{margin-left:20px;color:#cbd5e1}
+    .demo-box li{margin-bottom:8px}
+    
+    /* Custom Bullet Examples */
+    .custom-disc{list-style-type:disc}
+    .custom-circle{list-style-type:circle}
+    .custom-square{list-style-type:square}
+    .custom-none{list-style-type:none;padding-left:0}
+    .custom-emoji{list-style-type:none;padding-left:0}
+    .custom-emoji li::before{content:"✅ ";margin-right:8px}
+    .custom-arrow{list-style-type:none;padding-left:0}
+    .custom-arrow li::before{content:"➤ ";color:#0ea5e9;margin-right:8px}
+    
+    @media(max-width:600px){
+      h1{font-size:26px}h2{font-size:22px}body{padding:15px}
+      table{font-size:13px;min-width:500px}
+      th,td{padding:8px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Chapter 9: Unordered Lists - Bullet Points</h1>
+  <p>The <code>&lt;ul&gt;</code> tag creates an unordered list. Each item uses <code>&lt;li&gt;</code> tag. Browser shows bullets by default.</p>
+
+  <h2>1. Basic Syntax</h2>
+  <pre><code>&lt;ul&gt;
+  &lt;li&gt;First Item&lt;/li&gt;
+  &lt;li&gt;Second Item&lt;/li&gt;
+  &lt;li&gt;Third Item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+  <div class="example">
+    <div class="example-title">Output:</div>
+    <div class="demo-box">
+      <ul>
+        <li>First Item</li>
+        <li>Second Item</li>
+        <li>Third Item</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Key Rules:</b><br>
+    1. <code>&lt;ul&gt;</code> = Unordered List - Container for all items<br>
+    2. <code>&lt;li&gt;</code> = List Item - Each bullet point<br>
+    3. <code>&lt;li&gt;</code> must always be inside <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code><br>
+    4. Order doesn't matter in <code>&lt;ul&gt;</code> - that's why "unordered"
+  </div>
+
+  <h2>2. Real World Examples</h2>
+  
+  <h3>Example 1: Navigation Menu</h3>
+  <pre><code>&lt;ul&gt;
+  &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+  <div class="example">
+    <div class="example-title">Output:</div>
+    <div class="demo-box">
+      <ul>
+        <li><a href="#" style="color:#38bdf8;">Home</a></li>
+        <li><a href="#" style="color:#38bdf8;">About</a></li>
+        <li><a href="#" style="color:#38bdf8;">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Example 2: Features List</h3>
+  <pre><code>&lt;h3&gt;Course Features:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;30 Detailed Chapters&lt;/li&gt;
+  &lt;li&gt;Live Code Examples&lt;/li&gt;
+  &lt;li&gt;Mobile Friendly&lt;/li&gt;
+  &lt;li&gt;Certificate Included&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+  <div class="example">
+    <div class="example-title">Output:</div>
+    <div class="demo-box">
+      <h3 style="color:#7dd3fc;margin-bottom:10px;">Course Features:</h3>
+      <ul>
+        <li>30 Detailed Chapters</li>
+        <li>Live Code Examples</li>
+        <li>Mobile Friendly</li>
+        <li>Certificate Included</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>3. Nested Lists - List Inside List</h2>
+  <p>You can put a <code>&lt;ul&gt;</code> inside an <code>&lt;li&gt;</code> to create sub-items.</p>
+
+  <pre><code>&lt;ul&gt;
+  &lt;li&gt;Frontend
+    &lt;ul&gt;
+      &lt;li&gt;HTML&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
+      &lt;li&gt;JavaScript&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Backend
+    &lt;ul&gt;
+      &lt;li&gt;Node.js&lt;/li&gt;
+      &lt;li&gt;Python&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+  <div class="example">
+    <div class="example-title">Output:</div>
+    <div class="demo-box">
+      <ul>
+        <li>Frontend
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </li>
+        <li>Backend
+          <ul>
+            <li>Node.js</li>
+            <li>Python</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warning">
+    <b>Important:</b> Nested <code>&lt;ul&gt;</code> must be inside an <code>&lt;li&gt;</code>. Never put <code>&lt;ul&gt;</code> directly inside another <code>&lt;ul&gt;</code>.
+  </div>
+
+  <h2>4. Changing Bullet Style with CSS</h2>
+  <p>Use <code>list-style-type</code> property to change bullets.</p>
+
+  <div class="table-scroll">
+    <table>
+      <tr><th>CSS Value</th><th>Output</th><th>Code</th></tr>
+      <tr><td><code>disc</code></td><td>● Default filled circle</td><td><code>ul { list-style-type: disc; }</code></td></tr>
+      <tr><td><code>circle</code></td><td>○ Hollow circle</td><td><code>ul { list-style-type: circle; }</code></td></tr>
+      <tr><td><code>square</code></td><td>■ Filled square</td><td><code>ul { list-style-type: square; }</code></td></tr>
+      <tr><td><code>none</code></td><td>No bullet</td><td><code>ul { list-style-type: none; }</code></td></tr>
+    </table>
+  </div>
+
+  <div class="example">
+    <div class="example-title">Different Bullet Styles:</div>
+    
+    <div class="demo-box">
+      <p style="color:#7dd3fc;margin-bottom:8px;"><b>disc - Default:</b></p>
+      <ul class="custom-disc">
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
+    </div>
+
+    <div class="demo-box">
+      <p style="color:#7dd3fc;margin-bottom:8px;"><b>circle:</b></p>
+      <ul class="custom-circle">
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
+    </div>
+
+    <div class="demo-box">
+      <p style="color:#7dd3fc;margin-bottom:8px;"><b>square:</b></p>
+      <ul class="custom-square">
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
+    </div>
+
+    <div class="demo-box">
+      <p style="color:#7dd3fc;margin-bottom:8px;"><b>none - No bullets:</b></p>
+      <ul class="custom-none">
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>5. Custom Bullets with Emojis/Icons</h2>
+  <p>Remove default bullets and add your own using <code>::before</code></p>
+
+  <pre><code>ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul li::before {
+  content: "✅ ";
+  margin-right: 8px;
+}</code></pre>
+
+  <div class="example">
+    <div class="example-title">Custom Emoji Bullets:</div>
+    <div class="demo-box">
+      <ul class="custom-emoji">
+        <li>Task Completed</li>
+        <li>Project Submitted</li>
+        <li>Certificate Earned</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="example-title">Custom Arrow Bullets:</div>
+    <div class="demo-box">
+      <ul class="custom-arrow">
+        <li>Step 1: Install VS Code</li>
+        <li>Step 2: Create index.html</li>
+        <li>Step 3: Write your code</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>6. Common Mistakes</h2>
+  <div class="table-scroll">
+    <table>
+      <tr><th>Mistake</th><th>Wrong</th><th>Correct</th></tr>
+      <tr><td><b>li outside ul</b></td><td><code>&lt;li&gt;Item&lt;/li&gt;</code></td><td><code>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+      <tr><td><b>Text directly in ul</b></td><td><code>&lt;ul&gt;Text&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></td><td><code>&lt;ul&gt;&lt;li&gt;Text&lt;/li&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+      <tr><td><b>Wrong nesting</b></td><td><code>&lt;ul&gt;&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;</code></td><td><code>&lt;ul&gt;&lt;li&gt;&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+      <tr><td><b>Using ul for paragraphs</b></td><td><code>&lt;ul&gt;&lt;li&gt;Long paragraph text...&lt;/li&gt;&lt;/ul&gt;</code></td><td>Use <code>&lt;p&gt;</code> for paragraphs, <code>&lt;ul&gt;</code> for lists</td></tr>
+    </table>
+  </div>
+
+  <h2>7. ul vs ol - When to Use What?</h2>
+  <div class="table-scroll">
+    <table>
+      <tr><th>Tag</th><th>Full Name</th><th>When to Use</th><th>Example</th></tr>
+      <tr><td><code>&lt;ul&gt;</code></td><td>Unordered List</td><td>Order doesn't matter</td><td>Features, Menu items, Ingredients</td></tr>
+      <tr><td><code>&lt;ol&gt;</code></td><td>Ordered List</td><td>Order matters, steps</td><td>Recipe steps, Rankings, Instructions</td></tr>
+    </table>
+  </div>
+
+  <div class="success">
+    <b>Pro Tip:</b> Use <code>&lt;ul&gt;</code> for navigation menus, feature lists, tags. Use <code>&lt;ol&gt;</code> for tutorials, rankings, step-by-step guides.
+  </div>
+
+  <h2>8. Complete Real Example - Product Features</h2>
+  <pre><code>&lt;div class="product-card"&gt;
+  &lt;h3&gt;Pro HTML Course&lt;/h3&gt;
+  &lt;ul class="features"&gt;
+    &lt;li&gt;✅ 30 Chapters with Code&lt;/li&gt;
+    &lt;li&gt;✅ Mobile Responsive Design&lt;/li&gt;
+    &lt;li&gt;✅ Lifetime Access&lt;/li&gt;
+    &lt;li&gt;✅ Certificate of Completion&lt;/li&gt;
+    &lt;li&gt;✅ Doubt Support&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;a href="#" class="btn"&gt;Enroll Now&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.features {
+  list-style-type: none;
+  padding-left: 0;
+}
+.features li {
+  padding: 8px 0;
+  border-bottom: 1px solid #334155;
+}
+.features li:last-child {
+  border-bottom: none;
+}
+&lt;/style&gt;</code></pre>
+
+  <h2>9. Summary - Golden Rules</h2>
+  <ol style="color:#cbd5e1;margin-left:20px">
+    <li><b>Structure:</b> <code>&lt;ul&gt;</code> is container, <code>&lt;li&gt;</code> is each item</li>
+    <li><b>Order doesn't matter:</b> That's why called "unordered"</li>
+    <li><b>Nesting:</b> Put <code>&lt;ul&gt;</code> inside <code>&lt;li&gt;</code> for sub-lists</li>
+    <li><b>Styling:</b> Use CSS <code>list-style-type</code> to change bullets</li>
+    <li><b>Semantics:</b> Use for actual lists, not for layout. Use <code>&lt;p&gt;</code> for paragraphs</li>
+    <li><b>Navigation:</b> Most website menus are built with <code>&lt;ul&gt;</code> + <code>&lt;li&gt;</code> + <code>&lt;a&gt;</code></li>
+  </ol>
+
+  <div class="note">
+    <b>Next:</b> Chapter 10 - Ordered Lists <code>&lt;ol&gt;</code> & <code>&lt;li&gt;</code> - Numbering, type="A", start="5"
+  </div>
+
+</div>
+
+</body>
+  </html>
