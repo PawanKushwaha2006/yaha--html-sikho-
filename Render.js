@@ -84,4 +84,4 @@ function drawOverlay(title, sub) {
   ctx.fillStyle = COLORS.dimText;
   ctx.fillText(sub, W / 2, H / 2 + subSize * 1.4);
   ctx.textAlign = 'left';
-    }
+}
