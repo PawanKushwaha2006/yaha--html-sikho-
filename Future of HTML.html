@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future of Security - 2030 | COLOLIST</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { 
+    font-family: 'Poppins', sans-serif; 
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    min-height: 100vh; padding: 20px; color: #e2e8f0;
+  }
+  
+.container {
+    max-width: 900px; margin: 0 auto;
+  }
+  
+.header {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 24px; padding: 30px; margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    position: relative; overflow: hidden;
+  }
+.header::before {
+    content: ''; position: absolute; top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+  }
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+.logo {
+    color: #38bdf8; font-weight: 700; font-size: 32px;
+    margin-bottom: 8px; text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+    position: relative; z-index: 1;
+  }
+.subtitle { 
+    color: #94a3b8; font-size: 14px; letter-spacing: 1px;
+    margin-bottom: 15px; position: relative; z-index: 1;
+  }
+.intro {
+    color: #cbd5e1; font-size: 15px; line-height: 1.6;
+    max-width: 700px; margin: 0 auto; position: relative; z-index: 1;
+  }
+  
+.year-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: #fff; padding: 8px 18px; border-radius: 20px;
+    font-size: 16px; font-weight: 700; margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  }
+  
+.stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px; margin-bottom: 25px;
+  }
+.stat-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px; padding: 20px; text-align: center;
+    transition: all 0.3s;
+  }
+.stat-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-5px);
+  }
+.stat-number {
+    color: #a855f7; font-size: 28px; font-weight: 700;
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  }
+.stat-label {
+    color: #94a3b8; font-size: 12px; margin-top: 5px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  
+.content-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px; padding: 25px; margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+.section-title {
+    color: #38bdf8; font-size: 22px; font-weight: 700;
+    margin-bottom: 15px; text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    display: flex; align-items: center; gap: 10px;
+  }
+.section-text {
+    color: #cbd5e1; font-size: 14px; line-height: 1.8;
+    margin-bottom: 15px;
+  }
+  
+.tech-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 15px; margin-top: 15px;
+  }
+.tech-box {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 12px; padding: 18px;
+    transition: all 0.3s;
+  }
+.tech-box:hover {
+    border-color: rgba(168, 85, 247, 0.6);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.2);
+    transform: translateY(-3px);
+  }
+.tech-icon {
+    font-size: 32px; margin-bottom: 10px;
+  }
+.tech-name {
+    color: #e2e8f0; font-size: 16px; font-weight: 600;
+    margin-bottom: 8px;
+  }
+.tech-desc {
+    color: #94a3b8; font-size: 13px; line-height: 1.6;
+  }
+  
+/* Comparison Table - FIXED */
+.comparison-table-wrapper {
+    overflow-x: auto; 
+    margin-top: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+  }
+.comparison-table {
+    width: 100%; 
+    border-collapse: collapse;
+    background: rgba(15, 23, 42, 0.6);
+    min-width: 600px;
+  }
+.comparison-table th {
+    background: rgba(168, 85, 247, 0.2);
+    color: #a855f7; 
+    padding: 14px 12px; 
+    text-align: left;
+    font-size: 12px; 
+    font-weight: 600; 
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+.comparison-table td {
+    color: #cbd5e1; 
+    padding: 14px 12px; 
+    font-size: 13px;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    line-height: 1.5;
+  }
+.comparison-table tr:hover td {
+    background: rgba(168, 85, 247, 0.05);
+  }
+.comparison-table td:first-child {
+    color: #e2e8f0;
+    font-weight: 600;
+    min-width: 120px;
+  }
+  
+.timeline-future {
+    position: relative; padding-left: 40px; margin-top: 20px;
+  }
+.timeline-future::before {
+    content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+    width: 3px; background: linear-gradient(180deg, #a855f7, #0ea5e9);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  }
+.timeline-future-item {
+    background: rgba(15, 23, 42, 0.6);
+    border-left: 3px solid #a855f7;
+    border-radius: 8px; padding: 16px; margin-bottom: 15px;
+    position: relative;
+  }
+.timeline-future-item::before {
+    content: ''; position: absolute; left: -32px; top: 20px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: linear-gradient(135deg, #a855f7, #7c3aed);
+    border: 3px solid #0f172a;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+  }
+.timeline-year {
+    color: #a855f7; font-size: 14px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+.timeline-text {
+    color: #cbd5e1; font-size: 14px; line-height: 1.7;
+  }
+  
+.warning-box {
+    background: rgba(239, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 12px; padding: 16px; margin-top: 15px;
+  }
+.warning-title {
+    color: #fca5a5; font-size: 15px; font-weight: 600;
+    margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+  }
+.warning-text {
+    color: #cbd5e1; font-size: 13px; line-height: 1.7;
+  }
+  
+.requirement-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px; margin-top: 15px;
+  }
+.requirement-box {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px; padding: 16px;
+  }
+.requirement-title {
+    color: #fbbf24; font-size: 15px; font-weight: 600;
+    margin-bottom: 8px;
+  }
+.requirement-text {
+    color: #94a3b8; font-size: 13px; line-height: 1.7;
+  }
+  
+.footer {
+    text-align: center; margin-top: 40px; padding: 20px;
+    color: #64748b; font-size: 13px;
+  }
+  
+@media (max-width: 600px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .tech-grid { grid-template-columns: 1fr; }
+    .timeline-future { padding-left: 25px; }
+    .timeline-future-item::before { left: -22px; }
+    .timeline-future::before { left: 10px; }
+    .header { padding: 20px; }
+    .content-card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="logo">⚡ COLOLIST</div>
+    <div class="subtitle">FUTURE OF SECURITY & WATCHMAN</div>
+    <p class="intro">
+      By 2030-2040 the security industry will completely transform. AI, Robots, Drones, and Smart Tech will evolve the traditional watchman role. 
+      See what the future holds...
+    </p>
+  </div>
+
+  <div class="year-tag">🔮 YEAR 2030-2040 PREDICTIONS</div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">70%</div>
+      <div class="stat-label">Jobs Automated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">₹50K+</div>
+      <div class="stat-label">Tech Guard Salary</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">AI Monitoring</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Human Error</div>
+    </div>
+  </div>
+
+  <!-- Future Technologies -->
+  <div class="content-card">
+    <div class="section-title">🤖 Future Security Technologies</div>
+    <div class="tech-grid">
+      <div class="tech-box">
+        <div class="tech-icon">🦾</div>
+        <div class="tech-name">AI Security Robots</div>
+        <div class="tech-desc">Humanoid robots will patrol 24/7. Face recognition, weapon detection, auto alert. No sleep, no bribe.</div>
+      </div>
+      <div class="tech-box">
+        <div class="tech-icon">🚁</div>
+        <div class="tech-name">Drone Surveillance</div>
+        <div class="tech-desc">Autonomous drones will handle aerial monitoring. Thermal cameras for night vision, real-time intruder tracking.</div>
+      </div>
+      <div class="tech-box">
+        <div class="tech-icon">🧠</div>
+        <div class="tech-name">AI Video Analytics</div>
+        <div class="tech-desc">CCTV will auto-detect suspicious behavior. Fighting, running, loitering gets flagged automatically. No human needed.</div>
+      </div>
+      <div class="tech-box">
+        <div class="tech-icon">🔐</div>
+        <div class="tech-name">Biometric Access</div>
+        <div class="tech-desc">Entry via face, fingerprint, iris scan. No ID cards, no register. Immutable logs on blockchain.</div>
+      </div>
+      <div class="tech-box">
+        <div class="tech-icon">📡</div>
+        <div class="tech-name">IoT Smart Sensors</div>
+        <div class="tech-desc">Door, window, motion sensors connected to cloud. Auto-calls police + GPS location during break-in.</div>
+      </div>
+      <div class="tech-box">
+        <div class="tech-icon">🥽</div>
+        <div class="tech-name">AR Smart Glasses</div>
+        <div class="tech-desc">Human guards wear AR glasses. Real-time info overlay: visitor details, threat level, building map.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Human vs AI -->
+  <div class="content-card">
+    <div class="section-title">⚔️ Human Watchman vs AI Security 2030</div>
+    <div class="comparison-table-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Traditional Watchman 2026</th>
+            <th>AI Security 2030</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Working Hours</td>
+            <td>8-12 hours, gets tired</td>
+            <td>24/7/365, no breaks</td>
+          </tr>
+          <tr>
+            <td>Monitoring</td>
+            <td>1-2 CCTV screens at a time</td>
+            <td>100+ cameras simultaneously</td>
+          </tr>
+          <tr>
+            <td>Response Time</td>
+            <td>30 sec - 2 min</td>
+            <td>&lt;1 second alert</td>
+          </tr>
+          <tr>
+            <td>Cost per Month</td>
+            <td>₹10K - ₹20K salary</td>
+            <td>₹5K - ₹8K (maintenance)</td>
+          </tr>
+          <tr>
+            <td>Accuracy</td>
+            <td>80-90%, human error</td>
+            <td>99.9%, no fatigue</td>
+          </tr>
+          <tr>
+            <td>Corruption Risk</td>
+            <td>Can be bribed/threatened</td>
+            <td>Zero - cannot be bribed</td>
+          </tr>
+          <tr>
+            <td>Weapon Detection</td>
+            <td>Manual, may miss</td>
+            <td>AI vision, 100% detection</td>
+          </tr>
+          <tr>
+            <td>Record Keeping</td>
+            <td>Manual register, can be tampered</td>
+            <td>Blockchain, tamper-proof</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Future Job Roles -->
+  <div class="content-card">
+    <div class="section-title">💼 New Job Roles in 2030</div>
+    <div class="section-text">
+      Traditional "gate duty" watchmen will decrease. But new tech jobs will emerge:
+    </div>
+    <div class="tech-grid">
+      <div class="tech-box">
+        <div class="tech-icon">🎮</div>
+        <div class="tech-name">Security Drone Operator</div>
+        <div class="tech-desc">Control drones, manual override, maintenance. Salary: ₹35K-₹60K</div>
+      </div>
+      <div class="tech-box">
+        <div class="tech-icon">🖥️</div>
+        <div class="tech-name">AI Monitoring Specialist</div>
+        <div class="tech-desc">Verify AI alerts, handle false positives. Salary: ₹40K-₹80K</div>
+      </div>
+      <div class="tech-box">
+        <div class="tech-icon">🔧</div>
+        <div class="tech-name">Security Tech Technician</div>
+        <div class="tech-desc">Repair cameras, sensors, robots. Salary: ₹30K-₹55K</div>
+      </div>
+      <div class="tech-box">
+        <div class="tech-icon">🛡️</div>
+        <div class="tech-name">Cyber-Physical Security Expert</div>
+        <div class="tech-desc">Protect physical security systems from hacking. Salary: ₹60K-₹1.5L</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="content-card">
+    <div class="section-title">📅 Future Timeline Predictions</div>
+    <div class="timeline-future">
+      <div class="timeline-future-item">
+        <div class="timeline-year">2026-2028</div>
+        <div class="timeline-text">AI CCTV becomes common. Face recognition in every society. Manual registers end, everything digital.</div>
+      </div>
+      <div class="timeline-future-item">
+        <div class="timeline-year">2028-2030</div>
+        <div class="timeline-text">Security robots pilot projects. Robot guards in malls, airports. Human + Robot hybrid teams.</div>
+      </div>
+      <div class="timeline-future-item">
+        <div class="timeline-year">2030-2035</div>
+        <div class="timeline-text">70% residential societies use AI + Drones. Traditional watchman only in small towns/villages.</div>
+      </div>
+      <div class="timeline-future-item">
+        <div class="timeline-year">2035-2040</div>
+        <div class="timeline-text">Fully autonomous security. Humans only for supervision & emergency response. New laws for AI security.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Will Jobs End? -->
+  <div class="content-card">
+    <div class="section-title">❓ Will Watchman Jobs End?</div>
+    <div class="section-text">
+      <strong>Short Answer: No, but the role will change.</strong><br><br>
+      
+      <strong style="color: #10b981;">Jobs that will remain:</strong><br>
+            1. <strong>Tech-Savvy Guards</strong> - Who can operate CCTV, AI systems, drones. Salary will triple.<br>
+            2. <strong>Armed Response Team</strong> - AI will alert, humans take action. Police-type training.<br>
+            3. <strong>VIP/Personal Security</strong> - More trust in humans. AI will support but humans decide.<br>
+            4. <strong>Rural Areas</strong> - Traditional watchman will continue for 20+ years in villages.<br><br>
+      
+      <strong style="color: #ef4444;">Jobs that will decrease:</strong><br>
+            1. <strong>Gate duty only</strong> - AI will replace<br>
+            2. <strong>Register writing</strong> - Everything digital/biometric<br>
+            3. <strong>Unskilled guards</strong> - Those without training will be replaced
+    </div>
+    
+    <div class="warning-box">
+      <div class="warning-title">⚠️ Important Advice for Current Watchmen</div>
+      <div class="warning-text">
+        If you're a watchman now, don't worry, but <strong>upskill yourself</strong>:<br>
+                1. Learn basic computer/CCTV operation - Free on YouTube<br>
+                2. English/Hindi typing - Registers are going digital<br>
+                3. Smartphone use - Everything shifting to apps<br>
+                4. PSARA license + Security training - Government making it mandatory<br>
+                5. First Aid, Fire Safety certificate - Increases value<br><br>
+        Those who adapt will earn ₹50K+. Those who don't will be replaced.
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills Needed -->
+  <div class="content-card">
+    <div class="section-title">🎯 Skills Needed for Future Security Jobs</div>
+    <div class="requirement-grid">
+      <div class="requirement-box">
+        <div class="requirement-title">Tech Skills</div>
+        <div class="requirement-text">
+          CCTV operation, AI dashboard, Drone flying, Mobile apps, Basic computer, Biometric systems
+        </div>
+      <div class="requirement-box">
+        <div class="requirement-title">Soft Skills</div>
+        <div class="requirement-text">
+          Communication, Quick decision making, Crisis management, Customer service, Report writing
+        </div>
+      </div>
+      <div class="requirement-box">
+        <div class="requirement-title">Certifications</div>
+        <div class="requirement-text">
+          PSARA License, Fire Safety, First Aid, Cyber Security Basics, Weapon License (for armed)
+        </div>
+      </div>
+      <div class="requirement-box">
+        <div class="requirement-title">Physical</div>
+        <div class="requirement-text">
+          Fitness still needed but technology will help. Exoskeleton suits may come by 2035.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>⚡ COLOLIST | Future predictions based on: Gartner, McKinsey, WEF Reports</p>
+    <p style="margin-top: 8px;">Last Updated: April 2026 | This is speculation, not guarantee. Tech changes fast.</p>
+  </div>
+</div>
+
+</body>
+</html>
