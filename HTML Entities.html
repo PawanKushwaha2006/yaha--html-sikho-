@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter: HTML Entities | Special Characters & Symbols</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.8}
+.container{max-width:900px;margin:0 auto;padding:30px 20px}
+h1{font-size:32px;color:#58a6ff;margin-bottom:20px;border-bottom:3px solid #1f6feb;padding-bottom:12px}
+h2{font-size:24px;color:#f78166;margin:35px 0 15px}
+h3{font-size:20px;color:#79c0ff;margin:25px 0 12px}
+p{margin-bottom:15px;color:#b1bac4;font-size:16px}
+ul,ol{margin:15px 0 15px 30px;color:#b1bac4}
+li{margin-bottom:12px;font-size:16px}
+code{background:#161b22;padding:3px 8px;border-radius:4px;font-family:'Courier New',monospace;color:#ffa657;font-size:15px;border:1px solid #30363d}
+pre{background:#161b22;border:2px solid #30363d;border-radius:8px;padding:18px;overflow-x:auto;margin:20px 0}
+pre code{background:none;border:none;padding:0;color:#7ee787;font-size:15px;line-height:1.7}
+.note{background:#1c2e4a;border-left:4px solid #1f6feb;padding:18px;margin:25px 0;border-radius:6px;color:#a5d6ff}
+.warning{background:#4a1c1c;border-left:4px solid #f85149;padding:18px;margin:25px 0;border-radius:6px;color:#ffa198}
+.success{background:#1c4a2e;border-left:4px solid #3fb950;padding:18px;margin:25px 0;border-radius:6px;color:#7ee787}
+.example-box{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px;margin:20px 0}
+.example-box h4{color:#7ee787;margin-bottom:12px}
+hr{border:none;border-top:2px solid #30363d;margin:40px 0}
+.demo-output{background:#0d1117;border:2px solid #238636;border-radius:8px;padding:20px;margin:20px 0}
+.demo-output h4{color:#3fb950;margin-bottom:12px}
+
+/* SCROLLABLE TABLE WRAPPER */
+.table-wrapper{
+  width:100%;
+  overflow-x:auto;
+  margin:25px 0;
+  border-radius:10px;
+  border:2px solid #30363d;
+}
+table{
+  width:100%;
+  min-width:700px;
+  border-collapse:collapse;
+  background:#161b22;
+}
+th{
+  background:#21262d;
+  color:#f0f6fc;
+  padding:14px 18px;
+  text-align:left;
+  font-weight:600;
+  border:1px solid #30363d;
+}
+td{
+  padding:14px 18px;
+  border:1px solid #30363d;
+  color:#b1bac4;
+}
+.entity-code{color:#ff7b72;font-weight:600;font-family:'Courier New',monospace}
+.symbol-display{font-size:24px;color:#7ee787;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>©️ Chapter: HTML Entities</h1>
+
+<p>HTML Entities are special codes used to display reserved characters and symbols that either have special meaning in HTML or aren't on your keyboard. They always start with <code>&</code> and end with <code>;</code></p>
+
+<hr>
+
+<h2>1. Why Do We Need HTML Entities?</h2>
+
+<p>Some characters are reserved in HTML. If you type them directly, the browser gets confused.</p>
+
+<div class="warning">
+<h3>Problem Example:</h3>
+<pre><code>&lt;p&gt;To create a tag use &lt;div&gt; &lt;/p&gt;</code></pre>
+<p><b>Browser Output:</b> To create a tag use  (The <code>&lt;div&gt;</code> disappears because browser thinks it's a real tag)</p>
+</div>
+
+<div class="success">
+<h3>Correct Solution:</h3>
+<pre><code>&lt;p&gt;To create a tag use &amp;lt;div&amp;gt; &lt;/p&gt;</code></pre>
+<p><b>Browser Output:</b> To create a tag use &lt;div&gt;</p>
+</div>
+
+<hr>
+
+<h2>2. Most Common HTML Entities</h2>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Entity Name</th>
+<th>Entity Number</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="symbol-display">&lt;</td>
+<td>Less than</td>
+<td class="entity-code">&amp;lt;</td>
+<td class="entity-code">&amp;#60;</td>
+<td>Display &lt; in text</td>
+</tr>
+<tr>
+<td class="symbol-display">&gt;</td>
+<td>Greater than</td>
+<td class="entity-code">&amp;gt;</td>
+<td class="entity-code">&amp;#62;</td>
+<td>Display &gt; in text</td>
+</tr>
+<tr>
+<td class="symbol-display">&amp;</td>
+<td>Ampersand</td>
+<td class="entity-code">&amp;amp;</td>
+<td class="entity-code">&amp;#38;</td>
+<td>Display & in text</td>
+</tr>
+<tr>
+<td class="symbol-display">&quot;</td>
+<td>Double quote</td>
+<td class="entity-code">&amp;quot;</td>
+<td class="entity-code">&amp;#34;</td>
+<td>Inside attribute values</td>
+</tr>
+<tr>
+<td class="symbol-display">&apos;</td>
+<td>Single quote</td>
+<td class="entity-code">&amp;apos;</td>
+<td class="entity-code">&amp;#39;</td>
+<td>Inside attribute values</td>
+</tr>
+<tr>
+<td class="symbol-display">&nbsp;</td>
+<td>Non-breaking space</td>
+<td class="entity-code">&amp;nbsp;</td>
+<td class="entity-code">&amp;#160;</td>
+<td>Prevent line breaks</td>
+</tr>
+<tr>
+<td class="symbol-display">©</td>
+<td>Copyright</td>
+<td class="entity-code">&amp;copy;</td>
+<td class="entity-code">&amp;#169;</td>
+<td>Footer copyright</td>
+</tr>
+<tr>
+<td class="symbol-display">®</td>
+<td>Registered trademark</td>
+<td class="entity-code">&amp;reg;</td>
+<td class="entity-code">&amp;#174;</td>
+<td>Brand names</td>
+</tr>
+<tr>
+<td class="symbol-display">™</td>
+<td>Trademark</td>
+<td class="entity-code">&amp;trade;</td>
+<td class="entity-code">&amp;#8482;</td>
+<td>Product names</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h2>3. Currency Symbols</h2>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Entity Name</th>
+<th>Entity Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="symbol-display">$</td>
+<td>Dollar</td>
+<td>Use directly</td>
+<td class="entity-code">&amp;#36;</td>
+</tr>
+<tr>
+<td class="symbol-display">€</td>
+<td>Euro</td>
+<td class="entity-code">&amp;euro;</td>
+<td class="entity-code">&amp;#8364;</td>
+</tr>
+<tr>
+<td class="symbol-display">£</td>
+<td>Pound</td>
+<td class="entity-code">&amp;pound;</td>
+<td class="entity-code">&amp;#163;</td>
+</tr>
+<tr>
+<td class="symbol-display">¥</td>
+<td>Yen</td>
+<td class="entity-code">&amp;yen;</td>
+<td class="entity-code">&amp;#165;</td>
+</tr>
+<tr>
+<td class="symbol-display">₹</td>
+<td>Indian Rupee</td>
+<td class="entity-code">&amp;#8377;</td>
+<td class="entity-code">&amp;#8377;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h2>4. Mathematical Symbols</h2>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Entity Name</th>
+<th>Entity Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="symbol-display">×</td>
+<td>Multiplication</td>
+<td class="entity-code">&amp;times;</td>
+<td class="entity-code">&amp;#215;</td>
+</tr>
+<tr>
+<td class="symbol-display">÷</td>
+<td>Division</td>
+<td class="entity-code">&amp;divide;</td>
+<td class="entity-code">&amp;#247;</td>
+</tr>
+<tr>
+<td class="symbol-display">±</td>
+<td>Plus-minus</td>
+<td class="entity-code">&amp;plusmn;</td>
+<td class="entity-code">&amp;#177;</td>
+</tr>
+<tr>
+<td class="symbol-display">≤</td>
+<td>Less than or equal</td>
+<td class="entity-code">&amp;le;</td>
+<td class="entity-code">&amp;#8804;</td>
+</tr>
+<tr>
+<td class="symbol-display">≥</td>
+<td>Greater than or equal</td>
+<td class="entity-code">&amp;ge;</td>
+<td class="entity-code">&amp;#8805;</td>
+</tr>
+<tr>
+<td class="symbol-display">≠</td>
+<td>Not equal</td>
+<td class="entity-code">&amp;ne;</td>
+<td class="entity-code">&amp;#8800;</td>
+</tr>
+<tr>
+<td class="symbol-display">°</td>
+<td>Degree</td>
+<td class="entity-code">&amp;deg;</td>
+<td class="entity-code">&amp;#176;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h2>5. Arrow Symbols</h2>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Entity Name</th>
+<th>Entity Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="symbol-display">←</td>
+<td>Left arrow</td>
+<td class="entity-code">&amp;larr;</td>
+<td class="entity-code">&amp;#8592;</td>
+</tr>
+<tr>
+<td class="symbol-display">→</td>
+<td>Right arrow</td>
+<td class="entity-code">&amp;rarr;</td>
+<td class="entity-code">&amp;#8594;</td>
+</tr>
+<tr>
+<td class="symbol-display">↑</td>
+<td>Up arrow</td>
+<td class="entity-code">&amp;uarr;</td>
+<td class="entity-code">&amp;#8593;</td>
+</tr>
+<tr>
+<td class="symbol-display">↓</td>
+<td>Down arrow</td>
+<td class="entity-code">&amp;darr;</td>
+<td class="entity-code">&amp;#8595;</td>
+</tr>
+<tr>
+<td class="symbol-display">↔</td>
+<td>Left-right arrow</td>
+<td class="entity-code">&amp;harr;</td>
+<td class="entity-code">&amp;#8596;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h2>6. Other Useful Symbols</h2>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+<th>Entity Name</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="symbol-display">♥</td>
+<td>Heart</td>
+<td class="entity-code">&amp;hearts;</td>
+<td>Love, favorites</td>
+</tr>
+<tr>
+<td class="symbol-display">★</td>
+<td>Star</td>
+<td class="entity-code">&amp;star;</td>
+<td>Ratings, reviews</td>
+</tr>
+<tr>
+<td class="symbol-display">✓</td>
+<td>Check mark</td>
+<td class="entity-code">&amp;check;</td>
+<td>Success, completed</td>
+</tr>
+<tr>
+<td class="symbol-display">✗</td>
+<td>Cross mark</td>
+<td class="entity-code">&amp;cross;</td>
+<td>Error, cancel</td>
+</tr>
+<tr>
+<td class="symbol-display">…</td>
+<td>Ellipsis</td>
+<td class="entity-code">&amp;hellip;</td>
+<td>Truncated text</td>
+</tr>
+<tr>
+<td class="symbol-display">—</td>
+<td>Em dash</td>
+<td class="entity-code">&amp;mdash;</td>
+<td>Break in sentence</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h2>7. Non-Breaking Space <code>&amp;nbsp;</code></h2>
+
+<p>Regular spaces collapse in HTML. Multiple spaces become one. <code>&amp;nbsp;</code> forces spaces to display and prevents line breaks.</p>
+
+<div class="example-box">
+<h4>Example:</h4>
+<pre><code>&lt;p&gt;Hello     World&lt;/p&gt;
+&lt;!-- Output: Hello World (extra spaces removed) --&gt;
+
+&lt;p&gt;Hello&amp;nbsp;&amp;nbsp;World&lt;/p&gt;
+&lt;!-- Output: Hello     World (spaces preserved) --&gt;</code></pre>
+</div>
+
+<div class="demo-output">
+<h4>Live Demo:</h4>
+<p>Without nbsp: 10km</p>
+<p>With nbsp: 10&nbsp;km (km won't wrap to next line alone)</p>
+</div>
+
+<div class="note">
+<b>Use Case:</b> Keep "Mr.&nbsp;Smith" together. Keep "100&nbsp;km" together. Prevent awkward line breaks.
+</div>
+
+<hr>
+
+<h2>8. Entity Name vs Entity Number</h2>
+
+<p>Every symbol has two formats:</p>
+
+<ul>
+<li><b>Entity Name:</b> <code>&amp;copy;</code> - Easy to remember</li>
+<li><b>Entity Number:</b> <code>&amp;#169;</code> - Works in all browsers, even old ones</li>
+</ul>
+
+<pre><code>&lt;p&gt;Copyright &amp;copy; 2026&lt;/p&gt;
+&lt;p&gt;Copyright &amp;#169; 2026&lt;/p&gt;
+&lt;!-- Both output: Copyright © 2026 --&gt;</code></pre>
+
+<div class="note">
+<b>Best Practice:</b> Use entity names for common symbols. Use numbers for rare symbols that don't have names.
+</div>
+
+<hr>
+
+<h2>9. Complete Practical Example</h2>
+
+<pre><code>&lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2026 MyCompany&amp;reg; All rights reserved.&lt;/p&gt;
+    &lt;p&gt;Price: &amp;#8377;999 &amp;plusmn; &amp;#8377;50&lt;/p&gt;
+    &lt;p&gt;Use &amp;lt;div&amp;gt; tag for layout&lt;/p&gt;
+    &lt;p&gt;Temperature: 25&amp;deg;C &amp;rarr; 30&amp;deg;C&lt;/p&gt;
+    &lt;p&gt;Rating: &amp;star;&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+<div class="demo-output">
+<h4>Browser Output:</h4>
+<p>© 2026 MyCompany® All rights reserved.</p>
+<p>Price: ₹999 ± ₹50</p>
+<p>Use &lt;div&gt; tag for layout</p>
+<p>Temperature: 25°C → 30°C</p>
+<p>Rating: ★★★★★</p>
+</div>
+
+<hr>
+
+<h2>⚠️ Common Mistakes</h2>
+
+<div class="warning">
+<h3>Mistake #1: Forgetting Semicolon</h3>
+<pre><code>&lt;!-- WRONG: Missing ; --&gt;
+&amp;copy
+
+&lt;!-- CORRECT --&gt;
+&amp;copy;</code></pre>
+</div>
+
+<div class="warning">
+<h3>Mistake #2: Using & Directly</h3>
+<pre><code>&lt;!-- WRONG: & alone is invalid --&gt;
+&lt;p&gt;Tom & Jerry&lt;/p&gt;
+
+&lt;!-- CORRECT --&gt;
+&lt;p&gt;Tom &amp;amp; Jerry&lt;/p&gt;</code></pre>
+</div>
+
+<div class="warning">
+<h3>Mistake #3: Not Escaping < and > in Code</h3>
+<pre><code>&lt;!-- WRONG: Browser thinks it's a tag --&gt;
+&lt;code&gt;&lt;div&gt;&lt;/code&gt;
+
+&lt;!-- CORRECT --&gt;
+&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;</code></pre>
+</div>
+
+<hr>
+
+<h2>🛠️ Practice Task</h2>
+
+<p>Create a footer with: 1) Copyright symbol with current year 2) Registered trademark symbol 3) Price in Indian Rupees: ₹1,499 4) Temperature range: 20°C → 35°C 5) Text: "Use &lt;section&gt; tag"</p>
+
+<div class="success">
+<h4>Example Solution:</h4>
+<pre><code>&lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2026 WebDev&amp;reg;&lt;/p&gt;
+    &lt;p&gt;Price: &amp;#8377;1,499&lt;/p&gt;
+    &lt;p&gt;Temperature: 20&amp;deg;C &amp;rarr; 35&amp;deg;C&lt;/p&gt;
+    &lt;p&gt;Use &amp;lt;section&amp;gt; tag for content&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+</div>
+
+<div class="note">
+<b>Pro Tip:</b> Bookmark <a href="https://www.toptal.com/designers/htmlarrows/" target="_blank" style="color:#58a6ff;">HTML Arrows</a> or <a href="https://html.spec.whatwg.org/multipage/named-characters.html" target="_blank" style="color:#58a6ff;">HTML Entities Reference</a> for quick lookup. Most code editors also auto-suggest entities when you type &
+</div>
+
+</div>
+</body>
+</html>
