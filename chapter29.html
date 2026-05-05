@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 29: HTML Geolocation - HTML Course</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      line-height: 1.7;
+      padding: 20px;
+    }
+.container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #38bdf8;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #0ea5e9;
+      padding-bottom: 15px;
+    }
+    h3 {
+      color: #0ea5e9;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    p {
+      margin-bottom: 15px;
+      color: #cbd5e1;
+    }
+    code {
+      background: #0f172a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #38bdf8;
+      font-family: 'Courier New', monospace;
+      border: 1px solid #334155;
+      font-size: 13px;
+      display: inline-block;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+.code-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+.code-box pre {
+      color: #e2e8f0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+    }
+.output-box {
+      background: #0f172a;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+.note-box {
+      background: rgba(168, 85, 247, 0.1);
+      border-left: 4px solid #a855f7;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+.note-box code {
+      background: #0f172a;
+      border: 1px solid #a855f7;
+    }
+.warning-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid #ef4444;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    ul {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+    button {
+      background: linear-gradient(135deg, #0ea5e9, #a855f7);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 10px 5px 10px 0;
+      font-size: 14px;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    button:disabled {
+      background: #475569;
+      cursor: not-allowed;
+    }
+#result {
+      background: #0f172a;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 15px;
+      border: 1px solid #334155;
+      min-height: 60px;
+    }
+.back-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #0ea5e9, #a855f7);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 30px;
+      font-weight: 600;
+    }
+.back-btn:hover {
+      opacity: 0.9;
+    }
+.center {
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+.container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+      }
+      code {
+        font-size: 11px;
+        padding: 2px 6px;
+      }
+.code-box {
+        padding: 15px;
+      }
+.code-box pre {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chapter 29: HTML Geolocation API</h1>
+
+    <h3>What is Geolocation?</h3>
+    <p>The HTML Geolocation API allows websites to get the geographical position of a user. It uses GPS, WiFi, or IP address to find latitude and longitude. This is done using JavaScript - HTML itself doesn't have a geolocation tag.</p>
+
+    <div class="warning-box">
+      <b>🔒 Privacy Important:</b> Geolocation requires user permission. Browser will show a popup asking "Allow location access?" User must approve. It only works on HTTPS sites, not HTTP.
+    </div>
+
+    <h3>1. Check if Geolocation is Supported</h3>
+    <p>First check if the browser supports Geolocation API:</p>
+    <div class="code-box">
+<pre>&lt;script&gt;
+if (navigator.geolocation) {
+  console.log("Geolocation is supported");
+} else {
+  console.log("Geolocation not supported");
+}
+&lt;/script&gt;</pre>
+    </div>
+
+    <h3>2. Get Current Position - Basic Example</h3>
+    <p>Use <code>getCurrentPosition()</code> to get user's location once:</p>
+    <div class="code-box">
+<pre>&lt;button onclick="getLocation()"&gt;Get My Location&lt;/button&gt;
+&lt;p id="result"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+function getLocation() {
+  const result = document.getElementById("result");
+
+  if (navigator.geolocation) {
+    result.innerHTML = "Locating...";
+
+    navigator.geolocation.getCurrentPosition(
+      showPosition, // Success callback
+      showError // Error callback
+    );
+  } else {
+    result.innerHTML = "Geolocation not supported by browser.";
+  }
+}
+
+function showPosition(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  document.getElementById("result").innerHTML =
+    "Latitude: " + lat + "&lt;br&gt;Longitude: " + lon;
+}
+
+function showError(error) {
+  const result = document.getElementById("result");
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      result.innerHTML = "User denied location request.";
+      break;
+    case error.POSITION_UNAVAILABLE:
+      result.innerHTML = "Location info unavailable.";
+      break;
+    case error.TIMEOUT:
+      result.innerHTML = "Request timed out.";
+      break;
+    default:
+      result.innerHTML = "Unknown error occurred.";
+  }
+}
+&lt;/script&gt;</pre>
+    </div>
+
+    <h3>Live Demo:</h3>
+    <div class="output-box">
+      <button onclick="getLocationDemo()">Get My Location</button>
+      <div id="result">Click button to get your coordinates</div>
+    </div>
+
+    <h3>3. Position Object Properties</h3>
+    <p>The <code>position</code> object returned has these properties:</p>
+    <div class="code-box">
+<pre>position.coords.latitude // Decimal degrees
+position.coords.longitude // Decimal degrees
+position.coords.accuracy // Meters
+position.coords.altitude // Meters above sea level
+position.coords.speed // Meters per second
+position.coords.heading // Degrees from North
+position.timestamp // Time when position was retrieved</pre>
+    </div>
+
+    <h3>4. Watch Position - Track Movement</h3>
+    <p>Use <code>watchPosition()</code> to continuously track user location:</p>
+    <div class="code-box">
+<pre>&lt;button onclick="startTracking()"&gt;Start Tracking&lt;/button&gt;
+&lt;button onclick="stopTracking()"&gt;Stop Tracking&lt;/button&gt;
+
+&lt;script&gt;
+let watchID;
+
+function startTracking() {
+  if (navigator.geolocation) {
+    watchID = navigator.geolocation.watchPosition(
+      showPosition,
+      showError
+    );
+  }
+}
+
+function stopTracking() {
+  if (navigator.geolocation) {
+    navigator.geolocation.clearWatch(watchID);
+    alert("Tracking stopped");
+  }
+}
+&lt;/script&gt;</pre>
+    </div>
+
+    <h3>5. Geolocation Options</h3>
+    <p>You can pass options as third parameter to improve accuracy:</p>
+    <div class="code-box">
+<pre>const options = {
+  enableHighAccuracy: true, // Use GPS if available
+  timeout: 5000, // Wait 5 seconds max
+  maximumAge: 0 // Don't use cached position
+};
+
+navigator.geolocation.getCurrentPosition(
+  showPosition,
+  showError,
+  options
+);</pre>
+    </div>
+
+    <div class="note-box">
+      <b>Options Explained:</b><br>
+      <code>enableHighAccuracy: true</code> - More accurate but slower, uses more battery<br>
+      <code>timeout: 5000</code> - Stop trying after 5 seconds<br>
+      <code>maximumAge: 0</code> - Always get fresh location, not cached
+    </div>
+
+    <h3>6. Show Location on Google Maps</h3>
+    <p>Use latitude/longitude to open Google Maps:</p>
+    <div class="code-box">
+<pre>function showPosition(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  // Open in Google Maps
+  const url = `https://www.google.com/maps?q=${lat},${lon}`;
+  window.open(url, '_blank');
+}</pre>
+    </div>
+
+    <h3>7. Error Handling</h3>
+    <div class="output-box">
+      <table>
+        <tr>
+          <th>Error Code</th>
+          <th>Constant</th>
+          <th>Meaning</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><code>PERMISSION_DENIED</code></td>
+          <td>User clicked "Block"</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><code>POSITION_UNAVAILABLE</code></td>
+          <td>GPS/WiFi failed</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><code>TIMEOUT</code></td>
+          <td>Took too long to get location</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>8. Real-World Use Cases</h3>
+    <ul>
+      <li><b>Maps & Navigation:</b> Show user location on map, get directions</li>
+      <li><b>Weather Apps:</b> Show weather for user's current city</li>
+      <li><b>Food Delivery:</b> Find nearby restaurants</li>
+      <li><b>Ride Sharing:</b> Uber/Ola use this to find your pickup point</li>
+      <li><b>Store Locator:</b> Find nearest store branch</li>
+      <li><b>Social Media:</b> Tag location in posts</li>
+    </ul>
+
+    <div class="note-box">
+      <b>✅ Best Practices:</b><br>
+      1. Always ask permission - never auto-request location on page load<br>
+      2. Explain why you need location before requesting<br>
+      3. Provide fallback if user denies - manual city input<br>
+      4. Use HTTPS - Geolocation blocked on HTTP sites<br>
+      5. Don't store location without user consent<br>
+      6. Use <code>enableHighAccuracy: false</code> to save battery<br>
+      7. Handle all error cases gracefully<br>
+      8. Show loading state while fetching location
+    </div>
+
+    <h3>9. Complete Working Example</h3>
+    <div class="code-box">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h2&gt;Find My Location&lt;/h2&gt;
+  &lt;button onclick="getLocation()"&gt;Get Location&lt;/button&gt;
+  &lt;p id="output"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function getLocation() {
+      const output = document.getElementById("output");
+
+      if (!navigator.geolocation) {
+        output.innerHTML = "Geolocation not supported";
+        return;
+      }
+
+      output.innerHTML = "Locating...";
+
+      navigator.geolocation.getCurrentPosition(
+        (position) =&gt; {
+          const lat = position.coords.latitude.toFixed(6);
+          const lon = position.coords.longitude.toFixed(6);
+          output.innerHTML = `
+            &lt;strong&gt;Success!&lt;/strong&gt;&lt;br&gt;
+            Latitude: ${lat}&lt;br&gt;
+            Longitude: ${lon}&lt;br&gt;
+            Accuracy: ${position.coords.accuracy} meters
+          `;
+        },
+        (error) =&gt; {
+          output.innerHTML = "Error: " + error.message;
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+
+    <div class="warning-box">
+      <b>⚠️ Security Note:</b> Geolocation only works on HTTPS or localhost. On HTTP sites, browsers block it for security. Always test on HTTPS or use localhost for development.
+    </div>
+
+    <div class="center">
+      <a href="index.html" class="back-btn">← Back to Chapters</a>
+    </div>
+
+  </div>
+
+  <script>
+    function getLocationDemo() {
+      const result = document.getElementById("result");
+
+      if (!navigator.geolocation) {
+        result.innerHTML = "❌ Geolocation not supported by your browser.";
+        return;
+      }
+
+      result.innerHTML = "⏳ Locating... Please allow location access.";
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude.toFixed(6);
+          const lon = position.coords.longitude.toFixed(6);
+          const acc = position.coords.accuracy.toFixed(0);
+          result.innerHTML = `
+            ✅ <strong>Location Found!</strong><br>
+            Latitude: ${lat}<br>
+            Longitude: ${lon}<br>
+            Accuracy: ${acc} meters<br><br>
+            <a href="https://www.google.com/maps?q=${lat},${lon}" target="_blank" style="color:#38bdf8;">View on Google Maps</a>
+          `;
+        },
+        (error) => {
+          let msg = "❌ Error: ";
+          switch(error.code) {
+            case error.PERMISSION_DENIED:
+              msg += "You denied location access.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              msg += "Location information unavailable.";
+              break;
+            case error.TIMEOUT:
+              msg += "Request timed out.";
+              break;
+            default:
+              msg += "Unknown error.";
+          }
+          result.innerHTML = msg;
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
+    }
+  </script>
+</body>
+  </html>
