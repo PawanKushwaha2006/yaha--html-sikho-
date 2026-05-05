@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paragraphs & Text Formatting</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #0f172a; font-size: 13px; color: #e2e8f0; line-height: 1.6; }
+  
+  header {
+    background: #1a1a2e; color: white;
+    padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px;
+    border-bottom: 1px solid #334155;
+  }
+  header .logo { font-weight: bold; color: #7ec8e3; font-size: 14px; }
+  
+  .nav-bar {
+    background: #1e293b; border-bottom: 1px solid #334155;
+    padding: 6px 10px; display: flex; justify-content: center; align-items: center;
+  }
+  .nav-bar .title { font-weight: bold; font-size: 15px; text-align: center; color: #38bdf8; }
+  
+  .container { padding: 10px; max-width: 480px; margin: 0 auto; }
+  
+  .section-title {
+    background: #334155; color: #7dd3fc; padding: 6px 10px;
+    font-size: 13px; font-weight: bold; border-radius: 3px 3px 0 0;
+  }
+  .section-inner {
+    background: #1e293b; border: 1px solid #334155; border-top: none;
+    padding: 10px; margin-bottom: 10px; border-radius: 0 0 3px 3px;
+  }
+  
+  h3 { font-size: 14px; color: #38bdf8; margin: 10px 0 6px; font-weight: bold; }
+  p { margin-bottom: 8px; font-size: 12px; color: #cbd5e1; }
+  
+  .tag-box {
+    background: #0f172a; border: 1px solid #0ea5e9;
+    padding: 8px; margin: 8px 0; border-radius: 3px;
+  }
+  .tag-name {
+    color: #f472b6; font-family: 'Courier New', monospace;
+    font-size: 13px; font-weight: bold; margin-bottom: 5px;
+  }
+  
+  .output-box {
+    background: #020617; border: 1px solid #334155;
+    padding: 8px; margin: 6px 0; border-radius: 3px;
+  }
+  .output-label { color: #4ade80; font-size: 10px; font-weight: bold; margin-bottom: 4px; }
+  
+  .table-wrapper { overflow-x: auto; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 300px; }
+  th { background: #334155; color: #f1f5f9; padding: 5px 6px; text-align: left; font-weight: 600; }
+  td { border: 1px solid #334155; padding: 5px 6px; background: #1e293b; color: #cbd5e1; }
+  
+  code {
+    background: #0f172a; padding: 1px 5px; border-radius: 2px;
+    font-family: 'Courier New', monospace; font-size: 11px;
+    word-break: break-word; border: 1px solid #334155; color: #f472b6;
+  }
+  
+  .note { background: #1e3a5f; border-left: 3px solid #0ea5e9; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #bae6fd; }
+  .warning { background: #4c1d1d; border-left: 3px solid #f87171; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #fecaca; }
+  .good { background: #1e3a1e; border-left: 3px solid #4ade80; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #bbf7d0; }
+  
+  mark { background: #facc15; color: #000; padding: 0 2px; border-radius: 2px; }
+  
+  footer { 
+    background: #1a1a2e; color: #94a3b8; text-align: center; 
+    padding: 8px; font-size: 11px; margin-top: 20px; border-top: 1px solid #334155;
+  }
+  footer .footer-logo { color: #7ec8e3; font-weight: bold; font-size: 14px; margin-bottom: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">COLOLIST</div>
+  <div>HTML Tutorial</div>
+</header>
+
+<div class="nav-bar">
+  <div class="title">Paragraphs & Text Formatting</div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">1. &lt;p&gt; - Paragraph Tag</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;p&gt; &lt;/p&gt;</div>
+      <p><strong>Purpose:</strong> Creates a paragraph. Browsers automatically add space before and after each paragraph.</p>
+      <p><strong>Block-level:</strong> It always starts on a new line and takes full width.</p>
+    </div>
+    
+    <h3>Example:</h3>
+    <code>&lt;p&gt;This is first paragraph.&lt;/p&gt;</code><br>
+    <code>&lt;p&gt;This is second paragraph.&lt;/p&gt;</code>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT:</div>
+      <p style="margin: 4px 0; color: #e2e8f0;">This is first paragraph.</p>
+      <p style="margin: 4px 0; color: #e2e8f0;">This is second paragraph.</p>
+    </div>
+    
+    <div class="note">
+      <b>Note:</b> Multiple spaces or line breaks in HTML code are ignored. Browser shows only 1 space. Use <code>&lt;br&gt;</code> for line break inside paragraph.
+    </div>
+  </div>
+
+  <div class="section-title">2. &lt;b&gt; vs &lt;strong&gt; - Bold Text</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;b&gt; &lt;/b&gt;</div>
+      <p><strong>Purpose:</strong> Makes text <b>bold</b> visually. No extra importance for screen readers or SEO.</p>
+      <p><strong>Use when:</strong> You just want bold styling without meaning.</p>
+    </div>
+    
+    <div class="tag-box">
+      <div class="tag-name">&lt;strong&gt; &lt;/strong&gt;</div>
+      <p><strong>Purpose:</strong> Makes text <strong>bold</strong> + tells browser this text is important.</p>
+      <p><strong>Use when:</strong> Text has semantic importance. Better for SEO and accessibility.</p>
+    </div>
+    
+    <h3>Example:</h3>
+    <code>&lt;p&gt;This is &lt;b&gt;bold&lt;/b&gt; text.&lt;/p&gt;</code><br>
+    <code>&lt;p&gt;This is &lt;strong&gt;important&lt;/strong&gt; text.&lt;/p&gt;</code>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT:</div>
+      <p style="margin: 4px 0; color: #e2e8f0;">This is <b>bold</b> text.</p>
+      <p style="margin: 4px 0; color: #e2e8f0;">This is <strong>important</strong> text.</p>
+    </div>
+    
+    <div class="good">
+      <b>✓ SEO Tip:</b> Use <code>&lt;strong&gt;</code> for keywords and important points. Google gives more weight to it than <code>&lt;b&gt;</code>.
+    </div>
+  </div>
+
+  <div class="section-title">3. &lt;i&gt; vs &lt;em&gt; - Italic Text</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;i&gt; &lt;/i&gt;</div>
+      <p><strong>Purpose:</strong> Makes text <i>italic</i> visually. Used for technical terms, foreign words, thoughts.</p>
+      <p><strong>Use when:</strong> Just styling, no emphasis needed.</p>
+    </div>
+    
+    <div class="tag-box">
+      <div class="tag-name">&lt;em&gt; &lt;/em&gt;</div>
+      <p><strong>Purpose:</strong> Makes text <em>italic</em> + adds emphasis. Screen readers change voice tone.</p>
+      <p><strong>Use when:</strong> You want to stress or emphasize a word.</p>
+    </div>
+    
+    <h3>Example:</h3>
+    <code>&lt;p&gt;The word &lt;i&gt;HTML&lt;/i&gt; means HyperText Markup Language.&lt;/p&gt;</code><br>
+    <code>&lt;p&gt;You &lt;em&gt;must&lt;/em&gt; complete this task.&lt;/p&gt;</code>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT:</div>
+      <p style="margin: 4px 0; color: #e2e8f0;">The word <i>HTML</i> means HyperText Markup Language.</p>
+      <p style="margin: 4px 0; color: #e2e8f0;">You <em>must</em> complete this task.</p>
+    </div>
+  </div>
+
+  <div class="section-title">4. &lt;u&gt; - Underline Text</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;u&gt; &lt;/u&gt;</div>
+      <p><strong>Purpose:</strong> Adds <u>underline</u> to text. Used for misspelled words, proper names in Chinese, etc.</p>
+    </div>
+    
+    <h3>Example:</h3>
+    <code>&lt;p&gt;This is &lt;u&gt;underlined&lt;/u&gt; text.&lt;/p&gt;</code>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT:</div>
+      <p style="margin: 4px 0; color: #e2e8f0;">This is <u>underlined</u> text.</p>
+    </div>
+    
+    <div class="warning">
+      <b>✗ Warning:</b> Avoid using <code>&lt;u&gt;</code> for normal text. Users think underlined text is a link. Use CSS <code>text-decoration: underline;</code> if you need it for design.
+    </div>
+  </div>
+
+  <div class="section-title">5. &lt;mark&gt; - Highlight Text</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;mark&gt; &lt;/mark&gt;</div>
+      <p><strong>Purpose:</strong> Highlights text with yellow background like a <mark>marker</mark>. Shows relevance in search results.</p>
+      <p><strong>Use when:</strong> You want to highlight search terms or important parts.</p>
+    </div>
+    
+    <h3>Example:</h3>
+    <code>&lt;p&gt;HTML is the &lt;mark&gt;foundation&lt;/mark&gt; of web development.&lt;/p&gt;</code>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT:</div>
+      <p style="margin: 4px 0; color: #e2e8f0;">HTML is the <mark>foundation</mark> of web development.</p>
+    </div>
+    
+    <div class="note">
+      <b>Note:</b> Default color is yellow. You can change it with CSS: <code>mark { background: lightblue; }</code>
+    </div>
+  </div>
+
+  <div class="section-title">6. All Tags Comparison Table</div>
+  <div class="section-inner">
+    <div class="table-wrapper">
+      <table>
+        <tr><th>Tag</th><th>Visual Effect</th><th>Semantic Meaning</th><th>SEO Value</th></tr>
+        <tr><td><code>&lt;p&gt;</code></td><td>Paragraph block</td><td>Text block</td><td>Normal</td></tr>
+        <tr><td><code>&lt;b&gt;</code></td><td>Bold</td><td>None</td><td>Low</td></tr>
+        <tr><td><code>&lt;strong&gt;</code></td><td>Bold</td><td>Important</td><td>High</td></tr>
+        <tr><td><code>&lt;i&gt;</code></td><td>Italic</td><td>None</td><td>Low</td></tr>
+        <tr><td><code>&lt;em&gt;</code></td><td>Italic</td><td>Emphasis</td><td>High</td></tr>
+        <tr><td><code>&lt;u&gt;</code></td><td>Underline</td><td>None</td><td>Low</td></tr>
+        <tr><td><code>&lt;mark&gt;</code></td><td>Yellow highlight</td><td>Relevance</td><td>Medium</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">7. Combined Example</div>
+  <div class="section-inner">
+    <h3>Using All Tags Together:</h3>
+    <code>
+      &lt;p&gt;<br>
+      &nbsp;&nbsp;&lt;strong&gt;HTML&lt;/strong&gt; is a &lt;em&gt;markup language&lt;/em&gt;.<br>
+      &nbsp;&nbsp;It uses &lt;b&gt;tags&lt;/b&gt; to define &lt;i&gt;elements&lt;/i&gt;.<br>
+      &nbsp;&nbsp;The most &lt;mark&gt;important&lt;/mark&gt; tag is &lt;u&gt;&lt;html&gt;&lt;/u&gt;.<br>
+      &lt;/p&gt;
+    </code>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT:</div>
+      <p style="margin: 4px 0; color: #e2e8f0;">
+        <strong>HTML</strong> is a <em>markup language</em>.
+        It uses <b>tags</b> to define <i>elements</i>.
+        The most <mark>important</mark> tag is <u>&lt;html&gt;</u>.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">COLOLIST</div>
+  <div>© 2026 COLOLIST · HTML Tutorial</div>
+</footer>
+
+</body>
+</html>
