@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 13: Advanced Tables - HTML Course</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      line-height: 1.7;
+      padding: 20px;
+    }
+ .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #38bdf8;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #0ea5e9;
+      padding-bottom: 15px;
+    }
+    h3 {
+      color: #0ea5e9;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    p {
+      margin-bottom: 15px;
+      color: #cbd5e1;
+    }
+    code {
+      background: #0f172a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #38bdf8;
+      font-family: 'Courier New', monospace;
+      border: 1px solid #334155;
+      font-size: 13px;
+      display: inline-block;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+ .code-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+ .code-box pre {
+      color: #e2e8f0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+    }
+ .output-box {
+      background: #0f172a;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+ .note-box {
+      background: rgba(168, 85, 247, 0.1);
+      border-left: 4px solid #a855f7;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+ .note-box code {
+      background: #0f172a;
+      border: 1px solid #a855f7;
+    }
+    ul {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    caption {
+      color: #0ea5e9;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 10px;
+      caption-side: top;
+      text-align: left;
+    }
+    th, td {
+      border: 1px solid #475569;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #0ea5e9;
+      color: #0f172a;
+      font-weight: 600;
+    }
+    td {
+      background: #1e293b;
+    }
+ .back-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #0ea5e9, #a855f7);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 30px;
+      font-weight: 600;
+    }
+ .back-btn:hover {
+      opacity: 0.9;
+    }
+ .center {
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+   .container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+      }
+      code {
+        font-size: 11px;
+        padding: 2px 6px;
+      }
+   .code-box {
+        padding: 15px;
+      }
+   .code-box pre {
+        font-size: 12px;
+      }
+      table {
+        font-size: 14px;
+      }
+      th, td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chapter 13: Advanced Tables</h1>
+
+    <h3>1. Table Caption - <code>&lt;caption&gt;</code></h3>
+    <p>The <code>&lt;caption&gt;</code> tag defines a title for the table. It must be inserted immediately after the <code>&lt;table&gt;</code> tag.</p>
+    <div class="code-box">
+<pre>&lt;table&gt;
+  &lt;caption&gt;Monthly Sales Report 2026&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Month&lt;/th&gt;
+    &lt;th&gt;Sales&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;January&lt;/td&gt;
+    &lt;td&gt;\$5000&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </div>
+
+    <h3>Output:</h3>
+    <div class="output-box">
+      <table>
+        <caption>Monthly Sales Report 2026</caption>
+        <tr>
+          <th>Month</th>
+          <th>Sales</th>
+        </tr>
+        <tr>
+          <td>January</td>
+          <td>$5000</td>
+        </tr>
+        <tr>
+          <td>February</td>
+          <td>$6500</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>2. Colspan - Merge Columns</h3>
+    <p><code>colspan</code> attribute merges multiple columns into one cell. It spans horizontally.</p>
+    <div class="code-box">
+<pre>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th colspan="3"&gt;Student Information&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+    &lt;th&gt;Grade&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Alex&lt;/td&gt;
+    &lt;td&gt;16&lt;/td&gt;
+    &lt;td&gt;A&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </div>
+
+    <h3>Output:</h3>
+    <div class="output-box">
+      <table>
+        <tr>
+          <th colspan="3">Student Information</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Grade</th>
+        </tr>
+        <tr>
+          <td>Ragni</td>
+          <td>19</td>
+          <td>A</td>
+        </tr>
+        <tr>
+          <td>Rohit</td>
+          <td>20</td>
+          <td>B+</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>3. Rowspan - Merge Rows</h3>
+    <p><code>rowspan</code> attribute merges multiple rows into one cell. It spans vertically.</p>
+    <div class="code-box">
+<pre>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Department&lt;/th&gt;
+    &lt;th&gt;Employee&lt;/th&gt;
+    &lt;th&gt;Salary&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2"&gt;Sales&lt;/td&gt;
+    &lt;td&gt;John&lt;/td&gt;
+    &lt;td&gt;\$5000&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Sarah&lt;/td&gt;
+    &lt;td&gt;\$5500&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </div>
+
+    <h3>Output:</h3>
+    <div class="output-box">
+      <table>
+        <tr>
+          <th>Department</th>
+          <th>Employee</th>
+          <th>Salary</th>
+        </tr>
+        <tr>
+          <td rowspan="2">Mechanical</td>
+          <td>Sonu</td>
+          <td>$5000</td>
+        </tr>
+        <tr>
+          <td>Pawan</td>
+          <td>$5500</td>
+        </tr>
+        <tr>
+          <td rowspan="2">IT</td>
+          <td>Amit</td>
+          <td>$7000</td>
+        </tr>
+        <tr>
+          <td>Rahul</td>
+          <td>$7500</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>4. Combining Colspan & Rowspan</h3>
+    <div class="code-box">
+<pre>&lt;table&gt;
+  &lt;caption&gt;Exam Schedule&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;Day&lt;/th&gt;
+    &lt;th colspan="2"&gt;Time&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Morning&lt;/th&gt;
+    &lt;th&gt;Evening&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Monday&lt;/td&gt;
+    &lt;td&gt;Math&lt;/td&gt;
+    &lt;td&gt;Physics&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </div>
+
+    <h3>Output:</h3>
+    <div class="output-box">
+      <table>
+        <caption>Exam Schedule</caption>
+        <tr>
+          <th rowspan="2">Day</th>
+          <th colspan="2">Time</th>
+        </tr>
+        <tr>
+          <th>Morning</th>
+          <th>Evening</th>
+        </tr>
+        <tr>
+          <td>Monday</td>
+          <td>Math</td>
+          <td>Physics</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>Chemistry</td>
+          <td>Biology</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>5. Advanced Example: Complex Table</h3>
+    <div class="code-box">
+<pre>&lt;table&gt;
+  &lt;caption&gt;Company Quarterly Report&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;Region&lt;/th&gt;
+    &lt;th colspan="4"&gt;Sales (in \$)&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Q1&lt;/th&gt;
+    &lt;th&gt;Q2&lt;/th&gt;
+    &lt;th&gt;Q3&lt;/th&gt;
+    &lt;th&gt;Q4&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;North&lt;/td&gt;
+    &lt;td&gt;10K&lt;/td&gt;
+    &lt;td&gt;12K&lt;/td&gt;
+    &lt;td&gt;15K&lt;/td&gt;
+    &lt;td&gt;18K&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan="5"&gt;Total: 55K&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    </div>
+
+    <div class="note-box">
+      <b>✅ Important Notes:</b><br>
+      1. <code>colspan="n"</code> - Cell spans 'n' columns horizontally<br>
+      2. <code>rowspan="n"</code> - Cell spans 'n' rows vertically<br>
+      3. <code>&lt;caption&gt;</code> always comes right after <code>&lt;table&gt;</code> tag<br>
+      4. Count carefully - total cells in each row must match after spanning<br>
+      5. Use CSS to style captions: <code>caption-side: top</code> or <code>bottom</code>
+    </div>
+
+    <h3>6. Common Mistakes ❌</h3>
+    <div class="code-box">
+<pre>&lt;!-- Wrong: Caption after rows --&gt;
+&lt;table&gt;
+  &lt;tr&gt;&lt;td&gt;Data&lt;/td&gt;&lt;/tr&gt;
+  &lt;caption&gt;Title&lt;/caption&gt; &lt;!-- Wrong position --&gt;
+&lt;/table&gt;
+
+&lt;!-- Wrong: Colspan exceeds column count --&gt;
+&lt;tr&gt;
+  &lt;td colspan="5"&gt;Text&lt;/td&gt; &lt;!-- But table only has 3 columns --&gt;
+&lt;/tr&gt;</pre>
+    </div>
+
+    <div class="center">
+      <a href="index.html" class="back-btn">← Back to Chapters</a>
+    </div>
+
+  </div>
+</body>
+</html>
