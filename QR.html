@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power QR Generator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background: #0f172a; color: white; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .card { background: #1e293b; padding: 25px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h2 { color: #38bdf8; margin-bottom: 15px; }
+        textarea { width: 100%; height: 80px; background: #0f172a; border: 2px solid #334155; border-radius: 12px; color: white; padding: 12px; margin-bottom: 15px; outline: none; font-size: 16px; }
+        button { width: 100%; padding: 15px; border-radius: 12px; border: none; font-weight: bold; cursor: pointer; margin-bottom: 10px; font-size: 16px; }
+        .btn-gen { background: #38bdf8; color: #0f172a; }
+        .btn-save { background: #10b981; color: white; display: none; }
+        #qr-container { 
+            background: white; 
+            padding: 10px; 
+            border-radius: 10px; 
+            margin: 20px auto; 
+            width: fit-content; 
+            display: none; 
+        }
+        canvas { display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>📱 QR Code Generator</h2>
+    <textarea id="userInput" placeholder="Kuch bhi likho..."></textarea>
+    <button class="btn-gen" onclick="generateQR()">QR Code Banao</button>
+    
+    <div id="qr-container">
+        <canvas id="qrCanvas"></canvas>
+    </div>
+    
+    <button id="saveBtn" class="btn-save" onclick="downloadQR()">⬇️ Download QR Code</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+<script>
+    function generateQR() {
+        const text = document.getElementById("userInput").value;
+        if(!text.trim()) return alert("Pehle kuch likho!");
+
+        const container = document.getElementById("qr-container");
+        const saveBtn = document.getElementById("saveBtn");
+
+        const qr = new QRious({
+            element: document.getElementById('qrCanvas'),
+            value: text,
+            size: 300,
+            level: 'H',
+            padding: 25 // Border image ke andar hi rahega
+        });
+
+        container.style.display = "block";
+        saveBtn.style.display = "block";
+    }
+
+    function downloadQR() {
+        const canvas = document.getElementById('qrCanvas');
+        
+        // Mobile Chrome Fix: Blob method use kar rahe hain
+        canvas.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = "QR_Code_" + Date.now() + ".png";
+            
+            // Link ko DOM mein add karna mobile ke liye zaroori hai
+            document.body.appendChild(link);
+            link.click();
+            
+            // Cleanup
+            setTimeout(() => {
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+            }, 100);
+        }, 'image/png');
+    }
+</script>
+
+</body>
+</html>
