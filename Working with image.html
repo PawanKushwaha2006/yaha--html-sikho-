@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!--html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 8: Working with Images - HTML Course</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      line-height: 1.7;
+      padding: 20px;
+    }
+   .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #38bdf8;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #0ea5e9;
+      padding-bottom: 15px;
+    }
+    h3 {
+      color: #0ea5e9;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    p {
+      margin-bottom: 15px;
+      color: #cbd5e1;
+    }
+    code {
+      background: #0f172a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #38bdf8;
+      font-family: 'Courier New', monospace;
+      border: 1px solid #334155;
+      font-size: 13px;
+      display: inline-block;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+   .code-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+   .code-box pre {
+      color: #e2e8f0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+    }
+   .output-box {
+      background: #0f172a;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+   .note-box {
+      background: rgba(168, 85, 247, 0.1);
+      border-left: 4px solid #a855f7;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+   .note-box code {
+      background: #0f172a;
+      border: 1px solid #a855f7;
+    }
+    ul {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 10px 0;
+      display: block;
+    }
+   .back-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #0ea5e9, #a855f7);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+   .back-btn:hover {
+      opacity: 0.9;
+    }
+    @media (max-width: 768px) {
+     .container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+      }
+      code {
+        font-size: 11px;
+        padding: 2px 6px;
+      }
+     .code-box {
+        padding: 15px;
+      }
+     .code-box pre {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+ <div>
+    <h1>Chapter 8: Working with Images</h1>
+
+    <h3>HTML Images <code>&lt;img&gt;</code> Tag</h3>
+    <p>Web page me images add karne ke liye <code>&lt;img&gt;</code> tag use hota hai. Ye self-closing tag hai - iska closing tag nahi hota.</p>
+
+    <h3>Basic Syntax:</h3>
+    <div class="code-box">
+<pre>&lt;img src="image.jpg" alt="Description of image"&gt;</pre>
+    </div>
+
+    <h3>1. <code>src</code> Attribute - Most Important</h3>
+    <p><code>src</code> = source. Image ka path ya URL batata hai.</p>
+    <div class="code-box">
+<pre>&lt;!-- Same folder me image --&gt;
+&lt;img src="photo.jpg" alt="My Photo"&gt;
+
+&lt;!-- Subfolder me image --&gt;
+&lt;img src="images/logo.png" alt="Company Logo"&gt;
+
+&lt;!-- Online image URL --&gt;
+&lt;img src="https://example.com/banner.jpg" alt="Banner"&gt;</pre>
+    </div>
+
+    <h3>2. <code>alt</code> Attribute - SEO + Accessibility</h3>
+    <p><code>alt</code> = alternative text. Agar image load na ho to ye text dikhta hai. Screen readers ke liye bhi important hai.</p>
+    <div class="code-box">
+<pre>&lt;img src="cat.jpg" alt="A cute white cat sleeping on sofa"&gt;</pre>
+    </div>
+
+    <div class="note-box">
+      <b>💡 Pro Tip:</b> <code>alt</code> hamesha likho. Google SEO me madad karta hai aur blind users ke liye zaroori hai.
+    </div>
+
+    <h3>3. Images ko Resize Karna</h3>
+    <p><b>Method 1: Width & Height Attributes</b> - HTML me direct</p>
+    <div class="code-box">
+<pre>&lt;!-- Fixed size in pixels --&gt;
+&lt;img src="photo.jpg" alt="Photo" width="300" height="200"&gt;
+
+&lt;!-- Sirf width do, height auto adjust ho jayegi --&gt;
+&lt;img src="photo.jpg" alt="Photo" width="400"&gt;</pre>
+    </div>
+
+    <p><b>Method 2: CSS Style - Best Way</b></p>
+    <div class="code-box">
+<pre>&lt;img src="photo.jpg" alt="Photo" style="width:100%; max-width:500px; height:auto;"&gt;
+
+&lt;!-- Responsive image --&gt;
+&lt;img src="photo.jpg" alt="Photo" style="width:100%; height:auto;"&gt;</pre>
+    </div>
+
+    <h3>4. Important Image Attributes</h3>
+    <div class="code-box">
+<pre>&lt;img
+  src="banner.jpg"
+  alt="Website Banner"
+  width="800"
+  height="400"
+  title="Click to view full size"
+  loading="lazy"
+&gt;</pre>
+    </div>
+
+    <ul>
+      <li><code>title</code> - Mouse hover pe tooltip dikhata hai</li>
+      <li><code>loading="lazy"</code> - Page fast load hoti hai, image scroll pe load hoti hai</li>
+      <li><code>width</code> & <code>height</code> - Size set karta hai, page layout shift nahi hota</li>
+    </ul>
+
+    <h3>5. Image ko Link Banana</h3>
+    <div class="code-box">
+<pre>&lt;a href="https://google.com" target="_blank"&gt;
+  &lt;img src="google-logo.png" alt="Google" width="100"&gt;
+&lt;/a&gt;</pre>
+    </div>
+
+    <h3>Live Examples:</h3>
+    <div class="output-box">
+      <p><b>Normal Image:</b></p>
+      <img src="https://via.placeholder.com/300x200/0ea5e9/ffffff?text=Sample+Image" alt="Sample Image">
+
+      <p><b>Resized Image - 150px width:</b></p>
+      <img src="https://via.placeholder.com/300x200/a855f7/ffffff?text=Resized" alt="Resized Image" width="150">
+
+      <p><b>Responsive Image - 100% width:</b></p>
+      <img src="https://via.placeholder.com/800x300/10b981/ffffff?text=Responsive+Image" alt="Responsive" style="width:100%;height:auto;">
+    </div>
+
+    <h3>6. Common Mistakes ❌</h3>
+    <div class="code-box">
+<pre>&lt;!-- Galat: alt missing --&gt;
+&lt;img src="photo.jpg"&gt;
+
+&lt;!-- Galat: Closing tag lagana --&gt;
+&lt;img src="photo.jpg"&gt;&lt;/img&gt;
+
+&lt;!-- Galat: Height width dono fixed, image stretch ho jayegi --&gt;
+&lt;img src="photo.jpg" width="100" height="500"&gt;</pre>
+    </div>
+
+    <h3>7. Best Practices ✅</h3>
+    <div class="note-box">
+      <b>✅ Hamesha karo:</b><br>
+      1. <code>alt</code> attribute zaroor likho<br>
+      2. Images compress karo - TinyPNG use karo<br>
+      3. <code>loading="lazy"</code> add karo large images me<br>
+      4. <code>width</code> aur <code>height</code> define karo - layout shift nahi hoga<br>
+      5. Responsive ke liye <code>style="width:100%;height:auto;"</code> use karo
+    </div>
+
+    <h3>8. Image Formats</h3>
+    <ul>
+      <li><code>.jpg /.jpeg</code> - Photos ke liye best, small size</li>
+      <li><code>.png</code> - Transparent background ke liye</li>
+      <li><code>.svg</code> - Logos, icons ke liye, zoom pe bhi sharp</li>
+      <li><code>.webp</code> - Modern format, sabse chota size + best quality</li>
+    </ul>
+    
+    <a href="index.html" class="back-btn">← Back to Chapters</a>
+  </div>
+</body>
+</html-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 8: Working with Images - HTML Course</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      line-height: 1.7;
+      padding: 20px;
+    }
+  .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: #38bdf8;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #0ea5e9;
+      padding-bottom: 15px;
+    }
+    h3 {
+      color: #0ea5e9;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    p {
+      margin-bottom: 15px;
+      color: #cbd5e1;
+    }
+    code {
+      background: #0f172a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #38bdf8;
+      font-family: 'Courier New', monospace;
+      border: 1px solid #334155;
+      font-size: 13px;
+      display: inline-block;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  .code-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      overflow-x: auto;
+    }
+  .code-box pre {
+      color: #e2e8f0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+    }
+  .output-box {
+      background: #0f172a;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+  .note-box {
+      background: rgba(168, 85, 247, 0.1);
+      border-left: 4px solid #a855f7;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+  .note-box code {
+      background: #0f172a;
+      border: 1px solid #a855f7;
+    }
+    ul {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+    li {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 10px 0;
+      display: block;
+    }
+  .back-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #0ea5e9, #a855f7);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+  .back-btn:hover {
+      opacity: 0.9;
+    }
+    @media (max-width: 768px) {
+    .container {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+      }
+      code {
+        font-size: 11px;
+        padding: 2px 6px;
+      }
+    .code-box {
+        padding: 15px;
+      }
+    .code-box pre {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chapter 8: Working with Images</h1>
+
+    <h3>HTML Images <code>&lt;img&gt;</code> Tag</h3>
+    <p>The <code>&lt;img&gt;</code> tag is used to add images to a web page. It is a self-closing tag - it does not have a closing tag.</p>
+
+    <h3>Basic Syntax:</h3>
+    <div class="code-box">
+<pre>&lt;img src="image.jpg" alt="Description of image"&gt;</pre>
+    </div>
+
+    <h3>1. <code>src</code> Attribute - Most Important</h3>
+    <p><code>src</code> = source. It specifies the path or URL of the image.</p>
+    <div class="code-box">
+<pre>&lt;!-- Image in the same folder --&gt;
+&lt;img src="photo.jpg" alt="My Photo"&gt;
+
+&lt;!-- Image in a subfolder --&gt;
+&lt;img src="images/logo.png" alt="Company Logo"&gt;
+
+&lt;!-- Online image URL --&gt;
+&lt;img src="https://example.com/banner.jpg" alt="Banner"&gt;</pre>
+    </div>
+
+    <h3>2. <code>alt</code> Attribute - SEO + Accessibility</h3>
+    <p><code>alt</code> = alternative text. If the image fails to load, this text is displayed. It is also important for screen readers.</p>
+    <div class="code-box">
+<pre>&lt;img src="cat.jpg" alt="A cute white cat sleeping on sofa"&gt;</pre>
+    </div>
+
+    <div class="note-box">
+      <b>💡 Pro Tip:</b> Always write the <code>alt</code> attribute. It helps with Google SEO and is essential for visually impaired users.
+    </div>
+
+    <h3>3. Resizing Images</h3>
+    <p><b>Method 1: Width & Height Attributes</b> - Directly in HTML</p>
+    <div class="code-box">
+<pre>&lt;!-- Fixed size in pixels --&gt;
+&lt;img src="photo.jpg" alt="Photo" width="300" height="200"&gt;
+
+&lt;!-- Only specify width, height adjusts automatically --&gt;
+&lt;img src="photo.jpg" alt="Photo" width="400"&gt;</pre>
+    </div>
+
+    <p><b>Method 2: CSS Style - Best Way</b></p>
+    <div class="code-box">
+<pre>&lt;img src="photo.jpg" alt="Photo" style="width:100%; max-width:500px; height:auto;"&gt;
+
+&lt;!-- Responsive image --&gt;
+&lt;img src="photo.jpg" alt="Photo" style="width:100%; height:auto;"&gt;</pre>
+    </div>
+
+    <h3>4. Important Image Attributes</h3>
+    <div class="code-box">
+<pre>&lt;img
+  src="banner.jpg"
+  alt="Website Banner"
+  width="800"
+  height="400"
+  title="Click to view full size"
+  loading="lazy"
+&gt;</pre>
+    </div>
+
+    <ul>
+      <li><code>title</code> - Shows a tooltip on mouse hover</li>
+      <li><code>loading="lazy"</code> - Page loads faster, image loads when scrolled into view</li>
+      <li><code>width</code> & <code>height</code> - Sets size, prevents layout shift</li>
+    </ul>
+
+    <h3>5. Making an Image a Link</h3>
+    <div class="code-box">
+<pre>&lt;a href="https://google.com" target="_blank"&gt;
+  &lt;img src="google-logo.png" alt="Google" width="100"&gt;
+&lt;/a&gt;</pre>
+    </div>
+
+    <h3>Live Examples:</h3>
+    <div class="output-box">
+      <p><b>Normal Image:</b></p>
+      <img src="https://via.placeholder.com/300x200/0ea5e9/ffffff?text=Sample+Image" alt="Sample Image">
+
+      <p><b>Resized Image - 150px width:</b></p>
+      <img src="https://via.placeholder.com/300x200/a855f7/ffffff?text=Resized" alt="Resized Image" width="150">
+
+      <p><b>Responsive Image - 100% width:</b></p>
+      <img src="https://via.placeholder.com/800x300/10b981/ffffff?text=Responsive+Image" alt="Responsive" style="width:100%;height:auto;">
+    </div>
+
+    <h3>6. Common Mistakes ❌</h3>
+    <div class="code-box">
+<pre>&lt;!-- Wrong: alt missing --&gt;
+&lt;img src="photo.jpg"&gt;
+
+&lt;!-- Wrong: Adding a closing tag --&gt;
+&lt;img src="photo.jpg"&gt;&lt;/img&gt;
+
+&lt;!-- Wrong: Both height and width fixed, image will stretch --&gt;
+&lt;img src="photo.jpg" width="100" height="500"&gt;</pre>
+    </div>
+
+    <h3>7. Best Practices ✅</h3>
+    <div class="note-box">
+      <b>✅ Always Do:</b><br>
+      1. Always write the <code>alt</code> attribute<br>
+      2. Compress images - Use TinyPNG<br>
+      3. Add <code>loading="lazy"</code> for large images<br>
+      4. Define <code>width</code> and <code>height</code> - prevents layout shift<br>
+      5. Use <code>style="width:100%;height:auto;"</code> for responsiveness
+    </div>
+
+    <h3>8. Image Formats</h3>
+    <ul>
+      <li><code>.jpg /.jpeg</code> - Best for photos, small size</li>
+      <li><code>.png</code> - For transparent backgrounds</li>
+      <li><code>.svg</code> - For logos and icons, stays sharp on zoom</li>
+      <li><code>.webp</code> - Modern format, smallest size + best quality</li>
+    </ul>
+    
+    <a href="index.html" class="back-btn">← Back to Chapters</a>
+  </div>
+</body>
+</html>
