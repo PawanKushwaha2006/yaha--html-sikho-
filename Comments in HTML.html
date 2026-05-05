@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Comments</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #0f172a; font-size: 13px; color: #e2e8f0; line-height: 1.6; }
+  
+  header {
+    background: #1a1a2e; color: white;
+    padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px;
+    border-bottom: 1px solid #334155;
+  }
+  header .logo { font-weight: bold; color: #7ec8e3; font-size: 14px; }
+  
+  .nav-bar {
+    background: #1e293b; border-bottom: 1px solid #334155;
+    padding: 6px 10px; display: flex; justify-content: center; align-items: center;
+  }
+  .nav-bar .title { font-weight: bold; font-size: 15px; text-align: center; color: #38bdf8; }
+  
+  .container { padding: 10px; max-width: 480px; margin: 0 auto; }
+  
+  .section-title {
+    background: #334155; color: #7dd3fc; padding: 6px 10px;
+    font-size: 13px; font-weight: bold; border-radius: 3px 3px 0 0;
+  }
+  .section-inner {
+    background: #1e293b; border: 1px solid #334155; border-top: none;
+    padding: 10px; margin-bottom: 10px; border-radius: 0 0 3px 3px;
+  }
+  
+  h3 { font-size: 14px; color: #38bdf8; margin: 10px 0 6px; font-weight: bold; }
+  p { margin-bottom: 8px; font-size: 12px; color: #cbd5e1; }
+  
+  .tag-box {
+    background: #0f172a; border: 1px solid #0ea5e9;
+    padding: 8px; margin: 8px 0; border-radius: 3px;
+  }
+  .tag-name {
+    color: #f472b6; font-family: 'Courier New', monospace;
+    font-size: 13px; font-weight: bold; margin-bottom: 5px;
+  }
+  
+  .output-box {
+    background: #020617; border: 1px solid #334155;
+    padding: 8px; margin: 6px 0; border-radius: 3px;
+  }
+  .output-label { color: #4ade80; font-size: 10px; font-weight: bold; margin-bottom: 4px; }
+  
+  .code-box {
+    background: #0f172a; border: 1px solid #334155;
+    padding: 8px; margin: 8px 0; border-radius: 3px; font-family: 'Courier New', monospace;
+  }
+  .comment { color: #6b7280; font-style: italic; }
+  
+  .table-wrapper { overflow-x: auto; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 300px; }
+  th { background: #334155; color: #f1f5f9; padding: 5px 6px; text-align: left; font-weight: 600; }
+  td { border: 1px solid #334155; padding: 5px 6px; background: #1e293b; color: #cbd5e1; }
+  
+  code {
+    background: #0f172a; padding: 1px 5px; border-radius: 2px;
+    font-family: 'Courier New', monospace; font-size: 11px;
+    word-break: break-word; border: 1px solid #334155; color: #f472b6;
+  }
+  
+  .note { background: #1e3a5f; border-left: 3px solid #0ea5e9; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #bae6fd; }
+  .warning { background: #4c1d1d; border-left: 3px solid #f87171; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #fecaca; }
+  .good { background: #1e3a1e; border-left: 3px solid #4ade80; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #bbf7d0; }
+  
+  footer { 
+    background: #1a1a2e; color: #94a3b8; text-align: center; 
+    padding: 8px; font-size: 11px; margin-top: 20px; border-top: 1px solid #334155;
+  }
+  footer .footer-logo { color: #7ec8e3; font-weight: bold; font-size: 14px; margin-bottom: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">COLOLIST</div>
+  <div>HTML Tutorial</div>
+</header>
+
+<div class="nav-bar">
+  <div class="title">HTML Comments</div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">1. What are HTML Comments?</div>
+  <div class="section-inner">
+    <p>Comments are notes in your code that browsers ignore. Users cannot see them on the web page.</p>
+    <p>They are only visible when someone opens the source code with "View Page Source".</p>
+    
+    <div class="tag-box">
+      <div class="tag-name">Syntax: &lt;!-- Comment Here --&gt;</div>
+      <p><strong>Starts with:</strong> <code>&lt;!--</code></p>
+      <p><strong>Ends with:</strong> <code>--&gt;</code></p>
+      <p>Everything between these is a comment.</p>
+    </div>
+    
+    <div class="note">
+      <b>Note:</b> Comments help you and other developers understand the code. They don't affect page speed or layout.
+    </div>
+  </div>
+
+  <div class="section-title">2. Single Line Comment</div>
+  <div class="section-inner">
+    <h3>Example:</h3>
+    <div class="code-box">
+      <span class="comment">&lt;!-- This is a single line comment --&gt;</span><br>
+      &lt;p&gt;This paragraph is visible&lt;/p&gt;
+    </div>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT ON WEB PAGE:</div>
+      <p style="margin: 4px 0; color: #e2e8f0;">This paragraph is visible</p>
+    </div>
+    <p>The comment above the paragraph is completely hidden.</p>
+  </div>
+
+  <div class="section-title">3. Multi-Line Comment</div>
+  <div class="section-inner">
+    <p>You can write comments across multiple lines. Everything between <code>&lt;!--</code> and <code>--&gt;</code> is ignored.</p>
+    
+    <h3>Example:</h3>
+    <div class="code-box">
+      <span class="comment">&lt;!--<br>
+      &nbsp;&nbsp;This is a multi-line comment.<br>
+      &nbsp;&nbsp;You can write anything here.<br>
+      &nbsp;&nbsp;Browser will ignore all these lines.<br>
+      --&gt;</span><br>
+      &lt;h1&gt;Website Title&lt;/h1&gt;
+    </div>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT ON WEB PAGE:</div>
+      <h1 style="font-size: 18px; color: #e2e8f0; margin: 4px 0;">Website Title</h1>
+    </div>
+  </div>
+
+  <div class="section-title">4. Why Use Comments? - 5 Main Uses</div>
+  <div class="section-inner">
+    <h3>1. Explain Complex Code</h3>
+    <div class="code-box">
+      <span class="comment">&lt;!-- This formula calculates total price with 18% GST --&gt;</span><br>
+      &lt;p&gt;Total: $118&lt;/p&gt;
+    </div>
+    
+    <h3>2. Mark Sections of Code</h3>
+    <div class="code-box">
+      <span class="comment">&lt;!-- Header Section Starts --&gt;</span><br>
+      &lt;header&gt;...&lt;/header&gt;<br>
+      <span class="comment">&lt;!-- Header Section Ends --&gt;</span>
+    </div>
+    
+    <h3>3. Temporarily Disable Code</h3>
+    <div class="code-box">
+      <span class="comment">&lt;!-- &lt;p&gt;Old text - not using now&lt;/p&gt; --&gt;</span><br>
+      &lt;p&gt;New updated text&lt;/p&gt;
+    </div>
+    
+    <h3>4. Add TODO Notes</h3>
+    <div class="code-box">
+      <span class="comment">&lt;!-- TODO: Add contact form here later --&gt;</span><br>
+      <span class="comment">&lt;!-- FIXME: Mobile layout broken --&gt;</span>
+    </div>
+    
+    <h3>5. Author & Date Info</h3>
+    <div class="code-box">
+      <span class="comment">&lt;!-- Author: John Doe --&gt;</span><br>
+      <span class="comment">&lt;!-- Date: 28 April 2026 --&gt;</span><br>
+      <span class="comment">&lt;!-- Version: 2.0 --&gt;</span>
+    </div>
+  </div>
+
+  <div class="section-title">5. Commenting Out Code - Debugging Trick</div>
+  <div class="section-inner">
+    <p>If some code is causing errors, you can "comment it out" instead of deleting. This is called debugging.</p>
+    
+    <h3>Before Commenting:</h3>
+    <div class="code-box">
+      &lt;p&gt;This will show&lt;/p&gt;<br>
+      &lt;p&gt;This is buggy code&lt;/p&gt;<br>
+      &lt;p&gt;This will also show&lt;/p&gt;
+    </div>
+    
+    <h3>After Commenting Out:</h3>
+    <div class="code-box">
+      &lt;p&gt;This will show&lt;/p&gt;<br>
+      <span class="comment">&lt;!-- &lt;p&gt;This is buggy code&lt;/p&gt; --&gt;</span><br>
+      &lt;p&gt;This will also show&lt;/p&gt;
+    </div>
+    
+    <div class="output-box">
+      <div class="output-label">OUTPUT:</div>
+      <p style="margin: 4px 0; color: #e2e8f0;">This will show</p>
+      <p style="margin: 4px 0; color: #e2e8f0;">This will also show</p>
+    </div>
+    
+    <div class="good">
+      <b>✓ Pro Tip:</b> Comment out code instead of deleting. If you need it later, just remove <code>&lt;!--</code> and <code>--&gt;</code>
+    </div>
+  </div>
+
+  <div class="section-title">6. Common Mistakes with Comments</div>
+  <div class="section-inner">
+    <div class="table-wrapper">
+      <table>
+        <tr><th>Mistake</th><th>Wrong Code</th><th>Problem</th></tr>
+        <tr>
+          <td>Space in syntax</td>
+          <td><code>&lt;! -- Comment -- &gt;</code></td>
+          <td>Space after ! breaks it</td>
+        </tr>
+        <tr>
+          <td>Nested comments</td>
+          <td><code>&lt;!-- &lt;!-- Nested --&gt; --&gt;</code></td>
+          <td>Comments inside comments don't work</td>
+        </tr>
+        <tr>
+          <td>Forgetting to close</td>
+          <td><code>&lt;!-- Comment</code></td>
+          <td>Rest of page becomes comment</td>
+        </tr>
+        <tr>
+          <td>Using // or /* */</td>
+          <td><code>// HTML Comment</code></td>
+          <td>That is for CSS/JS, not HTML</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="warning">
+      <b>✗ Warning:</b> Never put passwords, API keys, or sensitive data in comments. Anyone can see source code with Ctrl+U.
+    </div>
+  </div>
+
+  <div class="section-title">7. Comments vs Other Languages</div>
+  <div class="section-inner">
+    <p>Different languages use different comment syntax:</p>
+    
+    <div class="table-wrapper">
+      <table>
+        <tr><th>Language</th><th>Single Line</th><th>Multi Line</th></tr>
+        <tr><td><strong>HTML</strong></td><td><code>&lt;!-- Comment --&gt;</code></td><td><code>&lt;!-- Multi --&gt;</code></td></tr>
+        <tr><td><strong>CSS</strong></td><td><code>/* Comment */</code></td><td><code>/* Multi */</code></td></tr>
+        <tr><td><strong>JavaScript</strong></td><td><code>// Comment</code></td><td><code>/* Multi */</code></td></tr>
+        <tr><td><strong>Python</strong></td><td><code># Comment</code></td><td><code>""" Multi """</code></td></tr>
+      </table>
+    </div>
+    
+    <div class="note">
+      <b>Remember:</b> In HTML files, always use <code>&lt;!-- --&gt;</code> even if you write CSS or JS inside. But inside <code>&lt;style&gt;</code> use <code>/* */</code> and inside <code>&lt;script&gt;</code> use <code>//</code>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">COLOLIST</div>
+  <div>© 2026 COLOLIST · HTML Tutorial</div>
+</footer>
+
+</body>
+</html>
