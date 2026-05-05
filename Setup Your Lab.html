@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to HTML</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #0f172a; font-size: 13px; color: #e2e8f0; line-height: 1.6; }
+  
+  header {
+    background: #1a1a2e; color: white;
+    padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px;
+    border-bottom: 1px solid #334155;
+  }
+  header .logo { font-weight: bold; color: #7ec8e3; font-size: 14px; }
+  
+  .nav-bar {
+    background: #1e293b; border-bottom: 1px solid #334155;
+    padding: 6px 10px; display: flex; justify-content: center; align-items: center;
+  }
+  .nav-bar .title { font-weight: bold; font-size: 15px; text-align: center; color: #38bdf8; }
+  
+  .container { padding: 10px; max-width: 480px; margin: 0 auto; }
+  
+  .section-title {
+    background: #334155; color: #7dd3fc; padding: 6px 10px;
+    font-size: 13px; font-weight: bold; border-radius: 3px 3px 0 0;
+  }
+  .section-inner {
+    background: #1e293b; border: 1px solid #334155; border-top: none;
+    padding: 10px; margin-bottom: 10px; border-radius: 0 0 3px 3px;
+  }
+  
+  h3 { font-size: 14px; color: #38bdf8; margin: 10px 0 6px; font-weight: bold; }
+  p { margin-bottom: 8px; font-size: 12px; color: #cbd5e1; }
+  
+  .step-box {
+    background: #0f172a; border-left: 3px solid #0ea5e9;
+    padding: 8px; margin: 8px 0; border-radius: 2px;
+  }
+  .step-num {
+    background: #0ea5e9; color: #000; display: inline-block;
+    width: 20px; height: 20px; text-align: center; border-radius: 50%;
+    font-weight: bold; font-size: 11px; line-height: 20px; margin-right: 6px;
+  }
+  
+  .table-wrapper { overflow-x: auto; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 300px; }
+  th { background: #334155; color: #f1f5f9; padding: 5px 6px; text-align: left; font-weight: 600; }
+  td { border: 1px solid #334155; padding: 5px 6px; background: #1e293b; color: #cbd5e1; }
+  
+  code {
+    background: #0f172a; padding: 1px 5px; border-radius: 2px;
+    font-family: 'Courier New', monospace; font-size: 11px;
+    word-break: break-word; border: 1px solid #334155; color: #f472b6;
+  }
+  
+  .note { background: #1e3a5f; border-left: 3px solid #0ea5e9; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #bae6fd; }
+  
+  .example {
+    background: #0f172a; border: 1px solid #334155;
+    padding: 8px; margin: 8px 0; border-radius: 3px;
+  }
+  .example-title { color: #7dd3fc; font-size: 11px; font-weight: bold; margin-bottom: 5px; }
+  
+  footer { 
+    background: #1a1a2e; color: #94a3b8; text-align: center; 
+    padding: 8px; font-size: 11px; margin-top: 20px; border-top: 1px solid #334155;
+  }
+  footer .footer-logo { color: #7ec8e3; font-weight: bold; font-size: 14px; margin-bottom: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">COLOLIST</div>
+  <div>HTML Tutorial</div>
+</header>
+
+<div class="nav-bar">
+  <div class="title">Introduction to HTML</div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">1. What is HTML?</div>
+  <div class="section-inner">
+    <p><strong>HTML</strong> stands for <code>HyperText Markup Language</code>.</p>
+    <p>It is the standard language used to create and structure web pages. Every website you see on the internet is built using HTML.</p>
+    <div class="note">
+      <b>Note:</b> HTML is not a programming language. It is a markup language that tells the browser how to display content.
+    </div>
+  </div>
+
+  <div class="section-title">2. How Does the Web Work?</div>
+  <div class="section-inner">
+    <p>When you open a website, this happens behind the scenes:</p>
+    
+    <div class="step-box">
+      <span class="step-num">1</span>
+      <strong>You type a URL</strong> like <code>google.com</code> in your browser.
+    </div>
+    
+    <div class="step-box">
+      <span class="step-num">2</span>
+      <strong>Browser sends a request</strong> to the web server where the website is stored.
+    </div>
+    
+    <div class="step-box">
+      <span class="step-num">3</span>
+      <strong>Server sends back HTML files</strong> along with CSS and JavaScript.
+    </div>
+    
+    <div class="step-box">
+      <span class="step-num">4</span>
+      <strong>Browser reads the HTML</strong> and displays the web page on your screen.
+    </div>
+  </div>
+
+  <div class="section-title">3. Role of HTML in Web Development</div>
+  <div class="section-inner">
+    <p>HTML is the <strong>skeleton of every website</strong>. It defines the structure and content.</p>
+    
+    <h3>What HTML Does:</h3>
+    <p>✅ <strong>Structure:</strong> Creates headings, paragraphs, lists, tables</p>
+    <p>✅ <strong>Content:</strong> Adds text, images, videos, links</p>
+    <p>✅ <strong>Forms:</strong> Creates input fields, buttons, dropdowns</p>
+    <p>✅ <strong>Semantics:</strong> Tags like <code>&lt;header&gt;</code> <code>&lt;footer&gt;</code> <code>&lt;article&gt;</code> give meaning</p>
+    
+    <div class="note">
+      <b>Important:</b> HTML handles structure only. For styling we use CSS, and for functionality we use JavaScript.
+    </div>
+  </div>
+
+  <div class="section-title">4. HTML, CSS & JavaScript - The Web Trio</div>
+  <div class="section-inner">
+    <div class="table-wrapper">
+      <table>
+        <tr><th>Technology</th><th>Role</th><th>Example</th></tr>
+        <tr><td><strong>HTML</strong></td><td>Structure</td><td>Skeleton of page</td></tr>
+        <tr><td><strong>CSS</strong></td><td>Styling</td><td>Colors, fonts, layout</td></tr>
+        <tr><td><strong>JavaScript</strong></td><td>Functionality</td><td>Click events, animations</td></tr>
+      </table>
+    </div>
+    <p>Think of it like a human body: HTML is the skeleton, CSS is the skin/clothes, JavaScript is the brain.</p>
+  </div>
+
+  <div class="section-title">5. Basic HTML Example</div>
+  <div class="section-inner">
+    <p>Here is a simple HTML page structure:</p>
+    <div class="example">
+      <div class="example-title">Example: Basic HTML</div>
+      <code>
+        &lt;!DOCTYPE html&gt;<br>
+        &lt;html&gt;<br>
+        &lt;head&gt;<br>
+        &nbsp;&nbsp;&lt;title&gt;My First Page&lt;/title&gt;<br>
+        &lt;/head&gt;<br>
+        &lt;body&gt;<br>
+        &nbsp;&nbsp;&lt;h1&gt;Hello World&lt;/h1&gt;<br>
+        &nbsp;&nbsp;&lt;p&gt;This is my first website.&lt;/p&gt;<br>
+        &lt;/body&gt;<br>
+        &lt;/html&gt;
+      </code>
+    </div>
+    <p><strong>Output:</strong> Browser will display "Hello World" as a heading and "This is my first website" as a paragraph.</p>
+  </div>
+
+  <div class="section-title">6. Why Learn HTML?</div>
+  <div class="section-inner">
+    <p>✅ <strong>Foundation:</strong> You cannot build websites without HTML</p>
+    <p>✅ <strong>Easy to Learn:</strong> Simple tags, beginner friendly</p>
+    <p>✅ <strong>Career:</strong> First step to become a web developer</p>
+    <p>✅ <strong>Control:</strong> Build your own blog, portfolio, or business site</p>
+    
+    <div class="note">
+      <b>Fun Fact:</b> The first website ever created in 1991 is still online at info.cern.ch. It was built using only HTML!
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">COLOLIST</div>
+  <div>© 2026 COLOLIST · HTML Tutorial</div>
+</footer>
+
+</body>
+</html>
