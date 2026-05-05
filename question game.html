@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<!--html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Quiz 1000+</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}
+.container{width:100%;max-width:600px;background:rgba(30,41,59,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);padding:25px 20px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+h1{text-align:center;background:linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px;font-size:1.8rem;font-weight:700;letter-spacing:-0.5px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;background:rgba(15,23,42,0.6);padding:15px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.05)}
+.stats div{text-align:center;font-size:12px;color:#94a3b8}
+.stats div span{display:block;font-size:18px;font-weight:700;color:#fff;margin-top:3px}
+#score.negative{color:#ef4444}
+.progress-bar{width:100%;height:6px;background:rgba(15,23,42,0.6);border-radius:10px;margin-bottom:20px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg, #38bdf8, #818cf8);width:0%;transition:width 0.3s ease}
+#question{font-size:1.15rem;margin-bottom:20px;line-height:1.5;min-height:50px;font-weight:500;color:#e2e8f0}
+.option{background:rgba(51,65,85,0.5);padding:16px 18px;margin:12px 0;border-radius:12px;border:2px solid rgba(71,85,105,0.5);cursor:pointer;transition:all 0.3s ease;font-size:15px;font-weight:500;word-wrap:break-word;position:relative;overflow:hidden}
+.option:before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:0.5s}
+.option:hover{border-color:#38bdf8;transform:translateY(-2px);box-shadow:0 5px 15px rgba(56,189,248,0.2)}
+.option:hover:before{left:100%}
+.option:active{transform:scale(0.98)}
+.option.correct{background:linear-gradient(135deg, #059669, #10b981);border-color:#10b981;animation:pulse 0.5s}
+.option.wrong{background:linear-gradient(135deg, #dc2626, #ef4444);border-color:#ef4444;animation:shake 0.5s}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+button{width:100%;padding:16px;background:linear-gradient(135deg, #2563eb, #4f46e5);border:none;color:#fff;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(37,99,235,0.3)}
+button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}
+button:active{transform:scale(0.98)}
+.hidden{display:none}
+#result{text-align:center;padding:20px 0}
+#result h2{font-size:1.8rem;margin-bottom:15px;background:linear-gradient(90deg, #38bdf8, #818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#final{font-size:1.1rem;margin:20px 0;line-height:1.8;color:#cbd5e1}
+#start{text-align:center;padding:30px 0}
+#start button{font-size:18px;padding:18px}
+.badge{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:15px}
+@media (max-width:480px){
+.container{padding:20px 15px}
+h1{font-size:1.5rem}
+#question{font-size:1.05rem}
+.option{font-size:14px;padding:14px}
+.stats{gap:5px;padding:12px 8px}
+.stats div span{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>HTML Quiz 1000+</h1>
+
+<div id="start">
+<div class="badge">⚡ 1000 Questions</div>
+<p style="color:#94a3b8;margin-bottom:25px;line-height:1.6">HTML ka mega test. Random questions, no repeat. Minus marking on hai.</p>
+<button onclick="startQuiz()">🚀 Start Quiz</button>
+</div>
+
+<div id="quiz" class="hidden">
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+<div class="stats">
+<div>Score<span id="score">0</span></div>
+<div>Correct<span id="correct">0</span></div>
+<div>Wrong<span id="wrong">0</span></div>
+</div>
+<h3 id="question"></h3>
+<div id="options"></div>
+</div>
+
+<div id="result" class="hidden">
+<h2>🎉 Quiz Complete!</h2>
+<p id="final"></p>
+<button onclick="location.reload()">🔄 Play Again</button>
+</div>
+</div>
+
+<script>
+const baseQuestions = [
+["HTML ka full form kya hai?","HyperText Markup Language","HighText Machine Language","HyperTabular Markup Language","None",0,"easy"],
+["HTML ko kisne banaya?","Tim Berners-Lee","Brendan Eich","James Gosling","Dennis Ritchie",0,"easy"],
+["Paragraph ke liye kaunsa tag?","&lt;p&gt;","&lt;para&gt;","&lt;pg&gt;","&lt;text&gt;",0,"easy"],
+["Link banane ka tag?","&lt;a&gt;","&lt;link&gt;","&lt;href&gt;","&lt;url&gt;",0,"easy"],
+["Image lagane ka tag?","&lt;img&gt;","&lt;image&gt;","&lt;pic&gt;","&lt;src&gt;",0,"easy"],
+["Sabse bada heading tag?","&lt;h1&gt;","&lt;h6&gt;","&lt;head&gt;","&lt;header&gt;",0,"easy"],
+["Line break ke liye?","&lt;br&gt;","&lt;lb&gt;","&lt;break&gt;","&lt;newline&gt;",0,"easy"],
+["Unordered List banane ka tag?","&lt;ul&gt;","&lt;list&gt;","&lt;ol&gt;","&lt;li&gt;",0,"easy"],
+["Table row ka tag?","&lt;tr&gt;","&lt;td&gt;","&lt;th&gt;","&lt;table&gt;",0,"easy"],
+["Form banane ka tag?","&lt;form&gt;","&lt;input&gt;","&lt;get&gt;","&lt;post&gt;",0,"easy"],
+["input type='email' kya karta hai?","Email validate karta","Password chupata","Number leta","Date deta",0,"medium"],
+["Dropdown ke liye tag?","&lt;select&gt;","&lt;dropdown&gt;","&lt;option&gt;","&lt;list&gt;",0,"medium"],
+["Checkbox banane ke liye?","type='checkbox'","type='check'","type='box'","&lt;checkbox&gt;",0,"medium"],
+["Video chalane ka tag?","&lt;video&gt;","&lt;media&gt;","&lt;movie&gt;","&lt;mp4&gt;",0,"medium"],
+["Canvas ka use?","Graphics draw karna","Video chalana","Audio chalana","Text likhna",0,"hard"],
+["Semantic tag kaunsa hai?","&lt;article&gt;","&lt;div&gt;","&lt;span&gt;","&lt;b&gt;",0,"medium"],
+["HTML5 me naya input type?","date","text","password","radio",0,"medium"],
+["Meta tag kaha likhte?","&lt;head&gt; me","&lt;body&gt; me","&lt;html&gt; me","Kahi bhi",0,"easy"],
+["Comment kaise likhte?","&lt;!-- comment --&gt;","// comment","/* comment */","# comment",0,"easy"],
+["Required attribute ka kaam?","Field khali nahi chod sakte","Field hide karna","Field disable karna","Kuch nahi",0,"medium"],
+["LocalStorage kya hai?","Browser me data save karna","Server pe data","Cookie delete karna","Cache clear karna",0,"hard"],
+["WebSocket kya hai?","2-way communication","1-way","No connection","Database",0,"hard"],
+["SVG ka full form?","Scalable Vector Graphics","Simple Vector","Super Video","None",0,"hard"],
+["Attribute kya hota hai?","Tag ko extra info dena","Naya tag","CSS property","JS function",0,"easy"],
+["<!DOCTYPE html> kyu likhte?","Browser ko HTML5 batane","CSS link karne","JS chalane","Title dene",0,"medium"],
+["Button banane ka tag?","&lt;button&gt;","&lt;btn&gt;","&lt;input type='button'&gt;","Both A & C",3,"easy"],
+["Text bold karne ka tag?","&lt;b&gt;","&lt;bold&gt;","&lt;strong&gt;","Both A & C",3,"easy"],
+["Italic text ke liye?","&lt;i&gt;","&lt;italic&gt;","&lt;em&gt;","Both A & C",3,"easy"],
+["Underline ke liye?","&lt;u&gt;","&lt;underline&gt;","&lt;line&gt;","&lt;ins&gt;",0,"easy"],
+["Horizontal line ka tag?","&lt;hr&gt;","&lt;line&gt;","&lt;h-line&gt;","&lt;border&gt;",0,"easy"],
+["Table data cell ka tag?","&lt;td&gt;","&lt;tr&gt;","&lt;th&gt;","&lt;cell&gt;",0,"easy"],
+["Table header cell ka tag?","&lt;th&gt;","&lt;td&gt;","&lt;head&gt;","&lt;header&gt;",0,"easy"],
+["Textarea ka use?","Multi-line text input","Single line","Password","Number",0,"medium"],
+["Radio button group?","same name attribute","same id","same class","same value",0,"medium"],
+["CSS link karne ka tag?","&lt;link&gt;","&lt;style&gt;","&lt;css&gt;","&lt;script&gt;",0,"medium"],
+["JavaScript add karne ka tag?","&lt;script&gt;","&lt;js&gt;","&lt;javascript&gt;","&lt;code&gt;",0,"easy"],
+["Iframe ka use?","Dusri website embed karna","Image dikhana","Video chalana","Link banana",0,"hard"],
+["Audio chalane ka tag?","&lt;audio&gt;","&lt;sound&gt;","&lt;music&gt;","&lt;mp3&gt;",0,"medium"],
+["Placeholder attribute kya karta?","Input me hint text dikhata","Value set karta","Name deta","Type batata",0,"medium"],
+["Div tag kya hai?","Container block","Inline element","Text tag","Form tag",0,"easy"]
+];
+
+function shuffleArray(array) {
+  let arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+let questions = [];
+for(let i=0;i<1000;i++){
+  let b = baseQuestions[i % baseQuestions.length];
+  let optsWithIndex = [
+    {text: b[1], isCorrect: b[5] === 0},
+    {text: b[2], isCorrect: b[5] === 1},
+    {text: b[3], isCorrect: b[5] === 2},
+    {text: b[4], isCorrect: b[5] === 3}
+  ];
+  let shuffled = shuffleArray(optsWithIndex);
+  let newAnsIndex = shuffled.findIndex(item => item.isCorrect);
+  questions.push({
+    q: b[0],
+    opts: shuffled.map(item => item.text),
+    ans: newAnsIndex,
+    diff: b[6]
+  });
+}
+
+questions = shuffleArray(questions);
+
+let i=0, score=0, correct=0, wrong=0;
+
+function startQuiz(){
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  loadQ();
+}
+
+function loadQ(){
+  let q = questions[i];
+  // YAHAN CHANGE KIYA: Q1, Q2 jaisa number question ke saath
+  document.getElementById("question").innerText = `${i+1}. ${q.q}`;
+
+  let progress = ((i+1)/questions.length)*100;
+  document.getElementById("progressFill").style.width = progress + "%";
+
+  let html="";
+  q.opts.forEach((opt,index)=>{
+    html += `<div class="option" onclick="check(${index})">${opt}</div>`;
+  });
+  document.getElementById("options").innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function check(ans){
+  let q = questions[i];
+  let opts = document.querySelectorAll(".option");
+  opts.forEach(o=>o.style.pointerEvents="none");
+  let plus = q.diff=="easy"?5 : q.diff=="medium"?10 : 20;
+  let minus = q.diff=="easy"?2 : q.diff=="medium"?5 : 10;
+
+  if(ans === q.ans){
+    opts[ans].classList.add("correct");
+    score += plus;
+    correct++;
+  } else {
+    opts[ans].classList.add("wrong");
+    opts[q.ans].classList.add("correct");
+    score -= minus;
+    wrong++;
+  }
+
+  const scoreEl = document.getElementById("score");
+  scoreEl.innerText = score;
+  scoreEl.classList.toggle("negative", score < 0);
+
+  document.getElementById("correct").innerText = correct;
+  document.getElementById("wrong").innerText = wrong;
+
+  setTimeout(()=>{
+    i++;
+    if(i >= questions.length){
+      showResult();
+    } else {
+      loadQ();
+    }
+  },900);
+}
+
+function showResult(){
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+  let percent = Math.round((correct/questions.length)*100);
+  let msg = percent >= 80? "🏆 Expert Level!" : percent >= 60? "🔥 Good Job!" : percent >= 40? "💪 Practice More" : "📚 Keep Learning";
+  document.getElementById("final").innerHTML =
+    `${msg}<br><br>Total Score: <strong>${score}</strong><br>Correct: <strong>${correct}/${questions.length}</strong><br>Wrong: <strong>${wrong}</strong><br>Accuracy: <strong>${percent}%</strong>`;
+}
+</script>
+</body>
+</html-->
+
+
+
+
+<!DOCTYPE html>
+<!--html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Quiz 1000+</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}
+.container{width:100%;max-width:600px;background:rgba(30,41,59,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);padding:25px 20px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+h1{text-align:center;background:linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px;font-size:1.8rem;font-weight:700;letter-spacing:-0.5px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;background:rgba(15,23,42,0.6);padding:15px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.05)}
+.stats div{text-align:center;font-size:12px;color:#94a3b8}
+.stats div span{display:block;font-size:18px;font-weight:700;color:#fff;margin-top:3px}
+#score.negative{color:#ef4444}
+#timer{color:#fbbf24!important}
+#timer.danger{color:#ef4444!important;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.5}}
+.progress-bar{width:100%;height:6px;background:rgba(15,23,42,0.6);border-radius:10px;margin-bottom:20px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg, #38bdf8, #818cf8);width:0%;transition:width 0.3s ease}
+#question{font-size:1.15rem;margin-bottom:20px;line-height:1.5;min-height:50px;font-weight:500;color:#e2e8f0}
+.option{background:rgba(51,65,85,0.5);padding:16px 18px;margin:12px 0;border-radius:12px;border:2px solid rgba(71,85,105,0.5);cursor:pointer;transition:all 0.3s ease;font-size:15px;font-weight:500;word-wrap:break-word;position:relative;overflow:hidden}
+.option:before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:0.5s}
+.option:hover{border-color:#38bdf8;transform:translateY(-2px);box-shadow:0 5px 15px rgba(56,189,248,0.2)}
+.option:hover:before{left:100%}
+.option:active{transform:scale(0.98)}
+.option.correct{background:linear-gradient(135deg, #059669, #10b981);border-color:#10b981;animation:pulse 0.5s}
+.option.wrong{background:linear-gradient(135deg, #dc2626, #ef4444);border-color:#ef4444;animation:shake 0.5s}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+button{width:100%;padding:16px;background:linear-gradient(135deg, #2563eb, #4f46e5);border:none;color:#fff;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(37,99,235,0.3)}
+button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}
+button:active{transform:scale(0.98)}
+.hidden{display:none}
+#result{text-align:center;padding:20px 0}
+#result h2{font-size:1.8rem;margin-bottom:15px;background:linear-gradient(90deg, #38bdf8, #818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#final{font-size:1.1rem;margin:20px 0;line-height:1.8;color:#cbd5e1}
+#start{text-align:center;padding:30px 0}
+#start button{font-size:18px;padding:18px}
+.badge{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:15px}
+@media (max-width:480px){
+.container{padding:20px 15px}
+h1{font-size:1.5rem}
+#question{font-size:1.05rem}
+.option{font-size:14px;padding:14px}
+.stats{gap:5px;padding:12px 8px}
+.stats div span{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>HTML Quiz 1000+</h1>
+
+<div id="start">
+<div class="badge">⚡ 1000 Questions</div>
+<p style="color:#94a3b8;margin-bottom:25px;line-height:1.6">HTML ka mega test. Har question ke liye 30 second. Minus marking on hai.</p>
+<button onclick="startQuiz()">🚀 Start Quiz</button>
+</div>
+
+<div id="quiz" class="hidden">
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+<div class="stats">
+<div>Score<span id="score">0</span></div>
+<div>Correct<span id="correct">0</span></div>
+<div>Wrong<span id="wrong">0</span></div>
+<div>Time<span id="timer">30</span></div>
+</div>
+<h3 id="question"></h3>
+<div id="options"></div>
+</div>
+
+<div id="result" class="hidden">
+<h2>🎉 Quiz Complete!</h2>
+<p id="final"></p>
+<button onclick="location.reload()">🔄 Play Again</button>
+</div>
+</div>
+
+<script>
+const baseQuestions = [
+["HTML ka full form kya hai?","HyperText Markup Language","HighText Machine Language","HyperTabular Markup Language","None",0,"easy"],
+["HTML ko kisne banaya?","Tim Berners-Lee","Brendan Eich","James Gosling","Dennis Ritchie",0,"easy"],
+["Paragraph ke liye kaunsa tag?","&lt;p&gt;","&lt;para&gt;","&lt;pg&gt;","&lt;text&gt;",0,"easy"],
+["Link banane ka tag?","&lt;a&gt;","&lt;link&gt;","&lt;href&gt;","&lt;url&gt;",0,"easy"],
+["Image lagane ka tag?","&lt;img&gt;","&lt;image&gt;","&lt;pic&gt;","&lt;src&gt;",0,"easy"],
+["Sabse bada heading tag?","&lt;h1&gt;","&lt;h6&gt;","&lt;head&gt;","&lt;header&gt;",0,"easy"],
+["Line break ke liye?","&lt;br&gt;","&lt;lb&gt;","&lt;break&gt;","&lt;newline&gt;",0,"easy"],
+["Unordered List banane ka tag?","&lt;ul&gt;","&lt;list&gt;","&lt;ol&gt;","&lt;li&gt;",0,"easy"],
+["Table row ka tag?","&lt;tr&gt;","&lt;td&gt;","&lt;th&gt;","&lt;table&gt;",0,"easy"],
+["Form banane ka tag?","&lt;form&gt;","&lt;input&gt;","&lt;get&gt;","&lt;post&gt;",0,"easy"],
+["input type='email' kya karta hai?","Email validate karta","Password chupata","Number leta","Date deta",0,"medium"],
+["Dropdown ke liye tag?","&lt;select&gt;","&lt;dropdown&gt;","&lt;option&gt;","&lt;list&gt;",0,"medium"],
+["Checkbox banane ke liye?","type='checkbox'","type='check'","type='box'","&lt;checkbox&gt;",0,"medium"],
+["Video chalane ka tag?","&lt;video&gt;","&lt;media&gt;","&lt;movie&gt;","&lt;mp4&gt;",0,"medium"],
+["Canvas ka use?","Graphics draw karna","Video chalana","Audio chalana","Text likhna",0,"hard"],
+["Semantic tag kaunsa hai?","&lt;article&gt;","&lt;div&gt;","&lt;span&gt;","&lt;b&gt;",0,"medium"],
+["HTML5 me naya input type?","date","text","password","radio",0,"medium"],
+["Meta tag kaha likhte?","&lt;head&gt; me","&lt;body&gt; me","&lt;html&gt; me","Kahi bhi",0,"easy"],
+["Comment kaise likhte?","&lt;!-- comment --&gt;","// comment","/* comment */","# comment",0,"easy"],
+["Required attribute ka kaam?","Field khali nahi chod sakte","Field hide karna","Field disable karna","Kuch nahi",0,"medium"],
+["LocalStorage kya hai?","Browser me data save karna","Server pe data","Cookie delete karna","Cache clear karna",0,"hard"],
+["WebSocket kya hai?","2-way communication","1-way","No connection","Database",0,"hard"],
+["SVG ka full form?","Scalable Vector Graphics","Simple Vector","Super Video","None",0,"hard"],
+["Attribute kya hota hai?","Tag ko extra info dena","Naya tag","CSS property","JS function",0,"easy"],
+["<!DOCTYPE html> kyu likhte?","Browser ko HTML5 batane","CSS link karne","JS chalane","Title dene",0,"medium"],
+["Button banane ka tag?","&lt;button&gt;","&lt;btn&gt;","&lt;input type='button'&gt;","Both A & C",3,"easy"],
+["Text bold karne ka tag?","&lt;b&gt;","&lt;bold&gt;","&lt;strong&gt;","Both A & C",3,"easy"],
+["Italic text ke liye?","&lt;i&gt;","&lt;italic&gt;","&lt;em&gt;","Both A & C",3,"easy"],
+["Underline ke liye?","&lt;u&gt;","&lt;underline&gt;","&lt;line&gt;","&lt;ins&gt;",0,"easy"],
+["Horizontal line ka tag?","&lt;hr&gt;","&lt;line&gt;","&lt;h-line&gt;","&lt;border&gt;",0,"easy"],
+["Table data cell ka tag?","&lt;td&gt;","&lt;tr&gt;","&lt;th&gt;","&lt;cell&gt;",0,"easy"],
+["Table header cell ka tag?","&lt;th&gt;","&lt;td&gt;","&lt;head&gt;","&lt;header&gt;",0,"easy"],
+["Textarea ka use?","Multi-line text input","Single line","Password","Number",0,"medium"],
+["Radio button group?","same name attribute","same id","same class","same value",0,"medium"],
+["CSS link karne ka tag?","&lt;link&gt;","&lt;style&gt;","&lt;css&gt;","&lt;script&gt;",0,"medium"],
+["JavaScript add karne ka tag?","&lt;script&gt;","&lt;js&gt;","&lt;javascript&gt;","&lt;code&gt;",0,"easy"],
+["Iframe ka use?","Dusri website embed karna","Image dikhana","Video chalana","Link banana",0,"hard"],
+["Audio chalane ka tag?","&lt;audio&gt;","&lt;sound&gt;","&lt;music&gt;","&lt;mp3&gt;",0,"medium"],
+["Placeholder attribute kya karta?","Input me hint text dikhata","Value set karta","Name deta","Type batata",0,"medium"],
+["Div tag kya hai?","Container block","Inline element","Text tag","Form tag",0,"easy"]
+];
+
+function shuffleArray(array) {
+  let arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+let questions = [];
+for(let i=0;i<1000;i++){
+  let b = baseQuestions[i % baseQuestions.length];
+  let optsWithIndex = [
+    {text: b[1], isCorrect: b[5] === 0},
+    {text: b[2], isCorrect: b[5] === 1},
+    {text: b[3], isCorrect: b[5] === 2},
+    {text: b[4], isCorrect: b[5] === 3}
+  ];
+  let shuffled = shuffleArray(optsWithIndex);
+  let newAnsIndex = shuffled.findIndex(item => item.isCorrect);
+  questions.push({
+    q: b[0],
+    opts: shuffled.map(item => item.text),
+    ans: newAnsIndex,
+    diff: b[6]
+  });
+}
+
+questions = shuffleArray(questions);
+
+let i=0, score=0, correct=0, wrong=0, timeLeft=30, timerInterval;
+
+function startQuiz(){
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  loadQ();
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  timeLeft = 30;
+  const timerEl = document.getElementById("timer");
+  timerEl.innerText = timeLeft;
+  timerEl.classList.remove("danger");
+
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    timerEl.innerText = timeLeft;
+
+    if(timeLeft <= 10){
+      timerEl.classList.add("danger");
+    }
+
+    if(timeLeft <= 0){
+      clearInterval(timerInterval);
+      timeUp();
+    }
+  },1000);
+}
+
+function timeUp(){
+  let q = questions[i];
+  let opts = document.querySelectorAll(".option");
+  opts.forEach(o=>o.style.pointerEvents="none");
+  opts[q.ans].classList.add("correct");
+
+  let minus = q.diff=="easy"?2 : q.diff=="medium"?5 : 10;
+  score -= minus;
+  wrong++;
+
+  const scoreEl = document.getElementById("score");
+  scoreEl.innerText = score;
+  scoreEl.classList.toggle("negative", score < 0);
+  document.getElementById("correct").innerText = correct;
+  document.getElementById("wrong").innerText = wrong;
+
+  setTimeout(()=>{
+    i++;
+    if(i >= questions.length){
+      showResult();
+    } else {
+      loadQ();
+    }
+  },900);
+}
+
+function loadQ(){
+  let q = questions[i];
+  document.getElementById("question").innerText = `${i+1}. ${q.q}`;
+
+  let progress = ((i+1)/questions.length)*100;
+  document.getElementById("progressFill").style.width = progress + "%";
+
+  let html="";
+  q.opts.forEach((opt,index)=>{
+    html += `<div class="option" onclick="check(${index})">${opt}</div>`;
+  });
+  document.getElementById("options").innerHTML = html;
+  window.scrollTo(0,0);
+
+  startTimer();
+}
+
+function check(ans){
+  clearInterval(timerInterval);
+  let q = questions[i];
+  let opts = document.querySelectorAll(".option");
+  opts.forEach(o=>o.style.pointerEvents="none");
+  let plus = q.diff=="easy"?5 : q.diff=="medium"?10 : 20;
+  let minus = q.diff=="easy"?2 : q.diff=="medium"?5 : 10;
+
+  if(ans === q.ans){
+    opts[ans].classList.add("correct");
+    score += plus;
+    correct++;
+  } else {
+    opts[ans].classList.add("wrong");
+    opts[q.ans].classList.add("correct");
+    score -= minus;
+    wrong++;
+  }
+
+  const scoreEl = document.getElementById("score");
+  scoreEl.innerText = score;
+  scoreEl.classList.toggle("negative", score < 0);
+
+  document.getElementById("correct").innerText = correct;
+  document.getElementById("wrong").innerText = wrong;
+
+  setTimeout(()=>{
+    i++;
+    if(i >= questions.length){
+      showResult();
+    } else {
+      loadQ();
+    }
+  },900);
+}
+
+function showResult(){
+  clearInterval(timerInterval);
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+  let percent = Math.round((correct/questions.length)*100);
+  let msg = percent >= 80? "🏆 Expert Level!" : percent >= 60? "🔥 Good Job!" : percent >= 40? "💪 Practice More" : "📚 Keep Learning";
+  document.getElementById("final").innerHTML =
+    `${msg}<br><br>Total Score: <strong>${score}</strong><br>Correct: <strong>${correct}/${questions.length}</strong><br>Wrong: <strong>${wrong}</strong><br>Accuracy: <strong>${percent}%</strong>`;
+}
+</script>
+</body>
+</html-->
+
+
+
+
+
+
+<!DOCTYPE html>
+<!--html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Quiz 1 Lakh+</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}
+.container{width:100%;max-width:600px;background:rgba(30,41,59,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);padding:25px 20px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+h1{text-align:center;background:linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px;font-size:1.8rem;font-weight:700;letter-spacing:-0.5px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;background:rgba(15,23,42,0.6);padding:15px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.05)}
+.stats div{text-align:center;font-size:12px;color:#94a3b8}
+.stats div span{display:block;font-size:18px;font-weight:700;color:#fff;margin-top:3px}
+#score.negative{color:#ef4444}
+#timer{color:#fbbf24!important}
+#timer.danger{color:#ef4444!important;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.5}}
+.progress-bar{width:100%;height:6px;background:rgba(15,23,42,0.6);border-radius:10px;margin-bottom:20px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg, #38bdf8, #818cf8);width:0%;transition:width 0.3s ease}
+#question{font-size:1.15rem;margin-bottom:20px;line-height:1.5;min-height:50px;font-weight:500;color:#e2e8f0}
+.option{background:rgba(51,65,85,0.5);padding:16px 18px;margin:12px 0;border-radius:12px;border:2px solid rgba(71,85,105,0.5);cursor:pointer;transition:all 0.3s ease;font-size:15px;font-weight:500;word-wrap:break-word;position:relative;overflow:hidden}
+.option:before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:0.5s}
+.option:hover{border-color:#38bdf8;transform:translateY(-2px);box-shadow:0 5px 15px rgba(56,189,248,0.2)}
+.option:hover:before{left:100%}
+.option:active{transform:scale(0.98)}
+.option.correct{background:linear-gradient(135deg, #059669, #10b981);border-color:#10b981;animation:pulse 0.5s}
+.option.wrong{background:linear-gradient(135deg, #dc2626, #ef4444);border-color:#ef4444;animation:shake 0.5s}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+button{width:100%;padding:16px;background:linear-gradient(135deg, #2563eb, #4f46e5);border:none;color:#fff;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(37,99,235,0.3)}
+button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}
+button:active{transform:scale(0.98)}
+.hidden{display:none}
+#result{text-align:center;padding:20px 0}
+#result h2{font-size:1.8rem;margin-bottom:15px;background:linear-gradient(90deg, #38bdf8, #818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#final{font-size:1.1rem;margin:20px 0;line-height:1.8;color:#cbd5e1}
+#start{text-align:center;padding:30px 0}
+#start button{font-size:18px;padding:18px}
+.badge{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:15px}
+@media (max-width:480px){
+.container{padding:20px 15px}
+h1{font-size:1.5rem}
+#question{font-size:1.05rem}
+.option{font-size:14px;padding:14px}
+.stats{gap:5px;padding:12px 8px}
+.stats div span{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>HTML Quiz 1,00,000+</h1>
+
+<div id="start">
+<div class="badge">⚡ 1,00,000 Questions</div>
+<p style="color:#94a3b8;margin-bottom:25px;line-height:1.6">The ultimate HTML mega test. 30 seconds per question. Negative marking is on.</p>
+<p style="color:#fbbf24;margin-bottom:25px;font-size:13px">⚠️ Warning: 1 Lakh questions = ~833 hours of gameplay</p>
+<button onclick="startQuiz()">🚀 Start Quiz</button>
+</div>
+
+<div id="quiz" class="hidden">
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+<div class="stats">
+<div>Score<span id="score">0</span></div>
+<div>Correct<span id="correct">0</span></div>
+<div>Wrong<span id="wrong">0</span></div>
+<div>Time<span id="timer">30</span></div>
+</div>
+<h3 id="question"></h3>
+<div id="options"></div>
+</div>
+
+<div id="result" class="hidden">
+<h2>🎉 Quiz Complete!</h2>
+<p id="final"></p>
+<button onclick="location.reload()">🔄 Play Again</button>
+</div>
+</div>
+
+<script>
+const baseQuestions = [
+["What is the full form of HTML?","HyperText Markup Language","HighText Machine Language","HyperTabular Markup Language","None",0,"easy"],
+["Who created HTML?","Tim Berners-Lee","Brendan Eich","James Gosling","Dennis Ritchie",0,"easy"],
+["Which tag is used for paragraphs?","&lt;p&gt;","&lt;para&gt;","&lt;pg&gt;","&lt;text&gt;",0,"easy"],
+["Which tag is used to create a link?","&lt;a&gt;","&lt;link&gt;","&lt;href&gt;","&lt;url&gt;",0,"easy"],
+["Which tag is used to add an image?","&lt;img&gt;","&lt;image&gt;","&lt;pic&gt;","&lt;src&gt;",0,"easy"],
+["Which is the largest heading tag?","&lt;h1&gt;","&lt;h6&gt;","&lt;head&gt;","&lt;header&gt;",0,"easy"],
+["Which tag is used for a line break?","&lt;br&gt;","&lt;lb&gt;","&lt;break&gt;","&lt;newline&gt;",0,"easy"],
+["Which tag creates an unordered list?","&lt;ul&gt;","&lt;list&gt;","&lt;ol&gt;","&lt;li&gt;",0,"easy"],
+["Which tag defines a table row?","&lt;tr&gt;","&lt;td&gt;","&lt;th&gt;","&lt;table&gt;",0,"easy"],
+["Which tag is used to create a form?","&lt;form&gt;","&lt;input&gt;","&lt;get&gt;","&lt;post&gt;",0,"easy"],
+["What does input type='email' do?","Validates email format","Hides password","Accepts numbers","Provides date",0,"medium"],
+["Which tag is used for a dropdown?","&lt;select&gt;","&lt;dropdown&gt;","&lt;option&gt;","&lt;list&gt;",0,"medium"],
+["How do you create a checkbox?","type='checkbox'","type='check'","type='box'","&lt;checkbox&gt;",0,"medium"],
+["Which tag plays video?","&lt;video&gt;","&lt;media&gt;","&lt;movie&gt;","&lt;mp4&gt;",0,"medium"],
+["What is the canvas element used for?","Drawing graphics","Playing video","Playing audio","Writing text",0,"hard"],
+["Which is a semantic tag?","&lt;article&gt;","&lt;div&gt;","&lt;span&gt;","&lt;b&gt;",0,"medium"],
+["Which is a new input type in HTML5?","date","text","password","radio",0,"medium"],
+["Where are meta tags written?","Inside &lt;head&gt;","Inside &lt;body&gt;","Inside &lt;html&gt;","Anywhere",0,"easy"],
+["How do you write a comment?","&lt;!-- comment --&gt;","// comment","/* comment */","# comment",0,"easy"],
+["What does the required attribute do?","Field cannot be left empty","Hides the field","Disables the field","Nothing",0,"medium"],
+["What is LocalStorage?","Store data in browser","Data on server","Delete cookies","Clear cache",0,"hard"],
+["What is WebSocket?","2-way communication","1-way","No connection","Database",0,"hard"],
+["What is the full form of SVG?","Scalable Vector Graphics","Simple Vector","Super Video","None",0,"hard"],
+["What is an attribute?","Extra info for a tag","New tag","CSS property","JS function",0,"easy"],
+["Why do we write <!DOCTYPE html>?","To tell browser it's HTML5","To link CSS","To run JS","To set title",0,"medium"],
+["Which tag creates a button?","&lt;button&gt;","&lt;btn&gt;","&lt;input type='button'&gt;","Both A & C",3,"easy"],
+["Which tag makes text bold?","&lt;b&gt;","&lt;bold&gt;","&lt;strong&gt;","Both A & C",3,"easy"],
+["Which tag is used for italic text?","&lt;i&gt;","&lt;italic&gt;","&lt;em&gt;","Both A & C",3,"easy"],
+["Which tag underlines text?","&lt;u&gt;","&lt;underline&gt;","&lt;line&gt;","&lt;ins&gt;",0,"easy"],
+["Which tag creates a horizontal line?","&lt;hr&gt;","&lt;line&gt;","&lt;h-line&gt;","&lt;border&gt;",0,"easy"],
+["Which tag defines a table data cell?","&lt;td&gt;","&lt;tr&gt;","&lt;th&gt;","&lt;cell&gt;",0,"easy"],
+["Which tag defines a table header cell?","&lt;th&gt;","&lt;td&gt;","&lt;head&gt;","&lt;header&gt;",0,"easy"],
+["What is textarea used for?","Multi-line text input","Single line","Password","Number",0,"medium"],
+["How to group radio buttons?","Same name attribute","Same id","Same class","Same value",0,"medium"],
+["Which tag links CSS?","&lt;link&gt;","&lt;style&gt;","&lt;css&gt;","&lt;script&gt;",0,"medium"],
+["Which tag adds JavaScript?","&lt;script&gt;","&lt;js&gt;","&lt;javascript&gt;","&lt;code&gt;",0,"easy"],
+["What is iframe used for?","Embed another website","Show image","Play video","Create link",0,"hard"],
+["Which tag plays audio?","&lt;audio&gt;","&lt;sound&gt;","&lt;music&gt;","&lt;mp3&gt;",0,"medium"],
+["What does placeholder attribute do?","Shows hint text in input","Sets value","Gives name","Specifies type",0,"medium"],
+["What is a div tag?","Block container","Inline element","Text tag","Form tag",0,"easy"]
+];
+
+function shuffleArray(array) {
+  let arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Generate 1 LAKH questions
+const TOTAL_QUESTIONS = 100000;
+let questions = [];
+for(let i=0;i<TOTAL_QUESTIONS;i++){
+  let b = baseQuestions[i % baseQuestions.length];
+  let optsWithIndex = [
+    {text: b[1], isCorrect: b[5] === 0},
+    {text: b[2], isCorrect: b[5] === 1},
+    {text: b[3], isCorrect: b[5] === 2},
+    {text: b[4], isCorrect: b[5] === 3}
+  ];
+  let shuffled = shuffleArray(optsWithIndex);
+  let newAnsIndex = shuffled.findIndex(item => item.isCorrect);
+  questions.push({
+    q: b[0],
+    opts: shuffled.map(item => item.text),
+    ans: newAnsIndex,
+    diff: b[6]
+  });
+}
+
+questions = shuffleArray(questions);
+
+let i=0, score=0, correct=0, wrong=0, timeLeft=30, timerInterval;
+
+function startQuiz(){
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  loadQ();
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  timeLeft = 30;
+  const timerEl = document.getElementById("timer");
+  timerEl.innerText = timeLeft;
+  timerEl.classList.remove("danger");
+
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    timerEl.innerText = timeLeft;
+
+    if(timeLeft <= 10){
+      timerEl.classList.add("danger");
+    }
+
+    if(timeLeft <= 0){
+      clearInterval(timerInterval);
+      timeUp();
+    }
+  },1000);
+}
+
+function timeUp(){
+  let q = questions[i];
+  let opts = document.querySelectorAll(".option");
+  opts.forEach(o=>o.style.pointerEvents="none");
+  opts[q.ans].classList.add("correct");
+
+  let minus = q.diff=="easy"?2 : q.diff=="medium"?5 : 10;
+  score -= minus;
+  wrong++;
+
+  const scoreEl = document.getElementById("score");
+  scoreEl.innerText = score;
+  scoreEl.classList.toggle("negative", score < 0);
+  document.getElementById("correct").innerText = correct;
+  document.getElementById("wrong").innerText = wrong;
+
+  setTimeout(()=>{
+    i++;
+    if(i >= questions.length){
+      showResult();
+    } else {
+      loadQ();
+    }
+  },900);
+}
+
+function loadQ(){
+  let q = questions[i];
+  document.getElementById("question").innerText = `${(i+1).toLocaleString()}. ${q.q}`;
+
+  let progress = ((i+1)/questions.length)*100;
+  document.getElementById("progressFill").style.width = progress + "%";
+
+  let html="";
+  q.opts.forEach((opt,index)=>{
+    html += `<div class="option" onclick="check(${index})">${opt}</div>`;
+  });
+  document.getElementById("options").innerHTML = html;
+  window.scrollTo(0,0);
+
+  startTimer();
+}
+
+function check(ans){
+  clearInterval(timerInterval);
+  let q = questions[i];
+  let opts = document.querySelectorAll(".option");
+  opts.forEach(o=>o.style.pointerEvents="none");
+  let plus = q.diff=="easy"?5 : q.diff=="medium"?10 : 20;
+  let minus = q.diff=="easy"?2 : q.diff=="medium"?5 : 10;
+
+  if(ans === q.ans){
+    opts[ans].classList.add("correct");
+    score += plus;
+    correct++;
+  } else {
+    opts[ans].classList.add("wrong");
+    opts[q.ans].classList.add("correct");
+    score -= minus;
+    wrong++;
+  }
+
+  const scoreEl = document.getElementById("score");
+  scoreEl.innerText = score;
+  scoreEl.classList.toggle("negative", score < 0);
+
+  document.getElementById("correct").innerText = correct;
+  document.getElementById("wrong").innerText = wrong;
+
+  setTimeout(()=>{
+    i++;
+    if(i >= questions.length){
+      showResult();
+    } else {
+      loadQ();
+    }
+  },900);
+}
+
+function showResult(){
+  clearInterval(timerInterval);
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+  let percent = Math.round((correct/questions.length)*100);
+  let msg = percent >= 80? "🏆 Expert Level!" : percent >= 60? "🔥 Good Job!" : percent >= 40? "💪 Practice More" : "📚 Keep Learning";
+  document.getElementById("final").innerHTML =
+    `${msg}<br><br>Total Score: <strong>${score.toLocaleString()}</strong><br>Correct: <strong>${correct.toLocaleString()}/${questions.length.toLocaleString()}</strong><br>Wrong: <strong>${wrong.toLocaleString()}</strong><br>Accuracy: <strong>${percent}%</strong>`;
+}
+</script>
+</body>
+</html-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Quiz 1000+</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}
+.container{width:100%;max-width:600px;background:rgba(30,41,59,0.7);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);padding:25px 20px;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+h1{text-align:center;background:linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px;font-size:1.8rem;font-weight:700;letter-spacing:-0.5px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;background:rgba(15,23,42,0.6);padding:15px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.05)}
+.stats div{text-align:center;font-size:12px;color:#94a3b8}
+.stats div span{display:block;font-size:18px;font-weight:700;color:#fff;margin-top:3px}
+#score.negative{color:#ef4444}
+#timer{color:#fbbf24!important}
+#timer.danger{color:#ef4444!important;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.5}}
+.progress-bar{width:100%;height:6px;background:rgba(15,23,42,0.6);border-radius:10px;margin-bottom:20px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg, #38bdf8, #818cf8);width:0%;transition:width 0.3s ease}
+#question{font-size:1.15rem;margin-bottom:20px;line-height:1.5;min-height:50px;font-weight:500;color:#e2e8f0}
+.option{background:rgba(51,65,85,0.5);padding:16px 18px;margin:12px 0;border-radius:12px;border:2px solid rgba(71,85,105,0.5);cursor:pointer;transition:all 0.3s ease;font-size:15px;font-weight:500;word-wrap:break-word;position:relative;overflow:hidden}
+.option:before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:0.5s}
+.option:hover{border-color:#38bdf8;transform:translateY(-2px);box-shadow:0 5px 15px rgba(56,189,248,0.2)}
+.option:hover:before{left:100%}
+.option:active{transform:scale(0.98)}
+.option.correct{background:linear-gradient(135deg, #059669, #10b981);border-color:#10b981;animation:pulse 0.5s}
+.option.wrong{background:linear-gradient(135deg, #dc2626, #ef4444);border-color:#ef4444;animation:shake 0.5s}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+button{width:100%;padding:16px;background:linear-gradient(135deg, #2563eb, #4f46e5);border:none;color:#fff;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(37,99,235,0.3)}
+button:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}
+button:active{transform:scale(0.98)}
+.hidden{display:none}
+#result{text-align:center;padding:20px 0}
+#result h2{font-size:1.8rem;margin-bottom:15px;background:linear-gradient(90deg, #38bdf8, #818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+#final{font-size:1.1rem;margin:20px 0;line-height:1.8;color:#cbd5e1}
+#start{text-align:center;padding:30px 0}
+#start button{font-size:18px;padding:18px}
+.badge{display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:15px}
+@media (max-width:480px){
+.container{padding:20px 15px}
+h1{font-size:1.5rem}
+#question{font-size:1.05rem}
+.option{font-size:14px;padding:14px}
+.stats{gap:5px;padding:12px 8px}
+.stats div span{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>HTML Quiz 1000+</h1>
+
+<div id="start">
+<div class="badge">⚡ 1000 Questions</div>
+<p style="color:#94a3b8;margin-bottom:25px;line-height:1.6">The ultimate HTML mega test. 30 seconds per question. Negative marking is on.</p>
+<button onclick="startQuiz()">🚀 Start Quiz</button>
+</div>
+
+<div id="quiz" class="hidden">
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill"></div>
+</div>
+<div class="stats">
+<div>Score<span id="score">0</span></div>
+<div>Correct<span id="correct">0</span></div>
+<div>Wrong<span id="wrong">0</span></div>
+<div>Time<span id="timer">30</span></div>
+</div>
+<h3 id="question"></h3>
+<div id="options"></div>
+</div>
+
+<div id="result" class="hidden">
+<h2>🎉 Quiz Complete!</h2>
+<p id="final"></p>
+<button onclick="location.reload()">🔄 Play Again</button>
+</div>
+</div>
+
+<script>
+const baseQuestions = [
+["What is the full form of HTML?","HyperText Markup Language","HighText Machine Language","HyperTabular Markup Language","None",0,"easy"],
+["Who created HTML?","Tim Berners-Lee","Brendan Eich","James Gosling","Dennis Ritchie",0,"easy"],
+["Which tag is used for paragraphs?","&lt;p&gt;","&lt;para&gt;","&lt;pg&gt;","&lt;text&gt;",0,"easy"],
+["Which tag is used to create a link?","&lt;a&gt;","&lt;link&gt;","&lt;href&gt;","&lt;url&gt;",0,"easy"],
+["Which tag is used to add an image?","&lt;img&gt;","&lt;image&gt;","&lt;pic&gt;","&lt;src&gt;",0,"easy"],
+["Which is the largest heading tag?","&lt;h1&gt;","&lt;h6&gt;","&lt;head&gt;","&lt;header&gt;",0,"easy"],
+["Which tag is used for a line break?","&lt;br&gt;","&lt;lb&gt;","&lt;break&gt;","&lt;newline&gt;",0,"easy"],
+["Which tag creates an unordered list?","&lt;ul&gt;","&lt;list&gt;","&lt;ol&gt;","&lt;li&gt;",0,"easy"],
+["Which tag defines a table row?","&lt;tr&gt;","&lt;td&gt;","&lt;th&gt;","&lt;table&gt;",0,"easy"],
+["Which tag is used to create a form?","&lt;form&gt;","&lt;input&gt;","&lt;get&gt;","&lt;post&gt;",0,"easy"],
+["What does input type='email' do?","Validates email format","Hides password","Accepts numbers","Provides date",0,"medium"],
+["Which tag is used for a dropdown?","&lt;select&gt;","&lt;dropdown&gt;","&lt;option&gt;","&lt;list&gt;",0,"medium"],
+["How do you create a checkbox?","type='checkbox'","type='check'","type='box'","&lt;checkbox&gt;",0,"medium"],
+["Which tag plays video?","&lt;video&gt;","&lt;media&gt;","&lt;movie&gt;","&lt;mp4&gt;",0,"medium"],
+["What is the canvas element used for?","Drawing graphics","Playing video","Playing audio","Writing text",0,"hard"],
+["Which is a semantic tag?","&lt;article&gt;","&lt;div&gt;","&lt;span&gt;","&lt;b&gt;",0,"medium"],
+["Which is a new input type in HTML5?","date","text","password","radio",0,"medium"],
+["Where are meta tags written?","Inside &lt;head&gt;","Inside &lt;body&gt;","Inside &lt;html&gt;","Anywhere",0,"easy"],
+["How do you write a comment?","&lt;!-- comment --&gt;","// comment","/* comment */","# comment",0,"easy"],
+["What does the required attribute do?","Field cannot be left empty","Hides the field","Disables the field","Nothing",0,"medium"],
+["What is LocalStorage?","Store data in browser","Data on server","Delete cookies","Clear cache",0,"hard"],
+["What is WebSocket?","2-way communication","1-way","No connection","Database",0,"hard"],
+["What is the full form of SVG?","Scalable Vector Graphics","Simple Vector","Super Video","None",0,"hard"],
+["What is an attribute?","Extra info for a tag","New tag","CSS property","JS function",0,"easy"],
+["Why do we write <!DOCTYPE html>?","To tell browser it's HTML5","To link CSS","To run JS","To set title",0,"medium"],
+["Which tag creates a button?","&lt;button&gt;","&lt;btn&gt;","&lt;input type='button'&gt;","Both A & C",3,"easy"],
+["Which tag makes text bold?","&lt;b&gt;","&lt;bold&gt;","&lt;strong&gt;","Both A & C",3,"easy"],
+["Which tag is used for italic text?","&lt;i&gt;","&lt;italic&gt;","&lt;em&gt;","Both A & C",3,"easy"],
+["Which tag underlines text?","&lt;u&gt;","&lt;underline&gt;","&lt;line&gt;","&lt;ins&gt;",0,"easy"],
+["Which tag creates a horizontal line?","&lt;hr&gt;","&lt;line&gt;","&lt;h-line&gt;","&lt;border&gt;",0,"easy"],
+["Which tag defines a table data cell?","&lt;td&gt;","&lt;tr&gt;","&lt;th&gt;","&lt;cell&gt;",0,"easy"],
+["Which tag defines a table header cell?","&lt;th&gt;","&lt;td&gt;","&lt;head&gt;","&lt;header&gt;",0,"easy"],
+["What is textarea used for?","Multi-line text input","Single line","Password","Number",0,"medium"],
+["How to group radio buttons?","Same name attribute","Same id","Same class","Same value",0,"medium"],
+["Which tag links CSS?","&lt;link&gt;","&lt;style&gt;","&lt;css&gt;","&lt;script&gt;",0,"medium"],
+["Which tag adds JavaScript?","&lt;script&gt;","&lt;js&gt;","&lt;javascript&gt;","&lt;code&gt;",0,"easy"],
+["What is iframe used for?","Embed another website","Show image","Play video","Create link",0,"hard"],
+["Which tag plays audio?","&lt;audio&gt;","&lt;sound&gt;","&lt;music&gt;","&lt;mp3&gt;",0,"medium"],
+["What does placeholder attribute do?","Shows hint text in input","Sets value","Gives name","Specifies type",0,"medium"],
+["What is a div tag?","Block container","Inline element","Text tag","Form tag",0,"easy"]
+];
+
+function shuffleArray(array) {
+  let arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+let questions = [];
+for(let i=0;i<1000;i++){
+  let b = baseQuestions[i % baseQuestions.length];
+  let optsWithIndex = [
+    {text: b[1], isCorrect: b[5] === 0},
+    {text: b[2], isCorrect: b[5] === 1},
+    {text: b[3], isCorrect: b[5] === 2},
+    {text: b[4], isCorrect: b[5] === 3}
+  ];
+  let shuffled = shuffleArray(optsWithIndex);
+  let newAnsIndex = shuffled.findIndex(item => item.isCorrect);
+  questions.push({
+    q: b[0],
+    opts: shuffled.map(item => item.text),
+    ans: newAnsIndex,
+    diff: b[6]
+  });
+}
+
+questions = shuffleArray(questions);
+
+let i=0, score=0, correct=0, wrong=0, timeLeft=30, timerInterval;
+
+function startQuiz(){
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  loadQ();
+}
+
+function startTimer(){
+  clearInterval(timerInterval);
+  timeLeft = 30;
+  const timerEl = document.getElementById("timer");
+  timerEl.innerText = timeLeft;
+  timerEl.classList.remove("danger");
+
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    timerEl.innerText = timeLeft;
+
+    if(timeLeft <= 10){
+      timerEl.classList.add("danger");
+    }
+
+    if(timeLeft <= 0){
+      clearInterval(timerInterval);
+      timeUp();
+    }
+  },1000);
+}
+
+function timeUp(){
+  let q = questions[i];
+  let opts = document.querySelectorAll(".option");
+  opts.forEach(o=>o.style.pointerEvents="none");
+  opts[q.ans].classList.add("correct");
+
+  let minus = q.diff=="easy"?2 : q.diff=="medium"?5 : 10;
+  score -= minus;
+  wrong++;
+
+  const scoreEl = document.getElementById("score");
+  scoreEl.innerText = score;
+  scoreEl.classList.toggle("negative", score < 0);
+  document.getElementById("correct").innerText = correct;
+  document.getElementById("wrong").innerText = wrong;
+
+  setTimeout(()=>{
+    i++;
+    if(i >= questions.length){
+      showResult();
+    } else {
+      loadQ();
+    }
+  },900);
+}
+
+function loadQ(){
+  let q = questions[i];
+  document.getElementById("question").innerText = `${i+1}. ${q.q}`;
+
+  let progress = ((i+1)/questions.length)*100;
+  document.getElementById("progressFill").style.width = progress + "%";
+
+  let html="";
+  q.opts.forEach((opt,index)=>{
+    html += `<div class="option" onclick="check(${index})">${opt}</div>`;
+  });
+  document.getElementById("options").innerHTML = html;
+  window.scrollTo(0,0);
+
+  startTimer();
+}
+
+function check(ans){
+  clearInterval(timerInterval);
+  let q = questions[i];
+  let opts = document.querySelectorAll(".option");
+  opts.forEach(o=>o.style.pointerEvents="none");
+  let plus = q.diff=="easy"?5 : q.diff=="medium"?10 : 20;
+  let minus = q.diff=="easy"?2 : q.diff=="medium"?5 : 10;
+
+  if(ans === q.ans){
+    opts[ans].classList.add("correct");
+    score += plus;
+    correct++;
+  } else {
+    opts[ans].classList.add("wrong");
+    opts[q.ans].classList.add("correct");
+    score -= minus;
+    wrong++;
+  }
+
+  const scoreEl = document.getElementById("score");
+  scoreEl.innerText = score;
+  scoreEl.classList.toggle("negative", score < 0);
+
+  document.getElementById("correct").innerText = correct;
+  document.getElementById("wrong").innerText = wrong;
+
+  setTimeout(()=>{
+    i++;
+    if(i >= questions.length){
+      showResult();
+    } else {
+      loadQ();
+    }
+  },900);
+}
+
+function showResult(){
+  clearInterval(timerInterval);
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+  let percent = Math.round((correct/questions.length)*100);
+  let msg = percent >= 80? "🏆 Expert Level!" : percent >= 60? "🔥 Good Job!" : percent >= 40? "💪 Practice More" : "📚 Keep Learning";
+  document.getElementById("final").innerHTML =
+    `${msg}<br><br>Total Score: <strong>${score}</strong><br>Correct: <strong>${correct}/${questions.length}</strong><br>Wrong: <strong>${wrong}</strong><br>Accuracy: <strong>${percent}%</strong>`;
+}
+</script>
+</body>
+</html>
