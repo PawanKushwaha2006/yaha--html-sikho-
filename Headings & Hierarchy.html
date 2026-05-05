@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headings & Hierarchy in HTML</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #0f172a; font-size: 13px; color: #e2e8f0; line-height: 1.6; }
+  
+  header {
+    background: #1a1a2e; color: white;
+    padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px;
+    border-bottom: 1px solid #334155;
+  }
+  header .logo { font-weight: bold; color: #7ec8e3; font-size: 14px; }
+  
+  .nav-bar {
+    background: #1e293b; border-bottom: 1px solid #334155;
+    padding: 6px 10px; display: flex; justify-content: center; align-items: center;
+  }
+  .nav-bar .title { font-weight: bold; font-size: 15px; text-align: center; color: #38bdf8; }
+  
+  .container { padding: 10px; max-width: 480px; margin: 0 auto; }
+  
+  .section-title {
+    background: #334155; color: #7dd3fc; padding: 6px 10px;
+    font-size: 13px; font-weight: bold; border-radius: 3px 3px 0 0;
+  }
+  .section-inner {
+    background: #1e293b; border: 1px solid #334155; border-top: none;
+    padding: 10px; margin-bottom: 10px; border-radius: 0 0 3px 3px;
+  }
+  
+  h3 { font-size: 14px; color: #38bdf8; margin: 10px 0 6px; font-weight: bold; }
+  p { margin-bottom: 8px; font-size: 12px; color: #cbd5e1; }
+  
+  .heading-demo {
+    background: #0f172a; border-left: 3px solid #0ea5e9;
+    padding: 8px; margin: 8px 0; border-radius: 2px;
+  }
+  .heading-demo h1 { font-size: 18px; color: #f472b6; margin: 3px 0; }
+  .heading-demo h2 { font-size: 16px; color: #f472b6; margin: 3px 0; }
+  .heading-demo h3 { font-size: 14px; color: #f472b6; margin: 3px 0; }
+  .heading-demo h4 { font-size: 13px; color: #f472b6; margin: 3px 0; }
+  .heading-demo h5 { font-size: 12px; color: #f472b6; margin: 3px 0; }
+  .heading-demo h6 { font-size: 11px; color: #f472b6; margin: 3px 0; }
+  
+  .table-wrapper { overflow-x: auto; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 300px; }
+  th { background: #334155; color: #f1f5f9; padding: 5px 6px; text-align: left; font-weight: 600; }
+  td { border: 1px solid #334155; padding: 5px 6px; background: #1e293b; color: #cbd5e1; }
+  
+  code {
+    background: #0f172a; padding: 1px 5px; border-radius: 2px;
+    font-family: 'Courier New', monospace; font-size: 11px;
+    word-break: break-word; border: 1px solid #334155; color: #f472b6;
+  }
+  
+  .note { background: #1e3a5f; border-left: 3px solid #0ea5e9; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #bae6fd; }
+  .warning { background: #4c1d1d; border-left: 3px solid #f87171; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #fecaca; }
+  .good { background: #1e3a1e; border-left: 3px solid #4ade80; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #bbf7d0; }
+  
+  .example {
+    background: #0f172a; border: 1px solid #334155;
+    padding: 8px; margin: 8px 0; border-radius: 3px;
+  }
+  .example-title { color: #7dd3fc; font-size: 11px; font-weight: bold; margin-bottom: 5px; }
+  
+  footer { 
+    background: #1a1a2e; color: #94a3b8; text-align: center; 
+    padding: 8px; font-size: 11px; margin-top: 20px; border-top: 1px solid #334155;
+  }
+  footer .footer-logo { color: #7ec8e3; font-weight: bold; font-size: 14px; margin-bottom: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">COLOLIST</div>
+  <div>HTML Tutorial</div>
+</header>
+
+<div class="nav-bar">
+  <div class="title">Headings & Hierarchy for SEO</div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">1. What are Heading Tags?</div>
+  <div class="section-inner">
+    <p>HTML has 6 levels of headings from <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>. They define the hierarchy and structure of your content.</p>
+    <div class="heading-demo">
+      <h1>&lt;h1&gt; - Main Heading</h1>
+      <h2>&lt;h2&gt; - Section Heading</h2>
+      <h3>&lt;h3&gt; - Sub-section</h3>
+      <h4>&lt;h4&gt; - Sub-sub-section</h4>
+      <h5>&lt;h5&gt; - Minor heading</h5>
+      <h6>&lt;h6&gt; - Smallest heading</h6>
+    </div>
+    <div class="note">
+      <b>Note:</b> <code>&lt;h1&gt;</code> is the biggest and most important. <code>&lt;h6&gt;</code> is the smallest and least important.
+    </div>
+  </div>
+
+  <div class="section-title">2. Why Headings Matter for SEO</div>
+  <div class="section-inner">
+    <p>Search engines like Google use headings to understand your page structure and topic.</p>
+    <p>✅ <strong>Google crawlers read headings first</strong> to know what the page is about</p>
+    <p>✅ <strong>Better user experience</strong> - Users scan headings to find content quickly</p>
+    <p>✅ <strong>Featured snippets</strong> - Google often picks <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code> for snippets</p>
+    <p>✅ <strong>Accessibility</strong> - Screen readers use headings to navigate</p>
+    
+    <div class="warning">
+      <b>Warning:</b> Never use headings just to make text bigger. Use CSS <code>font-size</code> for styling. Headings are for structure, not design.
+    </div>
+  </div>
+
+  <div class="section-title">3. Correct Hierarchy Rules</div>
+  <div class="section-inner">
+    <h3>Rule 1: Only ONE &lt;h1&gt; per page</h3>
+    <p><code>&lt;h1&gt;</code> is your main page title. It tells Google the primary topic. Multiple <code>&lt;h1&gt;</code> tags confuse search engines.</p>
+    
+    <h3>Rule 2: Follow Logical Order</h3>
+    <p>Never skip levels. Don't jump from <code>&lt;h1&gt;</code> directly to <code>&lt;h4&gt;</code>.</p>
+    
+    <div class="good">
+      <b>✓ Correct Order:</b><br>
+      <code>&lt;h1&gt; Main Topic</code><br>
+      <code>&lt;h2&gt; Section 1</code><br>
+      <code>&lt;h3&gt; Sub-section 1.1</code><br>
+      <code>&lt;h2&gt; Section 2</code>
+    </div>
+    
+    <div class="warning">
+      <b>✗ Wrong Order:</b><br>
+      <code>&lt;h1&gt; Main Topic</code><br>
+      <code>&lt;h4&gt; Section 1</code> - Skipped h2, h3<br>
+      <code>&lt;h2&gt; Section 2</code> - Wrong hierarchy
+    </div>
+  </div>
+
+  <div class="section-title">4. SEO Best Practices for Each Heading</div>
+  <div class="section-inner">
+    <div class="table-wrapper">
+      <table>
+        <tr><th>Tag</th><th>SEO Usage</th><th>Keyword Placement</th></tr>
+        <tr>
+          <td><code>&lt;h1&gt;</code></td>
+          <td>Main page topic. Only 1 per page</td>
+          <td>Primary keyword must be here</td>
+        </tr>
+        <tr>
+          <td><code>&lt;h2&gt;</code></td>
+          <td>Major sections of page</td>
+          <td>Secondary keywords, LSI keywords</td>
+        </tr>
+        <tr>
+          <td><code>&lt;h3&gt;</code></td>
+          <td>Sub-sections under h2</td>
+          <td>Related keywords, long-tail</td>
+        </tr>
+        <tr>
+          <td><code>&lt;h4&gt;-&lt;h6&gt;</code></td>
+          <td>Minor points, rarely used</td>
+          <td>Optional, for deep structure</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">5. Real Example: Blog Post Structure</div>
+  <div class="section-inner">
+    <div class="example">
+      <div class="example-title">Correct SEO Heading Structure:</div>
+      <code>
+        &lt;h1&gt;How to Learn HTML in 2026&lt;/h1&gt;<br>
+        <br>
+        &lt;h2&gt;Why Learn HTML?&lt;/h2&gt;<br>
+        &lt;p&gt;Content...&lt;/p&gt;<br>
+        <br>
+        &lt;h2&gt;HTML Basics for Beginners&lt;/h2&gt;<br>
+        &lt;h3&gt;1. HTML Tags Explained&lt;/h3&gt;<br>
+        &lt;p&gt;Content...&lt;/p&gt;<br>
+        &lt;h3&gt;2. HTML Attributes&lt;/h3&gt;<br>
+        &lt;p&gt;Content...&lt;/p&gt;<br>
+        <br>
+        &lt;h2&gt;Advanced HTML Concepts&lt;/h2&gt;<br>
+        &lt;h3&gt;Forms in HTML&lt;/h3&gt;<br>
+        &lt;h4&gt;Input Types&lt;/h4&gt;<br>
+        &lt;p&gt;Content...&lt;/p&gt;
+      </code>
+    </div>
+    <div class="note">
+      <b>SEO Tip:</b> Notice how <code>&lt;h1&gt;</code> has the main keyword "Learn HTML". <code>&lt;h2&gt;</code> tags have related keywords like "HTML Basics".
+    </div>
+  </div>
+
+  <div class="section-title">6. Common SEO Mistakes to Avoid</div>
+  <div class="section-inner">
+    <p>❌ <strong>Multiple &lt;h1&gt; tags</strong> - Confuses Google about main topic</p>
+    <p>❌ <strong>Skipping heading levels</strong> - h1 → h3 without h2</p>
+    <p>❌ <strong>Using headings for styling</strong> - Don't use h3 just because you want medium text</p>
+    <p>❌ <strong>Keyword stuffing</strong> - Don't repeat same keyword in every heading</p>
+    <p>❌ <strong>Very long headings</strong> - Keep under 60-70 characters</p>
+    
+    <div class="good">
+      <b>✓ Pro Tip:</b> Write headings for humans first, SEO second. If users can scan your page and understand the structure, Google will love it too.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">COLOLIST</div>
+  <div>© 2026 COLOLIST · HTML Tutorial</div>
+</footer>
+
+</body>
+</html>
