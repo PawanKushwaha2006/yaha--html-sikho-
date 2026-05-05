@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Skeleton Structure</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #0f172a; font-size: 13px; color: #e2e8f0; line-height: 1.6; }
+  
+  header {
+    background: #1a1a2e; color: white;
+    padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px;
+    border-bottom: 1px solid #334155;
+  }
+  header .logo { font-weight: bold; color: #7ec8e3; font-size: 14px; }
+  
+  .nav-bar {
+    background: #1e293b; border-bottom: 1px solid #334155;
+    padding: 6px 10px; display: flex; justify-content: center; align-items: center;
+  }
+  .nav-bar .title { font-weight: bold; font-size: 15px; text-align: center; color: #38bdf8; }
+  
+  .container { padding: 10px; max-width: 480px; margin: 0 auto; }
+  
+  .section-title {
+    background: #334155; color: #7dd3fc; padding: 6px 10px;
+    font-size: 13px; font-weight: bold; border-radius: 3px 3px 0 0;
+  }
+  .section-inner {
+    background: #1e293b; border: 1px solid #334155; border-top: none;
+    padding: 10px; margin-bottom: 10px; border-radius: 0 0 3px 3px;
+  }
+  
+  h3 { font-size: 14px; color: #38bdf8; margin: 10px 0 6px; font-weight: bold; }
+  p { margin-bottom: 8px; font-size: 12px; color: #cbd5e1; }
+  
+  .tag-box {
+    background: #0f172a; border: 1px solid #0ea5e9;
+    padding: 8px; margin: 8px 0; border-radius: 3px;
+  }
+  .tag-name {
+    color: #f472b6; font-family: 'Courier New', monospace;
+    font-size: 13px; font-weight: bold; margin-bottom: 5px;
+  }
+  
+  .table-wrapper { overflow-x: auto; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 300px; }
+  th { background: #334155; color: #f1f5f9; padding: 5px 6px; text-align: left; font-weight: 600; }
+  td { border: 1px solid #334155; padding: 5px 6px; background: #1e293b; color: #cbd5e1; }
+  
+  code {
+    background: #0f172a; padding: 1px 5px; border-radius: 2px;
+    font-family: 'Courier New', monospace; font-size: 11px;
+    word-break: break-word; border: 1px solid #334155; color: #f472b6;
+  }
+  
+  .note { background: #1e3a5f; border-left: 3px solid #0ea5e9; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #bae6fd; }
+  .warning { background: #4c1d1d; border-left: 3px solid #f87171; padding: 6px 8px; margin: 8px 0; font-size: 11px; border-radius: 2px; color: #fecaca; }
+  
+  .example {
+    background: #0f172a; border: 1px solid #334155;
+    padding: 8px; margin: 8px 0; border-radius: 3px;
+  }
+  .example-title { color: #7dd3fc; font-size: 11px; font-weight: bold; margin-bottom: 5px; }
+  
+  footer { 
+    background: #1a1a2e; color: #94a3b8; text-align: center; 
+    padding: 8px; font-size: 11px; margin-top: 20px; border-top: 1px solid #334155;
+  }
+  footer .footer-logo { color: #7ec8e3; font-weight: bold; font-size: 14px; margin-bottom: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">COLOLIST</div>
+  <div>HTML Tutorial</div>
+</header>
+
+<div class="nav-bar">
+  <div class="title">HTML Skeleton Structure</div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">1. Basic Skeleton Structure</div>
+  <div class="section-inner">
+    <p>Every HTML page has a basic skeleton. These 4 tags are mandatory:</p>
+    <div class="example">
+      <div class="example-title">Complete Skeleton:</div>
+      <code>
+        &lt;!DOCTYPE html&gt;<br>
+        &lt;html&gt;<br>
+        &lt;head&gt;<br>
+        &nbsp;&nbsp;&lt;title&gt;Page Title&lt;/title&gt;<br>
+        &lt;/head&gt;<br>
+        &lt;body&gt;<br>
+        &nbsp;&nbsp;&lt;h1&gt;Hello World&lt;/h1&gt;<br>
+        &lt;/body&gt;<br>
+        &lt;/html&gt;
+      </code>
+    </div>
+    <div class="note">
+      <b>Note:</b> This structure is like a human body. Without skeleton, body cannot stand. Same way, without these tags, HTML page will not work properly.
+    </div>
+  </div>
+
+  <div class="section-title">2. &lt;!DOCTYPE html&gt; - Document Type Declaration</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;!DOCTYPE html&gt;</div>
+      <p><strong>Purpose:</strong> Tells the browser that this is an HTML5 document.</p>
+      <p><strong>Position:</strong> Must be the very first line of your HTML file.</p>
+      <p><strong>Why Important:</strong> Without this, browsers go into "Quirks Mode" and your page may look broken.</p>
+    </div>
+    <div class="warning">
+      <b>Common Mistake:</b> Writing <code>&lt;DOCTYPE&gt;</code> or forgetting <code>!</code>. It must be exactly <code>&lt;!DOCTYPE html&gt;</code>
+    </div>
+  </div>
+
+  <div class="section-title">3. &lt;html&gt; - The Root Element</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;html&gt; &lt;/html&gt;</div>
+      <p><strong>Purpose:</strong> This is the root/container of the entire HTML document. All other tags go inside this.</p>
+      <p><strong>Attribute:</strong> <code>lang="en"</code> tells browsers and screen readers the language of the page.</p>
+      <p><strong>Why Important:</strong> Browser knows where your HTML code starts and ends.</p>
+    </div>
+    <h3>Example with lang attribute:</h3>
+    <code>&lt;html lang="en"&gt;</code> for English<br>
+    <code>&lt;html lang="hi"&gt;</code> for Hindi
+  </div>
+
+  <div class="section-title">4. &lt;head&gt; - The Brain of the Page</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;head&gt; &lt;/head&gt;</div>
+      <p><strong>Purpose:</strong> Contains meta-information about the page. This content is NOT visible on the web page.</p>
+      <p><strong>Contains:</strong> Title, CSS links, JavaScript links, meta tags, favicon, fonts</p>
+      <p><strong>Why Important:</strong> SEO, page title in browser tab, mobile responsive settings all go here.</p>
+    </div>
+    
+    <h3>Common Tags Inside &lt;head&gt;:</h3>
+    <div class="table-wrapper">
+      <table>
+        <tr><th>Tag</th><th>Purpose</th></tr>
+        <tr><td><code>&lt;title&gt;</code></td><td>Page title shown in browser tab</td></tr>
+        <tr><td><code>&lt;meta charset="UTF-8"&gt;</code></td><td>Character encoding for Hindi, emoji support</td></tr>
+        <tr><td><code>&lt;meta name="viewport"&gt;</code></td><td>Makes site mobile responsive</td></tr>
+        <tr><td><code>&lt;link&gt;</code></td><td>Connect CSS files, favicon</td></tr>
+        <tr><td><code>&lt;style&gt;</code></td><td>Internal CSS code</td></tr>
+        <tr><td><code>&lt;script&gt;</code></td><td>JavaScript code</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-title">5. &lt;body&gt; - The Visible Content</div>
+  <div class="section-inner">
+    <div class="tag-box">
+      <div class="tag-name">&lt;body&gt; &lt;/body&gt;</div>
+      <p><strong>Purpose:</strong> Contains all the content that users see on the web page.</p>
+      <p><strong>Contains:</strong> Headings, paragraphs, images, videos, buttons, forms - everything visible</p>
+      <p><strong>Why Important:</strong> Without body tag, browser won't display anything to users.</p>
+    </div>
+    
+    <h3>Example:</h3>
+    <div class="example">
+      <div class="example-title">Content Inside Body:</div>
+      <code>
+        &lt;body&gt;<br>
+        &nbsp;&nbsp;&lt;h1&gt;Welcome&lt;/h1&gt;<br>
+        &nbsp;&nbsp;&lt;p&gt;This is visible to users&lt;/p&gt;<br>
+        &nbsp;&nbsp;&lt;img src="photo.jpg"&gt;<br>
+        &lt;/body&gt;
+      </code>
+    </div>
+  </div>
+
+  <div class="section-title">6. Summary - Skeleton Comparison</div>
+  <div class="section-inner">
+    <div class="table-wrapper">
+      <table>
+        <tr><th>Tag</th><th>Visible?</th><th>Role</th><th>Analogy</th></tr>
+        <tr><td><code>&lt;!DOCTYPE&gt;</code></td><td>No</td><td>Defines HTML version</td><td>Birth Certificate</td></tr>
+        <tr><td><code>&lt;html&gt;</code></td><td>No</td><td>Root container</td><td>Full Body</td></tr>
+        <tr><td><code>&lt;head&gt;</code></td><td>No</td><td>Meta info, settings</td><td>Brain</td></tr>
+        <tr><td><code>&lt;body&gt;</code></td><td>Yes</td><td>Visible content</td><td>Face + Body</td></tr>
+      </table>
+    </div>
+    <div class="note">
+      <b>Remember:</b> Head = Invisible information for browser. Body = Visible content for users.
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">COLOLIST</div>
+  <div>© 2026 COLOLIST · HTML Tutorial</div>
+</footer>
+
+</body>
+</html>
