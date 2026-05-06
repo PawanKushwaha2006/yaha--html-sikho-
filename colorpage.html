@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Color Names - COLOLIST</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #f5f5f5; font-size: 13px; }
+  
+  header {
+    background: #1a1a2e; color: white;
+    padding: 8px 12px; display: flex; align-items: center; gap: 8px; font-size: 12px;
+    position: sticky; top: 0; z-index: 10;
+  }
+  header .logo { font-weight: bold; color: #7ec8e3; font-size: 14px; }
+  
+ .nav-bar {
+    background: #ffffff; border-bottom: 1px solid #ddd;
+    padding: 10px; text-align: center; position: sticky; top: 36px; z-index: 9;
+  }
+ .nav-bar .title { font-weight: bold; font-size: 16px; color: #333; }
+  
+ .intro-box {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+    color: #e2e8f0; padding: 12px; margin: 10px; border-radius: 6px;
+    border: 1px solid #334155;
+  }
+ .intro-box h2 { color: #38bdf8; font-size: 15px; margin-bottom: 6px; }
+ .intro-box p { font-size: 12px; line-height: 1.5; margin-bottom: 6px; color: #cbd5e1; }
+ .intro-box .feature {
+    display: flex; align-items: center; gap: 6px; font-size: 11px;
+    margin: 4px 0; color: #bae6fd;
+  }
+ .intro-box .feature::before { content: "✓"; color: #4ade80; font-weight: bold; }
+  
+ .search-box {
+    padding: 10px; background: #fff; position: sticky; top: 76px; z-index: 8;
+    border-bottom: 1px solid #ddd;
+  }
+ .search-box input {
+    width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;
+    font-size: 13px;
+  }
+  
+ .container { max-width: 480px; margin: 0 auto; }
+ .color-card { margin-bottom: 2px; }
+ .color-display { padding: 25px 10px; text-align: center; }
+ .color-name { font-size: 18px; font-weight: bold; margin-bottom: 4px; }
+ .color-hex { font-size: 14px; opacity: 0.8; font-family: 'Courier New', monospace; margin-bottom: 2px; }
+ .color-rgb { font-size: 12px; opacity: 0.7; font-family: 'Courier New', monospace; }
+ .color-actions { display: flex; background: rgba(0,0,0,0.15); }
+ .color-actions button {
+    flex: 1; padding: 8px; border: none; background: transparent; 
+    color: inherit; font-size: 11px; cursor: pointer; font-weight: 600;
+  }
+ .color-actions button:first-child { border-right: 1px solid rgba(0,0,0,0.1); }
+ .color-actions button:active { background: rgba(0,0,0,0.2); }
+ .light { color: #333; }
+ .dark { color: #fff; }
+  
+  footer { 
+    background: #1a1a2e; color: #94a3b8; text-align: center; 
+    padding: 12px; font-size: 11px; margin-top: 10px;
+  }
+  footer .footer-logo { color: #7ec8e3; font-weight: bold; font-size: 14px; margin-bottom: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">COLOLIST</div>
+  <div>CSS Color Names</div>
+</header>
+
+<div class="nav-bar">
+  <div class="title">140+ Named CSS Colors</div>
+</div>
+
+<div class="intro-box">
+  <h2>🎨 About CSS Color Names</h2>
+  <p>CSS me 140+ built-in color names hain jo directly use kar sakte ho bina hex code yaad kiye. Bas naam likho aur color lag jayega!</p>
+  <div class="feature">Click "Color Mixer" to copy HEX code</div>
+  <div class="feature">Click "Color Picker" to copy RGB value</div>
+  <div class="feature">Search box se turant koi bhi color dhoondo</div>
+  <p style="margin-top: 8px; font-size: 11px; color: #94a3b8;">
+    <b>Kaise use kare:</b> CSS me <code style="background:#0f172a;padding:1px 4px;border-radius:2px;color:#f472b6;">color: Red;</code> ya <code style="background:#0f172a;padding:1px 4px;border-radius:2px;color:#f472b6;">background: AliceBlue;</code> likho
+  </p>
+</div>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search color name, hex, or rgb..." onkeyup="filterColors()">
+</div>
+
+<div class="container" id="colorContainer">
+
+<!-- ALL 140+ COLORS START -->
+<div class="color-card"><div class="color-display light" style="background:#F0F8FF;"><div class="color-name">AliceBlue</div><div class="color-hex">#F0F8FF</div><div class="color-rgb">rgb(240, 248, 255)</div></div><div class="color-actions light"><button onclick="copyText('#F0F8FF')">Color Mixer</button><button onclick="copyText('rgb(240, 248, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#FAEBD7;"><div class="color-name">AntiqueWhite</div><div class="color-hex">#FAEBD7</div><div class="color-rgb">rgb(250, 235, 215)</div></div><div class="color-actions light"><button onclick="copyText('#FAEBD7')">Color Mixer</button><button onclick="copyText('rgb(250, 235, 215)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#00FFFF;"><div class="color-name">Aqua</div><div class="color-hex">#00FFFF</div><div class="color-rgb">rgb(0, 255, 255)</div></div><div class="color-actions light"><button onclick="copyText('#00FFFF')">Color Mixer</button><button onclick="copyText('rgb(0, 255, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#7FFFD4;"><div class="color-name">Aquamarine</div><div class="color-hex">#7FFFD4</div><div class="color-rgb">rgb(127, 255, 212)</div></div><div class="color-actions light"><button onclick="copyText('#7FFFD4')">Color Mixer</button><button onclick="copyText('rgb(127, 255, 212)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#F0FFFF;"><div class="color-name">Azure</div><div class="color-hex">#F0FFFF</div><div class="color-rgb">rgb(240, 255, 255)</div></div><div class="color-actions light"><button onclick="copyText('#F0FFFF')">Color Mixer</button><button onclick="copyText('rgb(240, 255, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#F5F5DC;"><div class="color-name">Beige</div><div class="color-hex">#F5F5DC</div><div class="color-rgb">rgb(245, 245, 220)</div></div><div class="color-actions light"><button onclick="copyText('#F5F5DC')">Color Mixer</button><button onclick="copyText('rgb(245, 245, 220)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#FFE4C4;"><div class="color-name">Bisque</div><div class="color-hex">#FFE4C4</div><div class="color-rgb">rgb(255, 228, 196)</div></div><div class="color-actions light"><button onclick="copyText('#FFE4C4')">Color Mixer</button><button onclick="copyText('rgb(255, 228, 196)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#000000;"><div class="color-name">Black</div><div class="color-hex">#000000</div><div class="color-rgb">rgb(0, 0, 0)</div></div><div class="color-actions dark"><button onclick="copyText('#000000')">Color Mixer</button><button onclick="copyText('rgb(0, 0, 0)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#FFEBCD;"><div class="color-name">BlanchedAlmond</div><div class="color-hex">#FFEBCD</div><div class="color-rgb">rgb(255, 235, 205)</div></div><div class="color-actions light"><button onclick="copyText('#FFEBCD')">Color Mixer</button><button onclick="copyText('rgb(255, 235, 205)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#0000FF;"><div class="color-name">Blue</div><div class="color-hex">#0000FF</div><div class="color-rgb">rgb(0, 0, 255)</div></div><div class="color-actions dark"><button onclick="copyText('#0000FF')">Color Mixer</button><button onclick="copyText('rgb(0, 0, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#8A2BE2;"><div class="color-name">BlueViolet</div><div class="color-hex">#8A2BE2</div><div class="color-rgb">rgb(138, 43, 226)</div></div><div class="color-actions dark"><button onclick="copyText('#8A2BE2')">Color Mixer</button><button onclick="copyText('rgb(138, 43, 226)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#A52A2A;"><div class="color-name">Brown</div><div class="color-hex">#A52A2A</div><div class="color-rgb">rgb(165, 42, 42)</div></div><div class="color-actions dark"><button onclick="copyText('#A52A2A')">Color Mixer</button><button onclick="copyText('rgb(165, 42, 42)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#DEB887;"><div class="color-name">BurlyWood</div><div class="color-hex">#DEB887</div><div class="color-rgb">rgb(222, 184, 135)</div></div><div class="color-actions light"><button onclick="copyText('#DEB887')">Color Mixer</button><button onclick="copyText('rgb(222, 184, 135)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#5F9EA0;"><div class="color-name">CadetBlue</div><div class="color-hex">#5F9EA0</div><div class="color-rgb">rgb(95, 158, 160)</div></div><div class="color-actions light"><button onclick="copyText('#5F9EA0')">Color Mixer</button><button onclick="copyText('rgb(95, 158, 160)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#7FFF00;"><div class="color-name">Chartreuse</div><div class="color-hex">#7FFF00</div><div class="color-rgb">rgb(127, 255, 0)</div></div><div class="color-actions light"><button onclick="copyText('#7FFF00')">Color Mixer</button><button onclick="copyText('rgb(127, 255, 0)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#D2691E;"><div class="color-name">Chocolate</div><div class="color-hex">#D2691E</div><div class="color-rgb">rgb(210, 105, 30)</div></div><div class="color-actions light"><button onclick="copyText('#D2691E')">Color Mixer</button><button onclick="copyText('rgb(210, 105, 30)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#FF7F50;"><div class="color-name">Coral</div><div class="color-hex">#FF7F50</div><div class="color-rgb">rgb(255, 127, 80)</div></div><div class="color-actions light"><button onclick="copyText('#FF7F50')">Color Mixer</button><button onclick="copyText('rgb(255, 127, 80)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#6495ED;"><div class="color-name">CornflowerBlue</div><div class="color-hex">#6495ED</div><div class="color-rgb">rgb(100, 149, 237)</div></div><div class="color-actions light"><button onclick="copyText('#6495ED')">Color Mixer</button><button onclick="copyText('rgb(100, 149, 237)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#FFF8DC;"><div class="color-name">Cornsilk</div><div class="color-hex">#FFF8DC</div><div class="color-rgb">rgb(255, 248, 220)</div></div><div class="color-actions light"><button onclick="copyText('#FFF8DC')">Color Mixer</button><button onclick="copyText('rgb(255, 248, 220)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#DC143C;"><div class="color-name">Crimson</div><div class="color-hex">#DC143C</div><div class="color-rgb">rgb(220, 20, 60)</div></div><div class="color-actions dark"><button onclick="copyText('#DC143C')">Color Mixer</button><button onclick="copyText('rgb(220, 20, 60)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#00FFFF;"><div class="color-name">Cyan</div><div class="color-hex">#00FFFF</div><div class="color-rgb">rgb(0, 255, 255)</div></div><div class="color-actions light"><button onclick="copyText('#00FFFF')">Color Mixer</button><button onclick="copyText('rgb(0, 255, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#00008B;"><div class="color-name">DarkBlue</div><div class="color-hex">#00008B</div><div class="color-rgb">rgb(0, 0, 139)</div></div><div class="color-actions dark"><button onclick="copyText('#00008B')">Color Mixer</button><button onclick="copyText('rgb(0, 0, 139)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#008B8B;"><div class="color-name">DarkCyan</div><div class="color-hex">#008B8B</div><div class="color-rgb">rgb(0, 139, 139)</div></div><div class="color-actions dark"><button onclick="copyText('#008B8B')">Color Mixer</button><button onclick="copyText('rgb(0, 139, 139)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#B8860B;"><div class="color-name">DarkGoldenRod</div><div class="color-hex">#B8860B</div><div class="color-rgb">rgb(184, 134, 11)</div></div><div class="color-actions dark"><button onclick="copyText('#B8860B')">Color Mixer</button><button onclick="copyText('rgb(184, 134, 11)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#A9A9A9;"><div class="color-name">DarkGray</div><div class="color-hex">#A9A9A9</div><div class="color-rgb">rgb(169, 169, 169)</div></div><div class="color-actions dark"><button onclick="copyText('#A9A9A9')">Color Mixer</button><button onclick="copyText('rgb(169, 169, 169)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#006400;"><div class="color-name">DarkGreen</div><div class="color-hex">#006400</div><div class="color-rgb">rgb(0, 100, 0)</div></div><div class="color-actions dark"><button onclick="copyText('#006400')">Color Mixer</button><button onclick="copyText('rgb(0, 100, 0)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#BDB76B;"><div class="color-name">DarkKhaki</div><div class="color-hex">#BDB76B</div><div class="color-rgb">rgb(189, 183, 107)</div></div><div class="color-actions dark"><button onclick="copyText('#BDB76B')">Color Mixer</button><button onclick="copyText('rgb(189, 183, 107)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#8B008B;"><div class="color-name">DarkMagenta</div><div class="color-hex">#8B008B</div><div class="color-rgb">rgb(139, 0, 139)</div></div><div class="color-actions dark"><button onclick="copyText('#8B008B')">Color Mixer</button><button onclick="copyText('rgb(139, 0, 139)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#556B2F;"><div class="color-name">DarkOliveGreen</div><div class="color-hex">#556B2F</div><div class="color-rgb">rgb(85, 107, 47)</div></div><div class="color-actions dark"><button onclick="copyText('#556B2F')">Color Mixer</button><button onclick="copyText('rgb(85, 107, 47)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#FF8C00;"><div class="color-name">DarkOrange</div><div class="color-hex">#FF8C00</div><div class="color-rgb">rgb(255, 140, 0)</div></div><div class="color-actions dark"><button onclick="copyText('#FF8C00')">Color Mixer</button><button onclick="copyText('rgb(255, 140, 0)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#9932CC;"><div class="color-name">DarkOrchid</div><div class="color-hex">#9932CC</div><div class="color-rgb">rgb(153, 50, 204)</div></div><div class="color-actions dark"><button onclick="copyText('#9932CC')">Color Mixer</button><button onclick="copyText('rgb(153, 50, 204)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#8B0000;"><div class="color-name">DarkRed</div><div class="color-hex">#8B0000</div><div class="color-rgb">rgb(139, 0, 0)</div></div><div class="color-actions dark"><button onclick="copyText('#8B0000')">Color Mixer</button><button onclick="copyText('rgb(139, 0, 0)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#E9967A;"><div class="color-name">DarkSalmon</div><div class="color-hex">#E9967A</div><div class="color-rgb">rgb(233, 150, 122)</div></div><div class="color-actions light"><button onclick="copyText('#E9967A')">Color Mixer</button><button onclick="copyText('rgb(233, 150, 122)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#8FBC8F;"><div class="color-name">DarkSeaGreen</div><div class="color-hex">#8FBC8F</div><div class="color-rgb">rgb(143, 188, 143)</div></div><div class="color-actions light"><button onclick="copyText('#8FBC8F')">Color Mixer</button><button onclick="copyText('rgb(143, 188, 143)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#483D8B;"><div class="color-name">DarkSlateBlue</div><div class="color-hex">#483D8B</div><div class="color-rgb">rgb(72, 61, 139)</div></div><div class="color-actions dark"><button onclick="copyText('#483D8B')">Color Mixer</button><button onclick="copyText('rgb(72, 61, 139)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#2F4F4F;"><div class="color-name">DarkSlateGray</div><div class="color-hex">#2F4F4F</div><div class="color-rgb">rgb(47, 79)</div></div><div class="color-actions dark"><button onclick="copyText('#2F4F4F')">Color Mixer</button><button onclick="copyText('rgb(47, 79, 79)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#00CED1;"><div class="color-name">DarkTurquoise</div><div class="color-hex">#00CED1</div><div class="color-rgb">rgb(0, 206, 209)</div></div><div class="color-actions light"><button onclick="copyText('#00CED1')">Color Mixer</button><button onclick="copyText('rgb(0, 206, 209)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#9400D3;"><div class="color-name">DarkViolet</div><div class="color-hex">#9400D3</div><div class="color-rgb">rgb(148, 0, 211)</div></div><div class="color-actions dark"><button onclick="copyText('#9400D3')">Color Mixer</button><button onclick="copyText('rgb(148, 0, 211)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#FF1493;"><div class="color-name">DeepPink</div><div class="color-hex">#FF1493</div><div class="color-rgb">rgb(255, 20, 147)</div></div><div class="color-actions dark"><button onclick="copyText('#FF1493')">Color Mixer</button><button onclick="copyText('rgb(255, 20, 147)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#00BFFF;"><div class="color-name">DeepSkyBlue</div><div class="color-hex">#00BFFF</div><div class="color-rgb">rgb(0, 191, 255)</div></div><div class="color-actions dark"><button onclick="copyText('#00BFFF')">Color Mixer</button><button onclick="copyText('rgb(0, 191, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#696969;"><div class="color-name">DimGray</div><div class="color-hex">#696969</div><div class="color-rgb">rgb(105, 105, 105)</div></div><div class="color-actions dark"><button onclick="copyText('#696969')">Color Mixer</button><button onclick="copyText('rgb(105, 105, 105)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#1E90FF;"><div class="color-name">DodgerBlue</div><div class="color-hex">#1E90FF</div><div class="color-rgb">rgb(30, 144, 255)</div></div><div class="color-actions light"><button onclick="copyText('#1E90FF')">Color Mixer</button><button onclick="copyText('rgb(30, 144, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#B22222;"><div class="color-name">FireBrick</div><div class="color-hex">#B22222</div><div class="color-rgb">rgb(178, 34)</div></div><div class="color-actions light"><button onclick="copyText('#B22222')">Color Mixer</button><button onclick="copyText('rgb(178, 34)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#FFFAF0;"><div class="color-name">FloralWhite</div><div class="color-hex">#FFFAF0</div><div class="color-rgb">rgb(255, 250, 240)</div></div><div class="color-actions light"><button onclick="copyText('#FFFAF0')">Color Mixer</button><button onclick="copyText('rgb(255, 250, 240)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#228B22;"><div class="color-name">ForestGreen</div><div class="color-hex">#228B22</div><div class="color-rgb">rgb(34, 139, 34)</div></div><div class="color-actions dark"><button onclick="copyText('#228B22')">Color Mixer</button><button onclick="copyText('rgb(34, 139, 34)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#FF00FF;"><div class="color-name">Fuchsia</div><div class="color-hex">#FF00FF</div><div class="color-rgb">rgb(255, 0, 255)</div></div><div class="color-actions dark"><button onclick="copyText('#FF00FF')">Color Mixer</button><button onclick="copyText('rgb(255, 0, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#DCDCDC;"><div class="color-name">Gainsboro</div><div class="color-hex">#DCDCDC</div><div class="color-rgb">rgb(220, 220, 220)</div></div><div class="color-actions light"><button onclick="copyText('#DCDCDC')">Color Mixer</button><button onclick="copyText('rgb(220, 220, 220)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#F8F8FF;"><div class="color-name">GhostWhite</div><div class="color-hex">#F8F8FF</div><div class="color-rgb">rgb(248, 248, 255)</div></div><div class="color-actions light"><button onclick="copyText('#F8F8FF')">Color Mixer</button><button onclick="copyText('rgb(248, 248, 255)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#FFD700;"><div class="color-name">Gold</div><div class="color-hex">#FFD700</div><div class="color-rgb">rgb(255, 215, 0)</div></div><div class="color-actions dark"><button onclick="copyText('#FFD700')">Color Mixer</button><button onclick="copyText('rgb(255, 215, 0)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#DAA520;"><div class="color-name">GoldenRod</div><div class="color-hex">#DAA520</div><div class="color-rgb">rgb(218, 165, 32)</div></div><div class="color-actions dark"><button onclick="copyText('#DAA520')">Color Mixer</button><button onclick="copyText('rgb(218, 165, 32)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#808080;"><div class="color-name">Gray</div><div class="color-hex">#808080</div><div class="color-rgb">rgb(128, 128, 128)</div></div><div class="color-actions dark"><button onclick="copyText('#808080')">Color Mixer</button><button onclick="copyText('rgb(128, 128, 128)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#008000;"><div class="color-name">Green</div><div class="color-hex">#008000</div><div class="color-rgb">rgb(0, 128, 0)</div></div><div class="color-actions dark"><button onclick="copyText('#008000')">Color Mixer</button><button onclick="copyText('rgb(0, 128, 0)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#ADFF2F;"><div class="color-name">GreenYellow</div><div class="color-hex">#ADFF2F</div><div class="color-rgb">rgb(173, 255, 47)</div></div><div class="color-actions light"><button onclick="copyText('#ADFF2F')">Color Mixer</button><button onclick="copyText('rgb(173, 255, 47)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display light" style="background:#F0FFF0;"><div class="color-name">HoneyDew</div><div class="color-hex">#F0FFF0</div><div class="color-rgb">rgb(240, 255, 240)</div></div><div class="color-actions light"><button onclick="copyText('#F0FFF0')">Color Mixer</button><button onclick="copyText('rgb(240, 255, 240)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#FF69B4;"><div class="color-name">HotPink</div><div class="color-hex">#FF69B4</div><div class="color-rgb">rgb(255, 105, 180)</div></div><div class="color-actions dark"><button onclick="copyText('#FF69B4')">Color Mixer</button><button onclick="copyText('rgb(255, 105, 180)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#CD5C5C;"><div class="color-name">IndianRed</div><div class="color-hex">#CD5C5C</div><div class="color-rgb">rgb(205, 92)</div></div><div class="color-actions dark"><button onclick="copyText('#CD5C5C')">Color Mixer</button><button onclick="copyText('rgb(205, 92, 92)')">Color Picker</button></div></div>
+<div class="color-card"><div class="color-display dark" style="background:#4B0082;"><div class="color-name">Indigo</div><div class="color-hex">#4B0082</div><div class="color-rgb">rgb(75, 0, 130)</div></div><div class="color-actions dark"><button onclick="copyText('#4B0082')">Color Mixer</button><button onclick="copyText('rgb(75, 0, 130)')">Color Picker</button></div></div>
+<div class="
