@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<!--html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 Encoder - BCA</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+  body{
+    background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#0f172a 100%);
+    color:#e2e8f0;min-height:100vh;padding:15px
+  }
+ .container{max-width:1000px;margin:0 auto}
+  h1{text-align:center;font-size:1.8rem;margin-bottom:5px;
+    background:linear-gradient(90deg,#38bdf8,#818cf8);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+ .subtitle{text-align:center;color:#94a3b8;font-size:13px;margin-bottom:20px}
+ .panel{
+    background:rgba(30,41,59,0.7);backdrop-filter:blur(20px);
+    border:1px solid rgba(148,163,184,0.2);border-radius:16px;padding:20px;margin-bottom:20px
+  }
+  textarea{
+    width:100%;min-height:150px;background:rgba(15,23,42,0.8);
+    border:1px solid rgba(148,163,184,0.3);color:#e2e8f0;padding:15px;
+    border-radius:8px;font-size:14px;resize:vertical;font-family:monospace;line-height:1.5
+  }
+ .controls{display:flex;gap:10px;margin:15px 0;flex-wrap:wrap}
+ .btn{
+    background:rgba(34,197,94,0.2);border:1px solid rgba(34,197,94,0.3);
+    color:#4ade80;padding:12px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer
+  }
+ .btn:hover{background:rgba(34,197,94,0.3)}
+ .btn.decode{background:rgba(56,189,248,0.2);border-color:rgba(56,189,248,0.3);color:#38bdf8}
+ .btn.decode:hover{background:rgba(56,189,248,0.3)}
+ .btn.clear{background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.3);color:#ef4444}
+ .btn.copy{background:rgba(124,58,237,0.2);border-color:rgba(124,58,237,0.3);color:#c084fc}
+ .btn.download{background:rgba(245,158,11,0.2);border-color:rgba(245,158,11,0.3);color:#fbbf24}
+  label{display:block;color:#38bdf8;font-size:13px;font-weight:600;margin-bottom:8px}
+ .file-box{
+    border:2px dashed rgba(148,163,184,0.3);border-radius:8px;padding:20px;
+    text-align:center;margin:15px 0;cursor:pointer
+  }
+ .file-box:hover{border-color:#38bdf8;background:rgba(56,189,248,0.05)}
+ .info{
+    background:rgba(56,189,248,0.1);border-left:3px solid #38bdf8;
+    padding:12px;border-radius:8px;margin-top:15px;font-size:12px;color:#cbd5e1;line-height:1.6
+  }
+ .code{font-family:monospace;background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;color:#7dd3fc;word-break:break-all}
+ .error{color:#ef4444;background:rgba(239,68,68,0.1);padding:10px;border-radius:8px;margin-top:10px}
+ .success{color:#4ade80;background:rgba(34,197,94,0.1);padding:10px;border-radius:8px;margin-top:10px}
+  #imgPreview{max-width:100%;max-height:300px;margin-top:15px;border-radius:8px;display:none;border:1px solid rgba(148,163,184,0.3)}
+  @media(max-width:768px){
+   .controls{flex-direction:column}
+   .btn{width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔐 Base64 Encoder/Decoder</h1>
+  <p class="subtitle">BCA Web Technology - Data Encoding</p>
+
+  <div class="panel">
+    <label>Input Text / Base64 String</label>
+    <textarea id="inputText" placeholder="Type text here to encode...
+
+Or paste Base64 here to decode...
+
+Example: Hello BCA"></textarea>
+
+    <div class="controls">
+      <button class="btn" onclick="encodeText()">⬇️ Encode to Base64</button>
+      <button class="btn decode" onclick="decodeText()">⬆️ Decode from Base64</button>
+      <button class="btn copy" onclick="copyOutput()">📋 Copy Output</button>
+      <button class="btn clear" onclick="clearAll()">🗑️ Clear</button>
+    </div>
+
+    <label>Output</label>
+    <textarea id="outputText" placeholder="Result will appear here..." readonly></textarea>
+    <div id="message"></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="color:#38bdf8;margin-bottom:15px">📁 Encode File to Base64</h3>
+    <div class="file-box" onclick="document.getElementById('fileInput').click()">
+      <input type="file" id="fileInput" style="display:none" onchange="encodeFile()" accept="image/*,.txt,.pdf">
+      <p style="color:#94a3b8;font-size:14px">Click to select image/text/pdf file</p>
+      <p style="color:#64748b;font-size:11px;margin-top:5px">Max 5MB - For email attachments, data URI</p>
+    </div>
+    <div class="controls">
+      <button class="btn copy" onclick="copyFileBase64()" id="copyFileBtn" style="display:none">📋 Copy File Base64</button>
+      <button class="btn download" onclick="downloadBase64()" id="downloadBtn" style="display:none">💾 Download.txt</button>
+    </div>
+    <img id="imgPreview" alt="Preview">
+    <div id="fileResult"></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="color:#38bdf8;margin-bottom:15px">Base64 ka use - BCA me</h3>
+    <div class="info">
+      <strong>1. Web Tech Practical:</strong> HTML me image bina file ke dikhani ho → <span class="code">&lt;img src="data:image/png;base64,..."&gt;</span><br><br>
+      <strong>2. API/JSON:</strong> File ko server pe bhejna ho → Base64 string bana ke JSON me daal do<br><br>
+      <strong>3. JWT Token:</strong> Login ke baad token milta hai → Wo Base64 encoded hota hai<br><br>
+      <strong>4. Email:</strong> Attachment Base64 me convert hoke jaata hai<br><br>
+      <strong>Important:</strong> Base64 ≠ Encryption. Ye sirf encoding hai. Password mat daalo isme.
+    </div>
+  </div>
+</div>
+
+<script>
+let currentFileBase64 = '';
+
+function encodeText() {
+  const input = document.getElementById('inputText').value;
+  const msg = document.getElementById('message');
+  if (!input) {
+    msg.innerHTML = '<div class="error">❌ Text daalo pehle</div>';
+    return;
+  }
+  try {
+    const encoded = btoa(encodeURIComponent(input).replace(/%([0-9A-F]{2})/g,
+      (match, p1) => String.fromCharCode('0x' + p1)));
+    document.getElementById('outputText').value = encoded;
+    msg.innerHTML = `<div class="success">✅ Encoded! ${input.length} chars → ${encoded.length} chars</div>`;
+  } catch(e) {
+    msg.innerHTML = '<div class="error">❌ Encoding failed</div>';
+  }
+}
+
+function decodeText() {
+  const input = document.getElementById('inputText').value.trim();
+  const msg = document.getElementById('message');
+  if (!input) {
+    msg.innerHTML = '<div class="error">❌ Base64 string daalo pehle</div>';
+    return;
+  }
+  try {
+    const decoded = decodeURIComponent(Array.prototype.map.call(atob(input),
+      c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+    document.getElementById('outputText').value = decoded;
+    msg.innerHTML = `<div class="success">✅ Decoded! ${input.length} chars → ${decoded.length} chars</div>`;
+  } catch(e) {
+    msg.innerHTML = '<div class="error">❌ Invalid Base64 string</div>';
+  }
+}
+
+function encodeFile() {
+  const file = document.getElementById('fileInput').files[0];
+  const result = document.getElementById('fileResult');
+  const preview = document.getElementById('imgPreview');
+  const copyBtn = document.getElementById('copyFileBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  if (!file) return;
+
+  const maxSize = 5 * 1024 * 1024; // 5MB
+  if (file.size > maxSize) {
+    result.innerHTML = '<div class="error">❌ File too large. Max 5MB</div>';
+    preview.style.display = 'none';
+    copyBtn.style.display = 'none';
+    downloadBtn.style.display = 'none';
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const base64 = e.target.result;
+    currentFileBase64 = base64;
+    document.getElementById('outputText').value = base64;
+    document.getElementById('message').innerHTML = `<div class="success">✅ File encoded: ${file.name}</div>`;
+
+    // Show preview if image
+    if (file.type.startsWith('image/')) {
+      preview.src = base64;
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+
+    copyBtn.style.display = 'inline-block';
+    downloadBtn.style.display = 'inline-block';
+
+    result.innerHTML = `<div class="info">File: ${file.name}<br>Size: ${(file.size/1024).toFixed(1)} KB<br>Type: ${file.type || 'unknown'}<br><br>HTML me use karo: <span class="code">&lt;img src="${base64.substring(0,50)}..."&gt;</span></div>`;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function copyOutput() {
+  const output = document.getElementById('outputText');
+  const msg = document.getElementById('message');
+  if (!output.value) {
+    msg.innerHTML = '<div class="error">❌ Copy karne ko kuch nahi hai</div>';
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(output.value);
+    msg.innerHTML = '<div class="success">✅ Copied! ' + output.value.length + ' characters</div>';
+  } catch(e) {
+    msg.innerHTML = '<div class="error">❌ Copy failed</div>';
+  }
+}
+
+async function copyFileBase64() {
+  const msg = document.getElementById('message');
+  if (!currentFileBase64) {
+    msg.innerHTML = '<div class="error">❌ Pehle file encode karo</div>';
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(currentFileBase64);
+    msg.innerHTML = '<div class="success">✅ File Base64 Copied! Ready to paste in HTML</div>';
+  } catch(e) {
+    msg.innerHTML = '<div class="error">❌ Copy failed</div>';
+  }
+}
+
+function downloadBase64() {
+  if (!currentFileBase64) return;
+  const blob = new Blob([currentFileBase64], {type: 'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'base64_output.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('message').innerHTML = '<div class="success">✅ Downloaded as base64_output.txt</div>';
+}
+
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+  document.getElementById('message').innerHTML = '';
+  document.getElementById('fileResult').innerHTML = '';
+  document.getElementById('fileInput').value = '';
+  document.getElementById('imgPreview').style.display = 'none';
+  document.getElementById('copyFileBtn').style.display = 'none';
+  document.getElementById('downloadBtn').style.display = 'none';
+  currentFileBase64 = '';
+}
+</script>
+</body>
+</html-->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base64 Encoder - BCA</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+  body{
+    background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#0f172a 100%);
+    color:#e2e8f0;min-height:100vh;padding:15px
+  }
+.container{max-width:1000px;margin:0 auto}
+  h1{text-align:center;font-size:1.8rem;margin-bottom:5px;
+    background:linear-gradient(90deg,#38bdf8,#818cf8);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.subtitle{text-align:center;color:#94a3b8;font-size:13px;margin-bottom:20px}
+.panel{
+    background:rgba(30,41,59,0.7);backdrop-filter:blur(20px);
+    border:1px solid rgba(148,163,184,0.2);border-radius:16px;padding:20px;margin-bottom:20px
+  }
+  textarea{
+    width:100%;min-height:150px;background:rgba(15,23,42,0.8);
+    border:1px solid rgba(148,163,184,0.3);color:#e2e8f0;padding:15px;
+    border-radius:8px;font-size:14px;resize:vertical;font-family:monospace;line-height:1.5
+  }
+.controls{display:flex;gap:10px;margin:15px 0;flex-wrap:wrap}
+.btn{
+    background:rgba(34,197,94,0.2);border:1px solid rgba(34,197,94,0.3);
+    color:#4ade80;padding:12px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer
+  }
+.btn:hover{background:rgba(34,197,94,0.3)}
+.btn.decode{background:rgba(56,189,248,0.2);border-color:rgba(56,189,248,0.3);color:#38bdf8}
+.btn.decode:hover{background:rgba(56,189,248,0.3)}
+.btn.clear{background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.3);color:#ef4444}
+.btn.copy{background:rgba(124,58,237,0.2);border-color:rgba(124,58,237,0.3);color:#c084fc}
+.btn.download{background:rgba(245,158,11,0.2);border-color:rgba(245,158,11,0.3);color:#fbbf24}
+  label{display:block;color:#38bdf8;font-size:13px;font-weight:600;margin-bottom:8px}
+.file-box{
+    border:2px dashed rgba(148,163,184,0.3);border-radius:8px;padding:20px;
+    text-align:center;margin:15px 0;cursor:pointer
+  }
+.file-box:hover{border-color:#38bdf8;background:rgba(56,189,248,0.05)}
+.info{
+    background:rgba(56,189,248,0.1);border-left:3px solid #38bdf8;
+    padding:12px;border-radius:8px;margin-top:15px;font-size:12px;color:#cbd5e1;line-height:1.6
+  }
+.code{font-family:monospace;background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;color:#7dd3fc;word-break:break-all}
+.error{color:#ef4444;background:rgba(239,68,68,0.1);padding:10px;border-radius:8px;margin-top:10px}
+.success{color:#4ade80;background:rgba(34,197,94,0.1);padding:10px;border-radius:8px;margin-top:10px}
+  #imgPreview{max-width:100%;max-height:300px;margin-top:15px;border-radius:8px;display:none;border:1px solid rgba(148,163,184,0.3)}
+  @media(max-width:768px){
+  .controls{flex-direction:column}
+  .btn{width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🔐 Base64 Encoder/Decoder</h1>
+  <p class="subtitle">BCA Web Technology - Data Encoding</p>
+
+  <div class="panel">
+    <label>Input Text / Base64 String</label>
+    <textarea id="inputText" placeholder="Type text here to encode...
+
+Or paste Base64 here to decode...
+
+Example: Hello BCA"></textarea>
+
+    <div class="controls">
+      <button class="btn" onclick="encodeText()">⬇️ Encode to Base64</button>
+      <button class="btn decode" onclick="decodeText()">⬆️ Decode from Base64</button>
+      <button class="btn copy" onclick="copyOutput()">📋 Copy Output</button>
+      <button class="btn clear" onclick="clearAll()">🗑️ Clear</button>
+    </div>
+
+    <label>Output</label>
+    <textarea id="outputText" placeholder="Result will appear here..." readonly></textarea>
+    <div id="message"></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="color:#38bdf8;margin-bottom:15px">📁 Encode File to Base64</h3>
+    <div class="file-box" onclick="document.getElementById('fileInput').click()">
+      <input type="file" id="fileInput" style="display:none" onchange="encodeFile()" accept="image/*,.txt,.pdf">
+      <p style="color:#94a3b8;font-size:14px">Click to select image/text/pdf file</p>
+      <p style="color:#64748b;font-size:11px;margin-top:5px">Max 5MB - For email attachments, data URI</p>
+    </div>
+    <div class="controls">
+      <button class="btn copy" onclick="copyFileBase64()" id="copyFileBtn" style="display:none">📋 Copy File Base64</button>
+      <button class="btn download" onclick="downloadBase64()" id="downloadBtn" style="display:none">💾 Download.txt</button>
+    </div>
+    <img id="imgPreview" alt="Preview">
+    <div id="fileResult"></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="color:#38bdf8;margin-bottom:15px">Use of Base64 - For BCA</h3>
+    <div class="info">
+      <strong>1. Web Tech Practical:</strong> Display image in HTML without file → <span class="code">&lt;img src="data:image/png;base64,..."&gt;</span><br><br>
+      <strong>2. API/JSON:</strong> To send file to server → Convert to Base64 string and put in JSON<br><br>
+      <strong>3. JWT Token:</strong> Token received after login → It is Base64 encoded<br><br>
+      <strong>4. Email:</strong> Attachment is converted to Base64 and sent<br><br>
+      <strong>Important:</strong> Base64 ≠ Encryption. It's only encoding. Don't use it for passwords.
+    </div>
+  </div>
+</div>
+
+<script>
+let currentFileBase64 = '';
+
+function encodeText() {
+  const input = document.getElementById('inputText').value;
+  const msg = document.getElementById('message');
+  if (!input) {
+    msg.innerHTML = '<div class="error">❌ Please enter text first</div>';
+    return;
+  }
+  try {
+    const encoded = btoa(encodeURIComponent(input).replace(/%([0-9A-F]{2})/g,
+      (match, p1) => String.fromCharCode('0x' + p1)));
+    document.getElementById('outputText').value = encoded;
+    msg.innerHTML = `<div class="success">✅ Encoded! ${input.length} chars → ${encoded.length} chars</div>`;
+  } catch(e) {
+    msg.innerHTML = '<div class="error">❌ Encoding failed</div>';
+  }
+}
+
+function decodeText() {
+  const input = document.getElementById('inputText').value.trim();
+  const msg = document.getElementById('message');
+  if (!input) {
+    msg.innerHTML = '<div class="error">❌ Please enter Base64 string first</div>';
+    return;
+  }
+  try {
+    const decoded = decodeURIComponent(Array.prototype.map.call(atob(input),
+      c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+    document.getElementById('outputText').value = decoded;
+    msg.innerHTML = `<div class="success">✅ Decoded! ${input.length} chars → ${decoded.length} chars</div>`;
+  } catch(e) {
+    msg.innerHTML = '<div class="error">❌ Invalid Base64 string</div>';
+  }
+}
+
+function encodeFile() {
+  const file = document.getElementById('fileInput').files[0];
+  const result = document.getElementById('fileResult');
+  const preview = document.getElementById('imgPreview');
+  const copyBtn = document.getElementById('copyFileBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  if (!file) return;
+
+  const maxSize = 5 * 1024; // 5MB
+  if (file.size > maxSize) {
+    result.innerHTML = '<div class="error">❌ File too large. Max 5MB</div>';
+    preview.style.display = 'none';
+    copyBtn.style.display = 'none';
+    downloadBtn.style.display = 'none';
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const base64 = e.target.result;
+    currentFileBase64 = base64;
+    document.getElementById('outputText').value = base64;
+    document.getElementById('message').innerHTML = `<div class="success">✅ File encoded: ${file.name}</div>`;
+
+    // Show preview if image
+    if (file.type.startsWith('image/')) {
+      preview.src = base64;
+      preview.style.display = 'block';
+    } else {
+      preview.style.display = 'none';
+    }
+
+    copyBtn.style.display = 'inline-block';
+    downloadBtn.style.display = 'inline-block';
+
+    result.innerHTML = `<div class="info">File: ${file.name}<br>Size: ${(file.size/1024).toFixed(1)} KB<br>Type: ${file.type || 'unknown'}<br><br>Use in HTML: <span class="code">&lt;img src="${base64.substring(0,50)}..."&gt;</span></div>`;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function copyOutput() {
+  const output = document.getElementById('outputText');
+  const msg = document.getElementById('message');
+  if (!output.value) {
+    msg.innerHTML = '<div class="error">❌ Nothing to copy</div>';
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(output.value);
+    msg.innerHTML = '<div class="success">✅ Copied! ' + output.value.length + ' characters</div>';
+  } catch(e) {
+    msg.innerHTML = '<div class="error">❌ Copy failed</div>';
+  }
+}
+
+async function copyFileBase64() {
+  const msg = document.getElementById('message');
+  if (!currentFileBase64) {
+    msg.innerHTML = '<div class="error">❌ Encode a file first</div>';
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(currentFileBase64);
+    msg.innerHTML = '<div class="success">✅ File Base64 Copied! Ready to paste in HTML</div>';
+  } catch(e) {
+    msg.innerHTML = '<div class="error">❌ Copy failed</div>';
+  }
+}
+
+function downloadBase64() {
+  if (!currentFileBase64) return;
+  const blob = new Blob([currentFileBase64], {type: 'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'base64_output.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('message').innerHTML = '<div class="success">✅ Downloaded as base64_output.txt</div>';
+}
+
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+  document.getElementById('message').innerHTML = '';
+  document.getElementById('fileResult').innerHTML = '';
+  document.getElementById('fileInput').value = '';
+  document.getElementById('imgPreview').style.display = 'none';
+  document.getElementById('copyFileBtn').style.display = 'none';
+  document.getElementById('downloadBtn').style.display = 'none';
+  currentFileBase64 = '';
+}
+</script>
+</body>
+</html>
