@@ -1,0 +1,1015 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HTML Runner Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="marquee">
+    HTML - Hyper Text Markup Language
+</div>
+
+<h2>🚀 HTML Editor</h2>
+
+<textarea id="htmlCode" style="resize: both; width: 90%; height: 400px;"></textarea>
+
+<div>
+    <button onclick="runCode()">▶ Run</button>
+    <button onclick="clearCode()">🗑 Clear</button>
+    <button onclick="addStructure()">📄 Add HTML</button>
+</div>
+
+<h3>Output</h3>
+<iframe id="output" style="resize:both; width: 95%; height:450px;"></iframe>
+
+<button onclick="openEditor()" style="margin: 2px  0px 20px; width: 350px; padding: 8px;">💻 Open Editor</button>
+<br>
+
+<!--a href="game.html">
+    <button>🎮 Open Game</button>
+</a-->
+
+<!--button onclick="openCalculator()">🧮 Open Calculator</button-->
+
+<div class="top">
+  <!--a href="Pawan.html" target="_blank">
+    <img src="html-logo.png" alt="HTML"-->
+  </a>
+  <a href="Pawan.html" target="_blank">
+    <img src="html-logo.png" alt="HTML">
+  </a>
+  <!--a href="Kushwaha.html" target="_blank">
+    <img src="java-logo.png" alt="Java"-->
+  </a>
+</div>
+
+<!-- Info Section -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ultimate HTML Master Course - 30 Chapters</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Ubuntu,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.8;padding:20px}
+   .container{max-width:900px;margin:0 auto}
+    h1{font-size:32px;color:#38bdf8;margin-bottom:15px}
+    h2{font-size:26px;color:#0ea5e9;margin:35px 0 15px;border-bottom:2px solid #334155;padding-bottom:8px}
+    h3{font-size:20px;color:#7dd3fc;margin:25px 0 12px}
+    p{margin-bottom:15px;color:#cbd5e1;font-size:15px}
+    ul,ol{margin:15px 0 15px 25px;color:#cbd5e1}
+    li{margin-bottom:10px}
+    code{background:#1e293b;padding:3px 6px;border-radius:4px;font-family:'Courier New',monospace;color:#f472b6;font-size:14px;border:1px solid #334155}
+    
+    /* Table Scrollable */
+   .table-scroll{
+      width:100%;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      border:1px solid #334155;
+      border-radius:8px;
+      margin:20px 0;
+      background:#1e293b;
+    }
+   .table-scroll::-webkit-scrollbar{height:8px}
+   .table-scroll::-webkit-scrollbar-track{background:#1e293b}
+   .table-scroll::-webkit-scrollbar-thumb{background:#0ea5e9;border-radius:4px}
+    
+    table{
+      width:100%;
+      min-width:600px;
+      border-collapse:collapse;
+      font-size:14px;
+      margin:0;
+    }
+    th{background:#334155;color:#f1f5f9;padding:12px;text-align:left;font-weight:600;white-space:nowrap}
+    td{padding:12px;border-bottom:1px solid #334155;color:#cbd5e1}
+    tr:last-child td{border-bottom:none}
+    tr:hover{background:#2d3748}
+    
+    .note{background:#1e3a5f;border-left:4px solid #0ea5e9;padding:15px;margin:20px 0;border-radius:6px;color:#bae6fd}
+    
+    @media(max-width:600px){
+      h1{font-size:26px}h2{font-size:22px}body{padding:15px}
+      table{font-size:13px;min-width:500px}
+      th,td{padding:8px}
+    }
+  </style>
+</head>
+<body>
+
+
+
+
+
+
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Master Course - 30 Chapters</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    color:#e2e8f0;
+    min-height:100vh;
+    padding:20px;
+  }
+.container{max-width:1000px;margin:0 auto}
+  h1{font-size:32px;color:#38bdf8;margin-bottom:15px;text-align:center}
+  h2{font-size:26px;color:#0ea5e9;margin:35px 0 15px;border-bottom:2px solid #334155;padding-bottom:8px}
+
+  /* Chapter Box Styling */
+.chapter-list{
+    list-style:none;
+    padding:0;
+  }
+.chapter-item{
+    background:rgba(30,41,59,0.7);
+    backdrop-filter:blur(10px);
+    border:1px solid #334155;
+    border-left:4px solid #0ea5e9;
+    border-radius:12px;
+    padding:16px 20px;
+    margin-bottom:12px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+  }
+.chapter-item:hover{
+    background:rgba(56,189,248,0.15);
+    border-left-color:#38bdf8;
+    transform:translateX(8px);
+    box-shadow:0 4px 20px rgba(56,189,248,0.3);
+  }
+.chapter-item:active{transform:scale(0.98)}
+.chapter-num{
+    color:#a855f7;
+    font-weight:700;
+    font-size:14px;
+  }
+.chapter-title{
+    color:#e2e8f0;
+    font-size:16px;
+    font-weight:600;
+    margin:6px 0;
+  }
+.chapter-desc{
+    color:#94a3b8;
+    font-size:13px;
+    line-height:1.6;
+  }
+  code{
+    background:#1e293b;
+    padding:2px 6px;
+    border-radius:4px;
+    font-family:'Courier New',monospace;
+    color:#f472b6;
+    font-size:13px;
+    border:1px solid #334155;
+  }
+
+  /* Chapter Content Modal */
+#chapterModal{
+    display:none;
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    background:rgba(0,0,0,0.8);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    overflow-y:auto;
+    padding:20px;
+    animation:fadeIn 0.3s;
+  }
+@keyframes fadeIn{
+    from{opacity:0}
+    to{opacity:1}
+  }
+#chapterModal.active{display:block}
+.modal-content{
+    max-width:900px;
+    margin:40px auto;
+    background:rgba(30,41,59,0.98);
+    border:1px solid #334155;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    animation:slideUp 0.3s;
+  }
+@keyframes slideUp{
+    from{opacity:0;transform:translateY(30px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:2px solid #334155;
+  }
+.modal-title{
+    color:#38bdf8;
+    font-size:26px;
+    font-weight:700;
+  }
+.close-btn{
+    background:rgba(239,68,0.2);
+    border:1px solid #ef4444;
+    color:#ef4444;
+    padding:10px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:all 0.3s;
+    font-size:16px;
+  }
+.close-btn:hover{
+    background:rgba(239,68,0.3);
+    transform:scale(1.05);
+  }
+
+.code-box{
+    background:#0f172a;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:20px;
+    margin:15px 0;
+    overflow-x:auto;
+  }
+.code-box pre{
+    color:#10b981;
+    font-family:'Courier New',monospace;
+    font-size:14px;
+    line-height:1.7;
+    margin:0;
+  }
+.output-box{
+    background:#fff;
+    border:1px solid #334155;
+    border-radius:12px;
+    padding:20px;
+    margin:15px 0;
+    color:#1e293b;
+  }
+.note-box{
+    background:rgba(14,165,233,0.1);
+    border-left:4px solid #0ea5e9;
+    border-radius:8px;
+    padding:15px;
+    margin:15px 0;
+    color:#bae6fd;
+  }
+
+  @media(max-width:600px){
+    h1{font-size:26px}
+    h2{font-size:22px}
+    body{padding:15px}
+.modal-content{padding:20px;margin:20px auto}
+.modal-title{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🚀 The Ultimate HTML Master Course</h1>
+  <p style="text-align:center;color:#94a3b8;margin-bottom:30px">Click on any chapter to open the full lesson with code examples</p>
+
+  <!-- Modal for Chapter Content -->
+  <div id="chapterModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Chapter Title</div>
+        <button class="close-btn" onclick="closeChapter()">✕ Close</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <h2>Phase 1: The Basics - Fundamentals</h2>
+  <ul class="chapter-list">
+    <li class="chapter-item" id="ch1" onclick="openChapter(1)">
+      <div class="chapter-num">Chapter 1</div>
+      <div class="chapter-title">Introduction to HTML</div>
+      <div class="chapter-desc">How the web works and the role of HTML</div>
+    </li>
+    <li class="chapter-item" id="ch2" onclick="openChapter(2)">
+      <div class="chapter-num">Chapter 2</div>
+      <div class="chapter-title">Setup Your Lab</div>
+      <div class="chapter-desc">Install VS Code and Live Server extension</div>
+    </li>
+    <li class="chapter-item" id="ch3" onclick="openChapter(3)">
+      <div class="chapter-num">Chapter 3</div>
+      <div class="chapter-title">The Skeleton</div>
+      <div class="chapter-desc"><code>&lt;!DOCTYPE&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code></div>
+    </li>
+    <li class="chapter-item" id="ch4" onclick="openChapter(4)">
+      <div class="chapter-num">Chapter 4</div>
+      <div class="chapter-title">Headings & Hierarchy</div>
+      <div class="chapter-desc">Proper use of <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> for SEO</div>
+    </li>
+    <li class="chapter-item" id="ch5" onclick="openChapter(5)">
+      <div class="chapter-num">Chapter 5</div>
+      <div class="chapter-title">Paragraphs & Formatting</div>
+      <div class="chapter-desc"><code>&lt;p&gt;</code>, <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;u&gt;</code>, and <code>&lt;mark&gt;</code></div>
+    </li>
+    <li class="chapter-item" id="ch6" onclick="openChapter(6)">
+      <div class="chapter-num">Chapter 6</div>
+      <div class="chapter-title">Comments in HTML</div>
+      <div class="chapter-desc">How to write notes in code that don't appear in the browser</div>
+    </li>
+  </ul>
+
+  <h2>Phase 2: Organizing Content</h2>
+  <ul class="chapter-list">
+    <li class="chapter-item" id="ch7" onclick="openChapter(7)">
+      <div class="chapter-num">Chapter 7</div>
+      <div class="chapter-title">HTML Links (Anchors)</div>
+      <div class="chapter-desc">Internal vs External links and <code>target="_blank"</code></div>
+    </li>
+    <li class="chapter-item" id="ch8" onclick="openChapter(8)">
+      <div class="chapter-num">Chapter 8</div>
+      <div class="chapter-title">Working with Images</div>
+      <div class="chapter-desc"><code>src</code>, <code>alt</code>, and resizing images</div>
+    </li>
+    <li class="chapter-item" id="ch9" onclick="openChapter(9)">
+      <div class="chapter-num">Chapter 9</div>
+      <div class="chapter-title">Unordered Lists</div>
+      <div class="chapter-desc">Bullet points with <code>&lt;ul&gt;</code> & <code>&lt;li&gt;</code></div>
+    </li>
+    <li class="chapter-item" id="ch10" onclick="openChapter(10)">
+      <div class="chapter-num">Chapter 10</div>
+      <div class="chapter-title">Ordered Lists</div>
+      <div class="chapter-desc">Numbering and types with <code>&lt;ol&gt;</code> & <code>&lt;li&gt;</code></div>
+    </li>
+    <li class="chapter-item" id="ch11" onclick="openChapter(11)">
+      <div class="chapter-num">Chapter 11</div>
+      <div class="chapter-title">Description Lists</div>
+      <div class="chapter-desc">Term and Definition tags <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code></div>
+    </li>
+    <li class="chapter-item" id="ch12" onclick="openChapter(12)">
+      <div class="chapter-num">Chapter 12</div>
+      <div class="chapter-title">HTML Tables (Basic)</div>
+      <div class="chapter-desc">Creating Rows and Columns</div>
+    </li>
+    <li class="chapter-item" id="ch13" onclick="openChapter(13)">
+      <div class="chapter-num">Chapter 13</div>
+      <div class="chapter-title">Advanced Tables</div>
+      <div class="chapter-desc"><code>rowspan</code>, <code>colspan</code>, and <code>&lt;caption&gt;</code></div>
+    </li>
+  </ul>
+
+  <h2>Phase 3: Interactive Elements (User Interaction)</h2>
+  <ul class="chapter-list">
+    <li class="chapter-item" id="ch14" onclick="openChapter(14)">
+      <div class="chapter-num">Chapter 14</div>
+      <div class="chapter-title">HTML Forms (Basics)</div>
+      <div class="chapter-desc">Getting input from users</div>
+    </li>
+    <li class="chapter-item" id="ch15" onclick="openChapter(15)">
+      <div class="chapter-num">Chapter 15</div>
+      <div class="chapter-title">Form Input Types</div>
+      <div class="chapter-desc">Email, Number, Range, and Date inputs</div>
+    </li>
+    <li class="chapter-item" id="ch16" onclick="openChapter(16)">
+      <div class="chapter-num">Chapter 16</div>
+      <div class="chapter-title">Selection Menus</div>
+      <div class="chapter-desc">Dropdowns with <code>&lt;select&gt;</code> and Data-lists</div>
+    </li>
+    <li class="chapter-item" id="ch17" onclick="openChapter(17)">
+      <div class="chapter-num">Chapter 17</div>
+      <div class="chapter-title">Buttons & Actions</div>
+      <div class="chapter-desc">Submit, Reset, and Custom buttons</div>
+    </li>
+    <li class="chapter-item" id="ch18" onclick="openChapter(18)">
+      <div class="chapter-num">Chapter 18</div>
+      <div class="chapter-title">Form Validation</div>
+      <div class="chapter-desc">Attributes like <code>required</code>, <code>min</code>, <code>max</code></div>
+    </li>
+  </ul>
+
+  <h2>Phase 4: Modern & Multimedia HTML</h2>
+  <ul class="chapter-list">
+    <li class="chapter-item" id="ch19" onclick="openChapter(19)">
+      <div class="chapter-num">Chapter 19</div>
+      <div class="chapter-title">HTML Video</div>
+      <div class="chapter-desc">Playing videos on a web page</div>
+    </li>
+    <li class="chapter-item" id="ch20" onclick="openChapter(20)">
+      <div class="chapter-num">Chapter 20</div>
+      <div class="chapter-title">HTML Audio</div>
+      <div class="chapter-desc">Adding music and audio files</div>
+    </li>
+    <li class="chapter-item" id="ch21" onclick="openChapter(21)">
+      <div class="chapter-num">Chapter 21</div>
+      <div class="chapter-title">Youtube Iframe</div>
+      <div class="chapter-desc">Embedding Youtube videos on your site</div>
+    </li>
+    <li class="chapter-item" id="ch22" onclick="openChapter(22)">
+      <div class="chapter-num">Chapter 22</div>
+      <div class="chapter-title">HTML Entities</div>
+      <div class="chapter-desc">Copyright (©), Less than (&lt;) and other special symbols</div>
+    </li>
+    <li class="chapter-item" id="ch23" onclick="openChapter(23)">
+      <div class="chapter-num">Chapter 23</div>
+      <div class="chapter-title">Head Metadata</div>
+      <div class="chapter-desc">Meta tags that help with Google Search</div>
+    </li>
+  </ul>
+
+  <h2>Phase 5: Layout & Advanced Concepts</h2>
+  <ul class="chapter-list">
+    <li class="chapter-item" id="ch24" onclick="openChapter(24)">
+      <div class="chapter-num">Chapter 24</div>
+      <div class="chapter-title">Semantic HTML</div>
+      <div class="chapter-desc"><code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;aside&gt;</code> (Modern way)</div>
+    </li>
+    <li class="chapter-item" id="ch25" onclick="openChapter(25)">
+      <div class="chapter-num">Chapter 25</div>
+      <div class="chapter-title">Block vs Inline</div>
+      <div class="chapter-desc">The real difference between <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code></div>
+    </li>
+    <li class="chapter-item" id="ch26" onclick="openChapter(26)">
+      <div class="chapter-num">Chapter 26</div>
+      <div class="chapter-title">HTML Classes & IDs</div>
+      <div class="chapter-desc">Creating hooks for CSS and JavaScript</div>
+    </li>
+    <li class="chapter-item" id="ch27" onclick="openChapter(27)">
+      <div class="chapter-num">Chapter 27</div>
+      <div class="chapter-title">HTML File Paths</div>
+      <div class="chapter-desc">Relative vs Absolute paths (Connecting files)</div>
+    </li>
+    <li class="chapter-item" id="ch28" onclick="openChapter(28)">
+      <div class="chapter-num">Chapter 28</div>
+      <div class="chapter-title">HTML Script & Link</div>
+      <div class="chapter-desc">How to connect JS and CSS files to HTML</div>
+    </li>
+    <li class="chapter-item" id="ch29" onclick="openChapter(29)">
+      <div class="chapter-num">Chapter 29</div>
+      <div class="chapter-title">HTML Geolocation</div>
+      <div class="chapter-desc">Basic introduction to getting user location</div>
+    </li>
+    <li class="chapter-item" id="ch30" onclick="openChapter(30)">
+      <div class="chapter-num">Chapter 30</div>
+      <div class="chapter-title">Final Project</div>
+      <div class="chapter-desc">Build a complete multi-page website (Portfolio)</div>
+    </li>
+  </ul>
+
+</div>
+
+<script>
+// Chapter Data - All content is here
+const chaptersData = {
+  1: {
+    title: "Chapter 1: Introduction to HTML",
+    content: `
+      <h3>How Does the Web Work?</h3>
+      <p><b>Browser:</b> Chrome, Firefox - Sends requests for web pages<br>
+      <b>Server:</b> Stores HTML files and sends them to the browser<br>
+      <b>HTML:</b> Structures the content you see</p>
+
+      <h3>What is HTML?</h3>
+      <p>HTML = <b>HyperText Markup Language</b><br>
+      It's not a programming language, it's a <b>markup language</b> that structures web pages.</p>
+
+      <h3>Basic Example:</h3>
+      <div class="code-box">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World!&lt;/h1&gt;
+  &lt;p&gt;This is my first webpage.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+      </div>
+
+      <h3>Output:</h3>
+      <div class="output-box">
+        <h1>Hello World!</h1>
+        <p>This is my first webpage.</p>
+      </div>
+
+      <div class="note-box">
+        <b>💡 Important:</b> HTML tags are written in angle brackets: <code>&lt;tagname&gt;</code>
+      </div>
+    `
+  },
+
+  2: {
+    title: "Chapter 2: Setup Your Lab",
+    content: `
+      <h3>Step 1: Install VS Code</h3>
+      <p>1. Go to <code>code.visualstudio.com</code><br>
+      2. Click the Download button<br>
+      3. Install it</p>
+
+      <h3>Step 2: Live Server Extension</h3>
+      <p>1. Open VS Code<br>
+      2. Left side Extensions icon (Ctrl+Shift+X)<br>
+      3. Search "Live Server"<br>
+      4. Click Install</p>
+
+      <h3>Step 3: Your First HTML File</h3>
+      <div class="code-box">
+<pre>1. Create folder: MyWebsite
+2. Open in VS Code
+3. New file: index.html
+4. Write code and Save (Ctrl+S)
+5. Right click → "Open with Live Server"</pre>
+      </div>
+
+      <div class="note-box">
+        <b>💡 Pro Tip:</b> Live Server auto-refreshes the browser when you save your code!
+      </div>
+    `
+  },
+
+  3: {
+    title: "Chapter 3: The Skeleton",
+    content: `
+      <h3>HTML Document Structure</h3>
+      <p>Every HTML page has this basic structure:</p>
+
+      <div class="code-box">
+<pre>&lt;!DOCTYPE html&gt; &lt;!-- Declares HTML5 --&gt;
+&lt;html lang="en"&gt; &lt;!-- Root element --&gt;
+&lt;head&gt; &lt;!-- Meta information --&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt; &lt;!-- Visible content --&gt;
+  &lt;h1&gt;My Heading&lt;/h1&gt;
+  &lt;p&gt;My paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+      </div>
+
+      <h3>Explanation:</h3>
+      <ul>
+        <li><code>&lt;!DOCTYPE html&gt;</code> - Tells the browser this is HTML5</li>
+        <li><code>&lt;html&gt;</code> - Root container of the page</li>
+        <li><code>&lt;head&gt;</code> - Metadata, title, CSS links (not visible)</li>
+        <li><code>&lt;body&gt;</code> - All visible content goes here</li>
+      </ul>
+    `
+  },
+
+  7: {
+    title: "Chapter 7: HTML Links (Anchors)",
+    content: `
+      <h3>Anchor Tag <code>&lt;a&gt;</code></h3>
+      <p>Used to create hyperlinks with the <code>&lt;a&gt;</code> tag.</p>
+
+      <h3>Basic Syntax:</h3>
+      <div class="code-box">
+<pre>&lt;a href="https://google.com"&gt;Visit Google&lt;/a&gt;</pre>
+      </div>
+
+      <h3>Link Types:</h3>
+      <div class="code-box">
+<pre>&lt;!-- External Link - New Tab --&gt;
+&lt;a href="https://youtube.com" target="_blank"&gt;YouTube&lt;/a&gt;
+
+&lt;!-- Internal Link --&gt;
+&lt;a href="about.html"&gt;About Page&lt;/a&gt;
+
+&lt;!-- Email Link --&gt;
+&lt;a href="mailto:test@email.com"&gt;Send Email&lt;/a&gt;
+
+&lt;!-- Phone Link --&gt;
+&lt;a href="tel:+919876543210"&gt;Call Us&lt;/a&gt;
+
+&lt;!-- Jump to Section --&gt;
+&lt;a href="#section1"&gt;Go to Section 1&lt;/a&gt;</pre>
+      </div>
+
+      <h3>Important Attributes:</h3>
+      <ul>
+        <li><code>href</code> - URL or path (required)</li>
+        <li><code>target="_blank"</code> - Opens in new tab</li>
+        <li><code>title</code> - Tooltip text</li>
+      </ul>
+
+      <h3>Live Output:</h3>
+      <div class="output-box">
+        <a href="https://google.com" target="_blank" style="color:#0ea5e9;text-decoration:underline;">Visit Google (New Tab)</a><br><br>
+        <a href="mailto:test@email.com" style="color:#0ea5e9;text-decoration:underline;">Send Email</a>
+      </div>
+    `
+  },
+
+  12: {
+    title: "Chapter 12: HTML Tables (Basic)",
+    content: `
+      <h3>Table Tags</h3>
+      <p>Tables organize data in rows and columns.</p>
+
+      <h3>Basic Structure:</h3>
+      <div class="code-box">
+<pre>&lt;table border="1"&gt;
+  &lt;tr&gt; &lt;!-- Table Row --&gt;
+    &lt;th&gt;Name&lt;/th&gt; &lt;!-- Table Header --&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+    &lt;th&gt;City&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Rahul&lt;/td&gt; &lt;!-- Table Data --&gt;
+    &lt;td&gt;25&lt;/td&gt;
+    &lt;td&gt;Delhi&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Priya&lt;/td&gt;
+    &lt;td&gt;22&lt;/td&gt;
+    &lt;td&gt;Mumbai&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+      </div>
+
+      <h3>Tags Explained:</h3>
+      <ul>
+        <li><code>&lt;table&gt;</code> - Table container</li>
+        <li><code>&lt;tr&gt;</code> - Table row (horizontal)</li>
+        <li><code>&lt;th&gt;</code> - Table header (bold, center)</li>
+        <li><code>&lt;td&gt;</code> - Table data (normal cell)</li>
+      </ul>
+
+      <h3>Output:</h3>
+      <div class="output-box">
+        <table style="border-collapse:collapse;width:100%;border:1px solid #ddd">
+          <tr style="background:#0ea5e9;color:white">
+            <th style="padding:10px;border:1px solid #ddd">Name</th>
+            <th style="padding:10px;border:1px solid #ddd">Age</th>
+            <th style="padding:10px;border:1px solid #ddd">City</th>
+          </tr>
+          <tr>
+            <td style="padding:10px;border:1px solid #ddd">Rahul</td>
+            <td style="padding:10px;border:1px solid #ddd">25</td>
+            <td style="padding:10px;border:1px solid #ddd">Delhi</td>
+          </tr>
+          <tr>
+            <td style="padding:10px;border:1px solid #ddd">Priya</td>
+            <td style="padding:10px;border:1px solid #ddd">22</td>
+            <td style="padding:10px;border:1px solid #ddd">Mumbai</td>
+          </tr>
+        </table>
+      </div>
+    `
+  },
+
+  14: {
+    title: "Chapter 14: HTML Forms (Basics)",
+    content: `
+      <h3>What is a Form?</h3>
+      <p>Forms are used to get input from users - like name, email, password.</p>
+
+      <h3>Basic Form Structure:</h3>
+      <div class="code-box">
+<pre>&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+  &lt;br&gt;&lt;br&gt;
+
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+  &lt;br&gt;&lt;br&gt;
+
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</pre>
+      </div>
+
+      <h3>Important Tags:</h3>
+      <ul>
+        <li><code>&lt;form&gt;</code> - Form container</li>
+        <li><code>&lt;label&gt;</code> - Input name</li>
+        <li><code>&lt;input&gt;</code> - User input field</li>
+        <li><code>&lt;button&gt;</code> - Submit button</li>
+      </ul>
+
+      <h3>Live Example:</h3>
+      <div class="output-box">
+        <form onsubmit="alert('Form Submitted! Name: ' + this.name.value); return false;">
+          <label style="display:block;margin-bottom:5px;font-weight:600;">Name:</label>
+          <input type="text" name="name" placeholder="Enter name" required style="padding:10px;width:100%;border:1px solid #ddd;border-radius:5px;margin-bottom:10px;"><br>
+
+          <label style="display:block;margin-bottom:5px;font-weight:600;">Email:</label>
+          <input type="email" name="email" placeholder="Enter email" required style="padding:10px;width:100%;border:1px solid #ddd;border-radius:5px;margin-bottom:10px;"><br>
+
+          <button type="submit" style="background:#0ea5e9;color:white;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Submit</button>
+        </form>
+      </div>
+
+      <div class="note-box">
+        <b>💡 Pro Tip:</b> The <code>required</code> attribute makes filling the field mandatory!
+      </div>
+    `
+  }
+  
+};
+
+// Add more chapters 4,5,6,8,9,10,11,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 in the same format
+
+// Open Chapter Function
+
+function openChapter(num) {
+  if(num === 1) {
+ window.open('Introduction to HTML.html','_blank');
+return;
+ }
+ if(num === 2) {
+ window.open('/Setup Your Lab.html','_blank');
+return;
+ }
+ if (num === 3) {
+  window.open('/The Skeleton.html', '_blank');
+  return;
+}
+if (num === 4) {
+  window.open('/Headings & Hierarchy.html', '_blank');
+  return;
+}
+if (num === 5) {
+  window.open('/Paragraphs & Formatting.html', '_blank');
+  return;
+}
+if (num === 6) {
+  window.open('/Comments in HTML.html', '_blank');
+  return;
+}
+if (num === 7) {
+  window.open('Html link.html', '_blank');
+  return;
+}
+if (num === 8) {
+  window.open('/Working with image.html', '_blank');
+  return;
+}
+if (num === 9) {
+  window.open('chapter9.html', '_blank');
+  return;
+}
+if (num === 10) {
+  window.open('chapter10.html', '_blank');
+  return;
+}
+if (num === 11) {
+  window.open('chapter11.html', '_blank');
+  return;
+}
+if (num === 12) {
+  window.open('chapter12.html', '_blank');
+  return;
+}
+if (num === 13) {
+  window.open('chapter13.html', '_blank');
+  return;
+}
+if (num === 14) {
+  window.open('chapter14.html', '_blank');
+  return;
+}
+if (num === 15) {
+  window.open('chapter15.html', '_blank');
+  return;
+}
+if (num === 16) {
+  window.open('chapter16.html', '_blank');
+  return;
+}
+if (num === 17) {
+  window.open('chapter17.html', '_blank');
+  return;
+}
+if (num === 18) {
+  window.open('chapter18.html', '_blank');
+  return;
+}
+if (num === 19) {
+  window.open('chapter19.html', '_blank');
+  return;
+}
+if (num === 20) {
+  window.open('chapter20.html', '_blank');
+  return;
+}
+if (num === 21) {
+  window.open('chapter21.html', '_blank');
+  return;
+}
+if (num ===22) {
+  window.open('chapter22.html', '_blank');
+  return;
+}
+if (num === 23) {
+  window.open('chapter23.html', '_blank');
+  return;
+}
+if (num === 24) {
+  window.open('chapter24.html', '_blank');
+  return;
+}
+if (num === 25) {
+  window.open('chapter25.html', '_blank');
+  return;
+}
+if (num === 26) {
+  window.open('chapter26.html', '_blank');
+  return;
+}
+if (num === 27) {
+  window.open('chapter27.html', '_blank');
+  return;
+}
+if (num === 28) {
+  window.open('chapter28.html', '_blank');
+  return;
+}
+if (num === 29) {
+  window.open('chapter29.html', '_blank');
+  return;
+}
+if (num === 30) {
+  window.open('chapter30.html', '_blank');
+  return;
+}
+if (num === 1) {
+  window.open('Introduction to HTML.html', '_blank');
+  return;
+}
+  const chapter = chaptersData[num];
+
+  if(!chapter) {
+    document.getElementById('modalTitle').textContent = `Chapter ${num}`;
+    document.getElementById('modalBody').innerHTML = `
+      <div class="note-box">
+        <b>📝 Coming Soon!</b><br>
+        Chapter ${num} content is being added. Please wait or try Chapter 1, 2, 3, 7, 8, 12, 14.
+      </div>
+    `;
+  } else {
+    document.getElementById('modalTitle').textContent = chapter.title;
+    document.getElementById('modalBody').innerHTML = chapter.content;
+  }
+
+  document.getElementById('chapterModal').classList.add('active');
+  document.body.style.overflow = 'hidden'; // Scroll lock
+}
+
+// Close Chapter
+function closeChapter() {
+  document.getElementById('chapterModal').classList.remove('active');
+  document.body.style.overflow = 'auto'; // Scroll unlock
+}
+
+// Close on outside click
+document.getElementById('chapterModal').addEventListener('click', function(e) {
+  if(e.target === this) closeChapter();
+});
+
+// Close on ESC key
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'Escape') closeChapter();
+});
+</script>
+
+
+
+<!-- Floating Button -->
+<div class="fab">
+  <button class="fab-btn" id="fabBtn" onclick="toggleMenu()">+</button>
+  
+  <div class="menu" id="menu">
+    <a href="Base64.html" target="_blank" class="item">Base64</a>
+    <!--a href="🫵😂.html" target="_blank" class="item">P2</a-->
+    
+    <div class="submenu-wrapper">
+      <div class="item submenu-btn" onclick="toggleSub('p3')">calculator</div>
+      <div class="submenu" id="p3">
+        <a href="/science calculator.html" target="_blank" class="item">Science Calculator</a>
+        <a href="/age calculator.html" target="_blank" class="item">Age Calculator</a>
+      </div>
+    </div>
+    
+    <div class="submenu-wrapper">
+      <div class="item submenu-btn" onclick="toggleSub('p4')">Games</div>
+      <div class="submenu" id="p4">
+        <a href="/html quize.html" target="_blank" class="item">HTML Quize Game</a>
+        <a href="/game.html" target="_blank" class="item">Snake Game</a>
+        <a href="/colour remember.html" target="_blank" class="item"> Color Remambaring Game</a>
+        <!--a href="🫵😂.html" target="_blank" class="item">R2</a-->
+      </div>
+    </div>
+    
+    <div class="submenu-wrapper">
+      <div class="item submenu-btn" onclick="toggleSub('p5')">Colors</div>
+      <div class="submenu" id="p5">
+        <a href="/colorpage.html" target="_blank" class="item">Color Page</a>
+        <a href="/Colourindex.html" target="_blank" class="item">Colour Picker</a>
+      </div>
+    </div>
+    
+    <div class="submenu-wrapper">
+      <div class="item submenu-btn" onclick="toggleSub('p6')">Text Generated</div>
+      <div class="submenu" id="p6">
+        <a href="/Password.html" target="_blank" class="item">Password Generated</a>
+        <a href="QR.html" target="_blank" class="item">QR Generated</a>
+        <!--a href="🫵😂.html" target="_blank" class="item">S3</a>
+        <a href="🫵😂.html" target="_blank" class="item">S4</a-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="menu-item">
+  <button onclick="loadPageBelow('Function of HTML.html', 'box1', this)">
+    Function of HTML
+  </button>
+  <div id="box1" class="content-box"></div>
+</div>
+
+<div class="menu-item">
+  <button onclick="loadPageBelow('History of HTML.html', 'box2', this)">
+   (About) History of HTML
+  </button>
+  <div id="box2" class="content-box"></div>
+</div>
+
+<div class="menu-item">
+  <button onclick="loadPageBelow('The Modern Era of HTML.html', 'box3', this)">
+    (About) Modern Era of HTML
+  </button>
+  <div id="box3" class="content-box"></div>
+</div>
+
+<div class="menu-item">
+  <button onclick="loadPageBelow('Future of HTML.html', 'box4', this)">
+    (About) Future of HTML
+  </button>
+  <div id="box4" class="content-box"></div>
+  </div>
+<!--div class="menu-item">
+  <button onclick="loadPageBelow('./HTML all meterial.html', 'box4', this)">
+    HTML all meterial
+  </button>
+  <div id="box4" class="content-box"></div>
+</div>
+<div class="menu-item">
+  <button onclick="loadPageBelow('/html saransh ato z.html', 'box4', this)">
+    👉HTML KA SARANSH A TO Z👈
+  </button>
+  <div id="box4" class="content-box"></div>
+</div-->
+<div class="menu-item">
+  <button onclick="loadPageBelow('./HTML all meterial.html', 'box1', this)">
+    HTML all meterial
+  </button>
+  <div id="box1" class="content-box"></div>
+</div>
+
+<div class="menu-item">
+  <button onclick="loadPageBelow('./html saransh ato z.html', 'box2', this)">
+    👉HTML KA SARANSH A TO Z👈
+  </button>
+  <div id="box2" class="content-box"></div>
+</div>
+
+
+<!-- Footer -->
+<div class="footer">
+    <span onclick="window.open('index.html', '_blank')">Home</span><br><br>
+    <span onclick="window.open('/html saransh ato z.html', '_blank')">HTML</span><br><br>
+    <!--span onclick="window.open('Kumar.html', '_blank')">CSS</span><br><br>
+    <span onclick="window.open('Kushwaha.html', '_blank')">JAVA</span><br><br-->
+    <span onclick="window.open('About.html', '_blank')">About</span><br><br>
+    <div style="text-align: right; margin-right: 20px;">
+        <a href="Suggestion.html" target="_blank" style="color: #00f5ff; text-decoration: underline;">Suggestions</a> / 
+        <a href="Report.html" target="_blank" style="color: #00f5ff; text-decoration: underline;">Report</a>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
